@@ -1,16 +1,11 @@
 using Horn.Core.BuildEngines;
 using Horn.Core.Dsl;
-using Horn.Core.Integration.IoC;
 using Horn.Core.PackageCommands;
-using Horn.Core.PackageStructure;
 using Horn.Core.SCM;
-using Horn.Core.Tree.MetaDataSynchroniser;
 using Xunit;
 
 namespace Horn.Core.Spec.Integration
 {
-    using Dependencies;
-
     public class When_An_IBuildConfigReader_Is_Requested_From_The_Container : IoCSpecificationBase
     {
         [Fact]
@@ -47,21 +42,4 @@ namespace Horn.Core.Spec.Integration
         }
     }
 
-    public class When_An_IDependencyDispatcher_Is_Requested_From_The_Contaier : IoCSpecificationBase
-    {
-        [Fact]
-        public void Then_A_ProcessFactory_Is_Returned()
-        {
-            Assert.IsAssignableFrom<DependencyDispatcher>(IoC.Resolve<IDependencyDispatcher>());
-        }
-    }
-
-    public class When_The_Package_Tree_Root_Is_Requested_From_The_Contaier : IoCSpecificationBase
-    {
-        [Fact]
-        public void Then_A_ProcessFactory_Is_Returned()
-        {
-            Assert.IsAssignableFrom<IPackageTree>(IoC.Resolve<IPackageTree>());
-        }
-    }
 }

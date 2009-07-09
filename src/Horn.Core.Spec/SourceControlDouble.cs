@@ -9,30 +9,7 @@ namespace Horn.Core.Spec
 {
     public class SourceControlDouble : SVNSourceControl
     {
-        private FileInfo _tempFile;
         public bool ExportWasCalled;
-
-        public bool FileWasDownloaded
-        {
-            get
-            {
-                return (_tempFile != null) ? _tempFile.Exists : false;
-            }
-        }
-
-        public override string Revision
-        {
-            get
-            {
-                return long.MaxValue.ToString();
-            }
-        }
-
-        public void Dispose()
-        {
-            if (_tempFile != null && _tempFile.Exists)
-                _tempFile.Delete();
-        }
 
         protected override Thread StartMonitoring()
         {
@@ -51,16 +28,22 @@ namespace Horn.Core.Spec
             Console.WriteLine("In initialise");
         }
 
-        protected override string Download(FileSystemInfo destination)
+        public override string Revision
+        {
+            get
+            {
+                return long.MaxValue.ToString();
+            }
+        }
+
+        protected override string Download(DirectoryInfo destination)
         {
             Console.WriteLine("In Download");
 
             if (!destination.Exists)
-                ((DirectoryInfo)destination).Create();
+                destination.Create();
 
-            _tempFile = new FileInfo(Path.Combine(destination.FullName, "horn.boo"));
-
-            FileHelper.CreateFileWithRandomData(_tempFile.FullName);
+            FileHelper.CreateFileWithRandomData(Path.Combine(destination.FullName, "horn.boo"));
 
             ExportWasCalled = true;
 
@@ -70,9 +53,7 @@ namespace Horn.Core.Spec
         public SourceControlDouble(string url)
             : base(url)
         {
-            ExportPath = string.Empty;
         }
-
     }
 
     public class SourceControlDoubleWithFakeFileSystem : SourceControlDouble
@@ -82,8 +63,7 @@ namespace Horn.Core.Spec
             Console.WriteLine(revision);
         }
 
-        public SourceControlDoubleWithFakeFileSystem(string url)
-            : base(url)
+        public SourceControlDoubleWithFakeFileSystem(string url) : base(url)
         {
         }
     }
@@ -98,8 +78,7 @@ namespace Horn.Core.Spec
             }
         }
 
-        public SourceControlDoubleWitholdRevision(string url)
-            : base(url)
+        public SourceControlDoubleWitholdRevision(string url) : base(url)
         {
         }
     }

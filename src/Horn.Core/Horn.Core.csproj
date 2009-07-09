@@ -22,7 +22,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -78,9 +77,33 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="IronRuby, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronRuby.dll</HintPath>
+    </Reference>
+    <Reference Include="IronRuby.Libraries, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronRuby.Libraries.dll</HintPath>
+    </Reference>
+    <Reference Include="IronRuby.Libraries.Yaml, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\IronRuby.Libraries.Yaml.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.0.0.5000, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Core, Version=1.0.0.5000, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Scripting.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.ExtensionAttribute, Version=1.0.0.5000, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Microsoft.Scripting.ExtensionAttribute.dll</HintPath>
     </Reference>
     <Reference Include="Rhino.DSL, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -98,34 +121,13 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonAssemblyInfo.cs">
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="BuildEngines\Dependency.cs" />
-    <Compile Include="Dependencies\BuildTree.cs" />
-    <Compile Include="Dependencies\DependencyCopier.cs" />
-    <Compile Include="Dependencies\DependencyDispatcher.cs" />
-    <Compile Include="Dependencies\DependentUpdaterExecutor.cs" />
-    <Compile Include="Dependencies\IDependencyDispatcher.cs" />
-    <Compile Include="Dependencies\IDependentUpdater.cs" />
-    <Compile Include="Dependencies\IDependentUpdaterExecutor.cs" />
-    <Compile Include="Dependencies\VisualStudioDependentUpdater.cs" />
-    <Compile Include="dsl\BuildMetadata\ExportData.cs" />
-    <Compile Include="dsl\BuildMetadata\IRepositoryElement.cs" />
-    <Compile Include="dsl\BuildMetadata\RepositoryElement.cs" />
-    <Compile Include="exceptions\NullTreeException.cs" />
-    <Compile Include="exceptions\ProcessFailedException.cs" />
-    <Compile Include="exceptions\UnkownInstallPackageException.cs" />
-    <Compile Include="Utils\CmdLine\CommandArgs.cs" />
-    <Compile Include="Utils\CmdLine\ICommandArgs.cs" />
-    <Compile Include="Utils\WithLogging.cs" />
-    <Compile Include="extensions\FileSystemInfoExtensions.cs" />
     <Compile Include="BuildEngines\Process\DiagnosticsProcess.cs" />
     <Compile Include="BuildEngines\BuildTools\IBuildTool.cs" />
     <Compile Include="BuildEngines\Process\iprocess.cs" />
@@ -134,23 +136,21 @@
     <Compile Include="BuildEngines\Process\DiagnosticsProcessFactory.cs" />
     <Compile Include="BuildEngines\BuildTools\NAntBuildTool.cs" />
     <Compile Include="BuildEngines\BuildTools\RakeBuildTool.cs" />
-    <Compile Include="Dependencies\CircularDependencyException.cs" />
-    <Compile Include="Dependencies\DependencyTree.cs" />
-    <Compile Include="Dependencies\IDependencyTree.cs" />
-    <Compile Include="dsl\BooConfigReader.cs" />
+    <Compile Include="DependencyTree\CircularDependencyException.cs" />
+    <Compile Include="DependencyTree\DependencyTree.cs" />
+    <Compile Include="DependencyTree\IDependencyTree.cs" />
     <Compile Include="dsl\BuildMetadata\IBuildMetaData.cs" />
-    <Compile Include="dsl\BuildMetadata\NullBuildMetaData.cs" />
+    <Compile Include="dsl\BuildMetadata\NullBuildMetatData.cs" />
     <Compile Include="dsl\CompilerSteps\RightShiftToMethodCompilerStep.cs" />
-    <Compile Include="dsl\Global.cs" />
-    <Compile Include="dsl\PackageMetaData.cs" />
+    <Compile Include="dsl\RubyBuildConfigReader.cs" />
     <Compile Include="exceptions\InvalidCommandLineArgumentException.cs" />
     <Compile Include="exceptions\MissingBuildFileException.cs" />
+    <Compile Include="dsl\BooConfigReader.cs" />
     <Compile Include="dsl\BooBuildConfigReader.cs" />
     <Compile Include="BuildEngines\BuildEngine.cs" />
     <Compile Include="dsl\BuildMetadata\BuildMetaData.cs" />
     <Compile Include="dsl\DslEngines\ConfigReaderEngine.cs" />
     <Compile Include="dsl\IBuildConfigReader.cs" />
-    <Compile Include="extensions\EnumerableExtensions.cs" />
     <Compile Include="extensions\StringExtensions.cs" />
     <Compile Include="IComposite.cs" />
     <Compile Include="MetaDataSynchroniser\imetadatasynchroniser.cs" />
@@ -177,8 +177,8 @@
     <Compile Include="Utils\Framework\Framework.cs" />
     <Compile Include="Utils\Framework\FrameworkLocator.cs" />
     <Compile Include="Utils\Framework\MSBuild.cs" />
-    <Compile Include="Utils\IoC\EnumerableResolver.cs" />
     <Compile Include="Utils\IoC\IoC.cs" />
+    <Compile Include="Utils\EnumerableExtensionMethods.cs" />
     <Compile Include="Utils\IFileSystemProvider.cs" />
     <Compile Include="Get\IGet.cs" />
     <Compile Include="Package.cs" />
@@ -186,10 +186,11 @@
     <Compile Include="Utils\IoC\WindsorDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BuildConfigs\horn.boo" />
+    <Content Include="BuildConfigs\log4net.boo" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Horn.Core.build" />
-    <None Include="Model\BuildEngine.cd" />
-    <None Include="Model\SemanticModel.cd" />
-    <None Include="Model\SourceControl.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

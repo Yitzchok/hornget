@@ -1,21 +1,20 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Horn.Core.Dsl;
-using Horn.Core.Tree.MetaDataSynchroniser;
+using Horn.Core.Utils;
+using IronRuby.Builtins;
 
 namespace Horn.Core.PackageStructure
 {
     public class PackageTree : IPackageTree
     {
-        private readonly IMetaDataSynchroniser metaDataSynchroniser;
-        private DirectoryInfo result;
-        public const string RootPackageTreeName = ".horn";
+
         private readonly IList<IPackageTree> children;
         private DirectoryInfo workingDirectory;
-        private readonly static string[] reservedDirectoryNames = new[]{"working", "build_root_dir"};
-        private static readonly string[] libraryNodes = new[] {"lib", "debug", "buildengines"};
+        private readonly static string[] reservedDirectoryNames = new[]{"working", "output"};
+        private static readonly string[] libraryNodes = new[] {"rubylib", "lib", "debug", "buildengines"};
+
 
         public string BuildFile{ get; set; }
 
@@ -37,22 +36,6 @@ namespace Horn.Core.PackageStructure
 
                 return RootDirectoryContainsBuildFiles() > 0;
             }
-        }
-
-        public string FullName
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(Version))
-                    return Name;
-
-                return string.Format("{0}-{1}", Name, Version);
-            }
-        }
-
-        public bool IsAversionRequest
-        {
-            get { return string.IsNullOrEmpty(Version) == false; }
         }
 
         public bool IsBuildNode { get; private set; }
@@ -82,37 +65,6 @@ namespace Horn.Core.PackageStructure
 
         public IPackageTree Parent { get; set; }
 
-        public DirectoryInfo Result
-        {
-            get
-            {
-                result = new DirectoryInfo(Path.Combine(Root.CurrentDirectory.FullName, "result"));
-
-                if(!result.Exists)
-                    result.Create();
-
-                return result;
-            }
-        }
-
-        public IPackageTree Root
-        {
-            get
-            {
-                if (IsRoot)
-                    return this;
-
-                IPackageTree parent = Parent;
-
-                while (!parent.IsRoot)
-                {
-                    parent = parent.Parent;
-                }
-
-                return parent;
-            }
-        }
-
         public FileInfo Sn
         {
             get
@@ -132,7 +84,6 @@ namespace Horn.Core.PackageStructure
             private set { workingDirectory = value; }
         }
 
-        public string Version { get; set; }
 
 
         public void Add(IPackageTree item)
@@ -159,17 +110,6 @@ namespace Horn.Core.PackageStructure
             OutputDirectory.Create();
         }
 
-        public virtual void DeleteWorkingDirectory()
-        {
-            if (!Root.Name.StartsWith(RootPackageTreeName))
-                return;
-
-            if(!WorkingDirectory.Exists)
-                return;
-
-            WorkingDirectory.Delete(true);
-        }
-
         public IBuildMetaData GetBuildMetaData(string packageName)
         {
             IPackageTree packageTree = RetrievePackage(packageName);
@@ -180,18 +120,6 @@ namespace Horn.Core.PackageStructure
         public IRevisionData GetRevisionData()
         {
             return new RevisionData(this);
-        }
-
-        public IPackageTree GetRootPackageTree(DirectoryInfo rootFolder)
-        {
-            IPackageTree root = new PackageTree(rootFolder, null);
-
-            //HACK: Remember to remove
-            //return root;
-
-            metaDataSynchroniser.SynchronisePackageTree(root);
-
-            return new PackageTree(rootFolder, null);            
         }
 
         public void Remove(IPackageTree item)
@@ -216,7 +144,8 @@ namespace Horn.Core.PackageStructure
 
         private int RootDirectoryContainsBuildFiles()
         {
-            return (WorkingDirectory.GetFiles("horn.*", SearchOption.AllDirectories).Length);
+            //HACK: Basic check for now.  Could be expanded for a core set of required build.boo files
+            return (WorkingDirectory.GetFiles("Horn.*", SearchOption.AllDirectories).Length);
         }
 
         private IBuildMetaData GetBuildMetaData(IPackageTree packageTree)
@@ -224,9 +153,9 @@ namespace Horn.Core.PackageStructure
             if (BuildMetaData != null)
                 return BuildMetaData;
 
-            var buildFileResolver = new BuildFileResolver().Resolve(packageTree.CurrentDirectory, packageTree.FullName);
+            var buildFileResolver = new BuildFileResolver().Resolve(packageTree.CurrentDirectory, packageTree.Name);
 
-            var reader = IoC.Resolve<IBuildConfigReader>();
+            var reader = IoC.Resolve<IBuildConfigReader>(buildFileResolver.Extension);
 
             BuildMetaData = reader.SetDslFactory(packageTree).GetBuildMetaData(packageTree, Path.GetFileNameWithoutExtension(buildFileResolver.BuildFile));
 
@@ -248,16 +177,11 @@ namespace Horn.Core.PackageStructure
             if (IsRoot)
                 return false;
 
-            return (directory.GetFiles("*.boo").Length > 0) &&
-                   (!libraryNodes.Contains(directory.Name.ToLower()));
+            return (((directory.GetFiles("*.boo").Length > 0) || (directory.GetFiles("*.rb").Length > 0)) &&
+                   (!libraryNodes.Contains(directory.Name.ToLower())));
         }
 
 
-
-        public PackageTree(IMetaDataSynchroniser metaDataSynchroniser)
-        {
-            this.metaDataSynchroniser = metaDataSynchroniser;
-        }
 
         public PackageTree(DirectoryInfo directory, IPackageTree parent)
         {
@@ -283,11 +207,26 @@ namespace Horn.Core.PackageStructure
 
                 children.Add(CreateNewPackageTree(child));
             }
+        }
 
-            if (parent == null)
+
+        private IPackageTree Root
+        {
+            get
             {
-                Result.Delete(true);
+                if (IsRoot)
+                    return this;
+
+                IPackageTree parent = Parent;
+
+                while (!parent.IsRoot)
+                {
+                    parent = parent.Parent;
+                }
+
+                return parent;
             }
         }
+
     }
 }

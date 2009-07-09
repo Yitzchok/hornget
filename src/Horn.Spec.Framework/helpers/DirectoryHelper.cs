@@ -1,37 +1,31 @@
 using System;
 using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 
 namespace Horn.Framework.helpers
 {
     public static class DirectoryHelper
     {
-
-        public const string GuidExpression =
-    @"^(\{{0,1}([0-9a-fA-F]){8}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){4}-([0-9a-fA-F]){12}\}{0,1})$";
-
-
         public static string GetTempDirectoryName()
         {
-            var temp = new DirectoryInfo(Path.Combine(Environment.GetEnvironmentVariable("temp"), Guid.NewGuid().ToString()));
+            var tempPackageTreePath = new DirectoryInfo(Path.Combine(Environment.GetEnvironmentVariable("temp"), "temppackagetrees"));
 
-            InitialiseTempTreeFolder(temp);
+            InitialiseTempTreeFolder(tempPackageTreePath);
 
-            var packageRoot = new DirectoryInfo(Path.Combine(temp.FullName, ".horn"));
+            var ret = new DirectoryInfo(Path.Combine(tempPackageTreePath.FullName, Guid.NewGuid().ToString()));
 
-            packageRoot.Create();
+            ret.Create();
 
-            return packageRoot.FullName;
+            return ret.FullName;
         }
 
-        public static void DeleteGuidDirectories(DirectoryInfo root)
+        private static void InitialiseTempTreeFolder(DirectoryInfo tempTreeRootFolder)
         {
-            foreach (var directory in root.GetDirectories())
-            {
-                if (!Regex.IsMatch(directory.Name, GuidExpression))
-                    continue;
+            if (!tempTreeRootFolder.Exists)
+                tempTreeRootFolder.Create();
 
+
+            foreach (var directory in tempTreeRootFolder.GetDirectories())
+            {
                 try
                 {
                     directory.Delete(true);
@@ -40,30 +34,12 @@ namespace Horn.Framework.helpers
                 {
                     continue;
                 }
-            }            
+            }
         }
 
         public static string GetBaseDirectory()
         {
             return AppDomain.CurrentDomain.BaseDirectory;
         }
-
-
-
-        private static void InitialiseTempTreeFolder(DirectoryInfo tempTreeRootFolder)
-        {
-            if (!tempTreeRootFolder.Exists)
-                tempTreeRootFolder.Create();
-
-            DeleteGuidDirectories(tempTreeRootFolder.Parent);
-
-            var revisionDataFile = new FileInfo(Path.Combine(tempTreeRootFolder.FullName, "revision.horn"));
-
-            if (revisionDataFile.Exists)
-                revisionDataFile.Delete();
-        }
-
-
-
     }
 }

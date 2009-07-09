@@ -1,19 +1,18 @@
 using Horn.Core.Utils.IoC;
-using Horn.Spec.Framework.doubles;
 
-namespace Horn.Core.Integration.IoC
+namespace Horn.Core.Spec.Integration
 {
     public class IoCSpecificationBase : Specification
     {
         protected override void Before_each_spec()
         {
-            var resolver = new WindsorDependencyResolver(new CommandArgsDouble("horn"));
+            var resolver = new WindsorDependencyResolver();
 
-            global::IoC.InitializeWith(resolver);            
+            IoC.InitializeWith(resolver);            
         }
 
         protected override void Because()
         {
-        }       
+        }        
     }
 }

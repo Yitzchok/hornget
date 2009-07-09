@@ -9,6 +9,10 @@ namespace Horn.Core.SCM
 {
     public class SVNSourceControl : SourceControl
     {
+
+        private static readonly ILog log = LogManager.GetLogger(typeof (SVNSourceControl));
+
+
         public override string Revision
         {
             get
@@ -37,26 +41,15 @@ namespace Horn.Core.SCM
             }
         }
 
+
+
         protected override void Initialise(IPackageTree packageTree)
         {
-            if(!packageTree.Root.Name.StartsWith(PackageTree.RootPackageTreeName))
-                throw new InvalidOperationException("The root of the package tree is not named .horn");
-
-            if (!packageTree.WorkingDirectory.Exists)
-                return;
-
-            try
-            {
-                if (packageTree.Name != PackageTree.RootPackageTreeName)
-                    packageTree.WorkingDirectory.Delete(true);
-            }
-            catch (IOException)
-            {
-                throw new IOException(string.Format("The horn process is trying to delete a working directory.  Please ensure you have no applications open in the {0} directory.", packageTree.Root.CurrentDirectory.FullName));
-            }
+            if (packageTree.WorkingDirectory.Exists)
+                packageTree.WorkingDirectory.Delete(true);
         }
 
-        protected override string Download(FileSystemInfo destination)
+        protected override string Download(DirectoryInfo destination)
         {
             SvnUpdateResult result = null;
 
@@ -64,11 +57,9 @@ namespace Horn.Core.SCM
             {
                 try
                 {
-                    var args = new SvnExportArgs {Overwrite = true};
-
-                    client.Export(Url, destination.FullName, args, out result);
+                    client.Export(Url, destination.FullName, out result);
                 }
-                catch (SvnRepositoryIOException sre)
+                catch(SvnRepositoryIOException sre)
                 {
                     HandleExceptions(sre);
 
@@ -77,12 +68,6 @@ namespace Horn.Core.SCM
                 catch (SvnObstructedUpdateException sue)
                 {
                     HandleExceptions(sue);
-                }
-                catch(Exception ex)
-                {
-                    HandleExceptions(ex);
-
-                    throw;
                 }
             }
 
@@ -94,6 +79,17 @@ namespace Horn.Core.SCM
             downloadMonitor = new DownloadMonitor(destination);
         }
 
+
+
+        private void HandleExceptions(Exception ex)
+        {
+            downloadMonitor.StopMonitoring = true;
+
+            log.Error(ex);
+        }
+
+
+
         public SVNSourceControl()
         {
         }
@@ -103,9 +99,7 @@ namespace Horn.Core.SCM
         {
         }
 
-        public SVNSourceControl(string url, string exportPath)
-            : base(url, exportPath)
-        {
-        }
+
+
     }
 }

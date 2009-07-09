@@ -8,12 +8,15 @@ namespace Horn.Core.Dsl
     public class BooBuildConfigReader : IBuildConfigReader
     {
 
-        private BooConfigReader configReader;
         protected DslFactory factory;
+        private BooConfigReader configReader;
 
-        public IPackageTree PackageTree { get; private set; }
 
-        public IBuildMetaData GetBuildMetaData(string packageName)
+        public IPackageTree PackageTree{ get; private set; }
+
+
+
+        public BuildMetaData GetBuildMetaData(string packageName)
         {
             if (factory == null)
                 throw new ArgumentNullException("You have not called SetDslFactory on class BooBuildConfigReader");
@@ -21,12 +24,12 @@ namespace Horn.Core.Dsl
             return CreateBuildMetaData(PackageTree.CurrentDirectory, packageName);
         }
 
-        public IBuildMetaData GetBuildMetaData(IPackageTree packageTree, string buildFile)
+        public BuildMetaData GetBuildMetaData(IPackageTree packageTree, string buildFile)
         {
             if (factory == null)
                 throw new ArgumentNullException("You have not called SetDslFactory on class BooBuildConfigReader");
 
-            return CreateBuildMetaData(packageTree.CurrentDirectory, packageTree.FullName);
+            return CreateBuildMetaData(packageTree.CurrentDirectory, buildFile);
         }
 
         public virtual IBuildConfigReader SetDslFactory(IPackageTree packageTree)
@@ -45,9 +48,10 @@ namespace Horn.Core.Dsl
 
 
 
-        private IBuildMetaData CreateBuildMetaData(DirectoryInfo buildFolder, string buildFile)
+        private BuildMetaData CreateBuildMetaData(DirectoryInfo buildFolder, string buildFile)
         {
             var buildFileResolver = new BuildFileResolver();
+
             var buildFilePath = buildFileResolver.Resolve(buildFolder, buildFile).BuildFile;
 
             try
@@ -58,10 +62,10 @@ namespace Horn.Core.Dsl
             {
                 throw new MissingBuildFileException(buildFolder, e);
             }
-
+          
             configReader.Prepare();
 
-            return configReader.BuildMetaData;
+            return new BuildMetaData(configReader);
         }
 
 

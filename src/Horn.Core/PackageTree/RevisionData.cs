@@ -7,10 +7,12 @@ namespace Horn.Core.PackageStructure
 {
     public class RevisionData : IRevisionData
     {
+
         private readonly FileInfo revisionFileInfo;
         private string revision;
         private static readonly ILog log = LogManager.GetLogger(typeof (RevisionData));
         public const string FILE_NAME = "revision.horn";
+
 
         public bool Exists
         {
@@ -28,8 +30,8 @@ namespace Horn.Core.PackageStructure
                 {
                     using(var stream =  revisionFileInfo.OpenRead())
                     {
-                        var b = new byte[1024];
-                        var temp = new UTF8Encoding(true);
+                        byte[] b = new byte[1024];
+                        UTF8Encoding temp = new UTF8Encoding(true);
 
                         while (stream.Read(b, 0, b.Length) > 0)
                         {
@@ -49,6 +51,8 @@ namespace Horn.Core.PackageStructure
             }
         }
 
+
+
         public virtual void RecordRevision(IPackageTree packageTree, string revisionVlaue)
         {
             var fileInfo = GetRevisionFile(packageTree);
@@ -58,12 +62,10 @@ namespace Horn.Core.PackageStructure
 
         public bool ShouldUpdate(IRevisionData other)
         {
-            log.InfoFormat("Current Revision is = {0}", Revision);
-
-            log.InfoFormat("Revision at remote scm is {0}", other.Revision);
-
             return (long.Parse(other.Revision) > long.Parse(Revision));
         }
+
+
 
         private void RecordRevision(FileInfo fileInfo, string revisionValue)
         {
@@ -83,6 +85,8 @@ namespace Horn.Core.PackageStructure
             return new FileInfo(file);
         }
 
+
+
         public RevisionData(string revision)
         {
             this.revision = revision;
@@ -90,8 +94,6 @@ namespace Horn.Core.PackageStructure
 
         public RevisionData(IPackageTree packageTree)
         {
-            log.InfoFormat("Reading the current revision for {0}", packageTree.Name);
-
             revisionFileInfo = GetRevisionFile(packageTree);
 
             if (revisionFileInfo.Exists) 
@@ -99,5 +101,8 @@ namespace Horn.Core.PackageStructure
 
             RecordRevision(revisionFileInfo, "0");
         }
+
+
+
     }
 }

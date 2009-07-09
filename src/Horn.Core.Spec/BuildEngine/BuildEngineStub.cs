@@ -1,10 +1,12 @@
 using System;
-using Horn.Core.BuildEngines;
-using Horn.Core.PackageStructure;
-using Horn.Core.Utils.Framework;
 
-namespace Horn.Core.Spec.BuildEngineSpecs
+namespace Horn.Core.Spec.BuildEngine
 {
+    using System.Collections.Generic;
+    using PackageStructure;
+    using Utils.Framework;
+    using BuildEngines;
+
     public class BuildToolStub : IBuildTool
     {
         public string PathToBuildFile { get; private set; }
@@ -19,18 +21,19 @@ namespace Horn.Core.Spec.BuildEngineSpecs
             return string.Empty;
         }
 
-        public string GetFrameworkVersionForBuildTool(FrameworkVersion version)
-        {
-            Console.WriteLine(version);
-
-            return "3.5";
-        }
-
         public string PathToBuildTool(IPackageTree packageTree, FrameworkVersion version)
         {
             Console.WriteLine(version);
 
             return string.Empty;
         }
+
+        public string GetFrameworkVersionForBuildTool(FrameworkVersion version)
+        {
+            Console.WriteLine(version);
+
+            return "3.5";
+        }
     }
+
 }

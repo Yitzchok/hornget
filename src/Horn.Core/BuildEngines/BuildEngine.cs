@@ -1,40 +1,57 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using Horn.Core.Dependencies;
 using Horn.Core.PackageStructure;
+using Horn.Core.Utils;
 using Horn.Core.Utils.Framework;
 using log4net;
-using Horn.Core.extensions;
+
 
 namespace Horn.Core.BuildEngines
 {
     public class BuildEngine
     {
-        private static readonly Dictionary<string, string> builtPackages = new Dictionary<string, string>();
-        private IDependencyDispatcher dependencyDispatcher;
+
         private static readonly ILog log = LogManager.GetLogger(typeof(MSBuildBuildTool));
+        private static readonly Dictionary<string, string> builtPackages = new Dictionary<string, string>();
 
-        public virtual string BuildFile { get; private set; }
 
-        public virtual string BuildRootDirectory { get; set; }
+        public string BuildFile { get; private set; }
 
-        public virtual IBuildTool BuildTool { get; private set; }
+        public IBuildTool BuildTool { get; private set; }
 
-        public virtual List<Dependency> Dependencies { get; protected set; }
+        public List<Dependency> Dependencies { get; private set; }
 
-        public virtual bool GenerateStrongKey { get; set; }
+        public bool GenerateStrongKey { get; set; }
 
-        public virtual Dictionary<string, string> Parameters { get; private set; }
+        public Dictionary<string, string> MetaData { get; set; }
 
-        public virtual string SharedLibrary { get; set; }
+        public string OutputDirectory { get; set; }
 
-        public virtual List<string> Tasks { get; private set; }
+        public Dictionary<string, string> Parameters{ get; private set;}
 
-        public virtual FrameworkVersion Version { get; private set; }
+        public string SharedLibrary { get; set; }
 
-        public virtual void AssignParameters(string[] parameters)
+        public List<string> Tasks { get; private set; }
+
+        public FrameworkVersion Version { get; private set; }
+
+
+
+        public void AssignMataData(string[] parameters)
+        {
+            if ((parameters == null) || (parameters.Length == 0))
+                return;
+
+            parameters.ForEach(x =>
+            {
+                var parts = x.Split('=');
+
+                MetaData.Add(parts[0], parts[1]);
+            });
+        }
+
+        public void AssignParameters(string[] parameters)
         {
             if ((parameters == null) || (parameters.Length == 0))
                 return;
@@ -59,20 +76,20 @@ namespace Horn.Core.BuildEngines
             if (builtPackages.ContainsKey(packageTree.Name))
                 return this;
 
-            string pathToBuildFile = string.Format("\"{0}\"", GetBuildFilePath(packageTree));
+            string pathToBuildFile = GetBuildFilePath(packageTree);
 
             if (GenerateStrongKey)
                 GenerateKeyFile(packageTree);
 
-            CopyDependenciesTo(packageTree);
-
             var cmdLineArguments = BuildTool.CommandLineArguments(pathToBuildFile, this, packageTree, Version);
 
-            var pathToBuildTool = string.Format("\"{0}\"", BuildTool.PathToBuildTool(packageTree, Version));
+            var pathToBuildTool = BuildTool.PathToBuildTool(packageTree, Version);
+
+            CopyDependenciesTo(packageTree);
 
             ProcessBuild(packageTree, processFactory, pathToBuildTool, cmdLineArguments);
 
-            if (BuildRootDirectory == ".")
+            if (OutputDirectory == ".")
                 return this;
 
             CopyArtifactsToBuildDirectory(packageTree);
@@ -85,8 +102,8 @@ namespace Horn.Core.BuildEngines
         public virtual void GenerateKeyFile(IPackageTree packageTree)
         {
             string strongKey = Path.Combine(packageTree.WorkingDirectory.FullName,
-                                            string.Format("{0}.snk", packageTree.Name));
-                                            
+                                            string.Format("{0}.snk", packageTree.Name))
+                                            ;
             string commandLine = string.Format("{0} -k {1}", packageTree.Sn, strongKey);
 
             var PSI = new ProcessStartInfo("cmd.exe")
@@ -104,34 +121,7 @@ namespace Horn.Core.BuildEngines
             SW.Close();
         }
 
-        public virtual DirectoryInfo GetBuildDirectory(DirectoryInfo root)
-        {
-            if(!root.Exists)
-                throw new DirectoryNotFoundException(string.Format("The build directory root {0} does not exist.", root.FullName));
 
-            if ((root.GetFiles("*.dll").Length > 0) || (root.GetFiles("*.exe").Length > 0))
-                return root;
-
-            DirectoryInfo ret = null;
-
-            foreach (var child in root.GetDirectories())
-            {
-                ret = GetBuildDirectory(child);
-
-                if(ret != null)
-                    break;
-            }
-
-            if(ret == null)
-                throw new DirectoryNotFoundException(string.Format("no build files found at {0}.", root.FullName));
-
-            return ret;
-        }
-
-        public virtual DirectoryInfo GetDirectoryFromParts(DirectoryInfo sourceDirectory, string parts)
-        {
-            return sourceDirectory.GetDirectoryFromParts(parts);
-        }
 
         protected virtual void ProcessBuild(IPackageTree packageTree, IProcessFactory processFactory, string pathToBuildTool, string cmdLineArguments)
         {
@@ -150,46 +140,99 @@ namespace Horn.Core.BuildEngines
             process.WaitForExit();
         }
 
-        protected virtual void CopyArtifactsToBuildDirectory(IPackageTree packageTree)
-        {
 
-            DirectoryInfo buildDir = GetBuildDirectory(GetDirectoryFromParts(packageTree.WorkingDirectory, BuildRootDirectory));
+
+        private void CopyArtifactsToBuildDirectory(IPackageTree packageTree)
+        {
+            DirectoryInfo buildDir = GetDirectoryFromParts(packageTree.WorkingDirectory, OutputDirectory);
+
+            if(packageTree.OutputDirectory.Exists)
+                packageTree.OutputDirectory.Delete(true);
+
+            packageTree.OutputDirectory.Create();
+
+            foreach (var directory in buildDir.GetDirectories())
+            {
+                var artifact = Path.Combine(packageTree.OutputDirectory.FullName,
+                                            directory.Name);
+
+                if(Directory.Exists(artifact))
+                    Directory.Delete(artifact, true);
+
+                Directory.Move(directory.FullName, artifact);
+            }
 
             foreach (var file in buildDir.GetFiles())
             {
-                var outputFile = Path.Combine(packageTree.Result.FullName, Path.GetFileName(file.FullName));
+                var outputFile = Path.Combine(packageTree.OutputDirectory.FullName, Path.GetFileName(file.FullName));
 
-                CopyFileFromWorkingToResult(file, outputFile);
+                if(File.Exists(outputFile))
+                    File.Delete(outputFile);
+
+                File.Copy(file.FullName, outputFile);
             }
         }
 
-        protected virtual void CopyDependenciesTo(IPackageTree packageTree)
+        private void CopyDependenciesTo(IPackageTree packageTree)
         {
-            dependencyDispatcher.Dispatch(packageTree, Dependencies, SharedLibrary);
+            foreach (Dependency dependency in Dependencies)
+            {
+                var dependencyDirectory = packageTree.RetrievePackage(dependency.PackageName).OutputDirectory;
+
+                var sourceFiles = dependencyDirectory.GetFiles(string.Format("{0}.*", dependency.Library));
+
+                var targetDir = GetDirectoryFromParts(packageTree.WorkingDirectory, SharedLibrary);
+
+                foreach (FileInfo nextFile in sourceFiles)
+                {
+                    string destination = Path.Combine(targetDir.FullName, Path.GetFileName(nextFile.FullName));
+
+                    log.InfoFormat("Dependency: Copying {0} to {1} ...", nextFile.FullName, destination);
+
+                    nextFile.CopyTo(destination, true);
+                }
+            }
         }
 
-        protected virtual void CopyFileFromWorkingToResult(FileInfo file, string outputFile)
+        private DirectoryInfo GetDirectoryFromParts(DirectoryInfo sourceDirectory, string parts)
         {
-            if (File.Exists(outputFile))
-                File.Delete(outputFile);
+            if (string.IsNullOrEmpty(parts))
+                return sourceDirectory;
 
-            File.Copy(file.FullName, outputFile, true);
+            var outputPath = sourceDirectory.FullName;
+
+            if (parts.Trim() == ".")
+                return sourceDirectory;
+
+            foreach (var part in parts.Split('/'))
+            {
+                outputPath = Path.Combine(outputPath, part);
+            }
+
+            return new DirectoryInfo(outputPath);
         }
 
-        protected virtual string GetBuildFilePath(IPackageTree tree)
+        private string GetBuildFilePath(IPackageTree tree)
         {
-            var relativePath = BuildFile.Replace('/', '\\');
-
-            return Path.Combine(tree.WorkingDirectory.FullName, relativePath);
+            return Path.Combine(tree.WorkingDirectory.FullName, BuildFile).Replace('/', '\\');
         }
 
-        public BuildEngine(IBuildTool buildTool, string buildFile, FrameworkVersion version, IDependencyDispatcher dependencyDispatcher)
+
+
+        public BuildEngine(IBuildTool buildTool, string buildFile, FrameworkVersion version)
         {
             BuildTool = buildTool;
+
             BuildFile = buildFile;
+
             Version = version;
+
+            MetaData = new Dictionary<string, string>();
+
             Dependencies = new List<Dependency>();
-            this.dependencyDispatcher = dependencyDispatcher;
         }
+
+
+
     }
 }

@@ -16,25 +16,6 @@ namespace Horn.Core.Integration.Builder
         protected BuildEngine buildEngine;
         protected IPackageTree packageTree;
 
-        public static bool IsRunningFromCIBuild
-        {
-            get
-            {
-                return (DirectoryHelper.GetBaseDirectory().IndexOf("net-3.5") > -1);   
-            }
-        }
-
-        public static string ResolveRootPath(string executionBase)
-        {
-            if (!IsRunningFromCIBuild)
-                return new DirectoryInfo(executionBase.ResolvePath()).Parent.FullName;
-
-            if(executionBase.IndexOf("debug") > -1)
-                return new DirectoryInfo(executionBase).Parent.Parent.Parent.FullName;
-
-            return new DirectoryInfo(executionBase).Parent.Parent.FullName;
-        }
-
         protected string GetRootPath()
         {
             outputPath = CreateDirectory("Output");
@@ -48,6 +29,25 @@ namespace Horn.Core.Integration.Builder
             var executionBase = AppDomain.CurrentDomain.BaseDirectory;
 
             return ResolveRootPath(executionBase);
+        }
+
+        public static string ResolveRootPath(string executionBase)
+        {
+            if (!IsRunningFromCIBuild)
+                return new DirectoryInfo(executionBase.ResolvePath()).Parent.FullName;
+
+            if(executionBase.IndexOf("debug") > -1)
+                return new DirectoryInfo(executionBase).Parent.Parent.Parent.FullName;
+
+            return new DirectoryInfo(executionBase).Parent.Parent.FullName;
+        }
+
+        public static bool IsRunningFromCIBuild
+        {
+            get
+            {
+                return (DirectoryHelper.GetBaseDirectory().IndexOf("net-3.5") > -1);   
+            }
         }
 
         protected string CreateDirectory(string directoryName)

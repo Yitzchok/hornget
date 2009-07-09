@@ -16,6 +16,5 @@ namespace Horn.Core.PackageStructure
                 }
             }
         }
-
     }
 }

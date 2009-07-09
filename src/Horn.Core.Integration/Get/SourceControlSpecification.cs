@@ -1,3 +1,4 @@
+using Horn.Core.Integration.Builder;
 using Horn.Core.SCM;
 using Xunit;
 
@@ -5,12 +6,10 @@ namespace Horn.Core.Spec.Integration.Get
 {
     public class When_Horn_Is_In_The_BuildMetaData : SourceControlTestBase
     {
-        public const string HORN_URL = "http://scotaltdotnet.googlecode.com/svn/trunk";
+        public const string HORN_URL = "https://scotaltdotnet.googlecode.com/svn/trunk";
 
         protected override void Because()
         {
-            SourceControl.ClearDownLoadedPackages();
-
             SourceControl svn = new SVNSourceControl(HORN_URL);
 
             svn.Export(packageTree);

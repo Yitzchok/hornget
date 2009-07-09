@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Horn.Core.Spec.Integration.Utils
 {
-    public class When_Framework_Version_35_Is_Requested : Specification
+    public class When_Version_35_Is_Requested : Specification
     {
         private string msbuildPath;
 
@@ -17,7 +17,7 @@ namespace Horn.Core.Spec.Integration.Utils
         [Fact]
         public void Then_Framework_35_Path_Is_Returned()
         {
-            log.Info(msbuildPath);
+            Console.WriteLine(msbuildPath);
 
             Assert.True(File.Exists(msbuildPath));
         }

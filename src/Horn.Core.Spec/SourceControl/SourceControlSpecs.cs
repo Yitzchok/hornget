@@ -1,11 +1,10 @@
 using System.IO;
 using Horn.Core.PackageStructure;
-using Horn.Core.SCM;
 using Horn.Core.Spec.helpers;
 using Horn.Framework.helpers;
 using Xunit;
 using scm = Horn.Core.SCM;
-namespace Horn.Core.Spec.SCM
+namespace Horn.Core.Spec.SourceControl
 {
     public class When_the_package_source_revision_does_not_exist : Specification
     {
@@ -13,8 +12,6 @@ namespace Horn.Core.Spec.SCM
 
         protected override void Because()
         {
-            SourceControl.ClearDownLoadedPackages();
-
             var packageTree = TreeHelper.GetTempEmptyPackageTree();
 
             sourceControl = new SourceControlDouble("http://someurl.com/");
@@ -35,8 +32,6 @@ namespace Horn.Core.Spec.SCM
 
         protected override void Because()
         {
-            SourceControl.ClearDownLoadedPackages();
-
             var packageTree = TreeHelper.GetTempPackageTree().RetrievePackage(PackageTreeHelper.PACKAGE_WITH_REVISION);
 
             sourceControl = new SourceControlDouble("http://someurl.com/");
@@ -73,12 +68,13 @@ namespace Horn.Core.Spec.SCM
 
     public class When_the_source_code_has_downloaded : DirectorySpecificationBase
     {
-        private SourceControl sourceControl;
+        private scm.SourceControl sourceControl;
+
         private IPackageTree packageTree;
 
         protected override void Before_each_spec()
         {
-            sourceControl = new SourceControlDouble("http://somesvnuri.com/Svn");
+            sourceControl = new SourceControlDouble("http://somesvnuri.com/svn");
 
             packageTree = TreeHelper.GetTempPackageTree().RetrievePackage(PackageTreeHelper.PACKAGE_WITHOUT_REVISION);
         }
@@ -87,7 +83,6 @@ namespace Horn.Core.Spec.SCM
         {
             sourceControl.Export(packageTree);
         }
-
 
         [Fact]
         public void Then_the_svn_revision_is_recorded()

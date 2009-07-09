@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
 using Horn.Core.BuildEngines;
 using Horn.Core.PackageStructure;
@@ -9,6 +10,7 @@ namespace Horn.Core
 {
     public class NAntBuildTool : IBuildTool
     {
+
         public string CommandLineArguments(string pathToBuildFile, BuildEngine buildEngine, IPackageTree packageTree, FrameworkVersion version)
         {
             return string.Format(" {0} -t:net-{1} -buildfile:{2} {3}", GenerateTasks(buildEngine.Tasks), GetFrameworkVersionForBuildTool(version), pathToBuildFile, GenerateParameters(buildEngine.Parameters)).Trim();
@@ -24,13 +26,15 @@ namespace Horn.Core
                     return "3.5";
             }
 
-            throw new InvalidEnumArgumentException("Invalid Framework Version paased to NAntBuildTool.GetFrameworkVersion", (int)version, typeof(FrameworkVersion));
+            throw new InvalidEnumArgumentException("Invalid Framework version paased to NAntBuildTool.GetFrameworkVersion", (int)version, typeof(FrameworkVersion));
         }
 
         public string PathToBuildTool(IPackageTree packageTree, FrameworkVersion version)
         {
             return packageTree.Nant.FullName;
         }
+
+
 
         private string GenerateParameters(Dictionary<string, string> parameters)
         {
@@ -56,6 +60,9 @@ namespace Horn.Core
 
             return ret;
         }
+
+
+
     }
 }
  

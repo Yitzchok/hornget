@@ -1,11 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-
+using Horn.Core.Utils;
 namespace Horn.Core.PackageStructure
 {
     public class BuildFileResolver : IBuildFileResolver
     {
+
+        private readonly string[] allowedFileExtensions = new[]{"boo", "rb"};//JFHCI
+
         private string buildFile;
+
 
         public string BuildFile
         {
@@ -23,15 +28,32 @@ namespace Horn.Core.PackageStructure
             }
         }
 
+
+
         public BuildFileResolver Resolve(DirectoryInfo buildFolder, string fileName)
         {
-            buildFile = Path.Combine(buildFolder.FullName,
-                                      string.Format("{0}.{1}", fileName, "boo"));
+            var buildFiles = new List<string>();
 
-            if (!File.Exists(buildFile))
-                  throw new MissingBuildFileException(buildFolder);
+            allowedFileExtensions.ForEach(extension =>
+                                              {
+                                                  var file = Path.Combine(buildFolder.FullName,
+                                                                          string.Format("{0}.{1}", fileName, extension));
+
+                                                  if(File.Exists(file))
+                                                      buildFiles.Add(file);
+                                              });
+            if(buildFiles.Count == 0)
+                throw new MissingBuildFileException(buildFolder);
+
+            if(buildFiles.Count != 1)
+                throw new InvalidDataException(string.Format("More than one build file exists for {0} in folder {1}", buildFolder.Name, buildFolder.FullName));
+
+            buildFile = buildFiles[0];
 
             return this;
         }
+
+
+
     }
 }

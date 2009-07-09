@@ -6,12 +6,10 @@ install nhibernate:
 	switches:
 		parameters "with.examples=false"
 		
-	shared_library "lib/net/3.5"
-	build_root_dir "build"		
+	shared_library "lib/net/2.0"
+	output "build/NHibernate-2.1.0.Alpha2-debug/bin/net-3.5"		
 	
 dependencies:
-	depend "castle.tools" >> "Castle.Core"
-	depend "castle.tools" >> "Castle.DynamicProxy2"
-
-package.homepage = "http://www.hibernate.org/343.html"
-package.forum    = "http://groups.google.co.uk/group/nhusers?hl=en"
+	depend @log4net >> "log4net"
+	depend @castle  >>  "Castle.Core"
+	depend @castle  >>  "Castle.DynamicProxy2"

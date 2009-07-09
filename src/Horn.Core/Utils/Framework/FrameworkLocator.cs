@@ -2,9 +2,7 @@ namespace Horn.Core.Utils.Framework
 {
     public sealed class FrameworkLocator
     {
-
         private static readonly FrameworkLocator instance = new FrameworkLocator();
-
 
         public static FrameworkLocator Instance
         {
@@ -14,8 +12,6 @@ namespace Horn.Core.Utils.Framework
             }
         }
 
-
-
         public Framework this[FrameworkVersion version]
         {
             get
@@ -23,8 +19,5 @@ namespace Horn.Core.Utils.Framework
                 return new Framework(version);
             }
         }
-
-
-
     }
 }

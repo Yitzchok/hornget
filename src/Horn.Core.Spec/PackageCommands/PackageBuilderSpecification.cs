@@ -1,28 +1,20 @@
-using System.Collections.Generic;
-using System.IO;
-using Horn.Core.BuildEngines;
-using Horn.Core.Dependencies;
-using Horn.Core.Dsl;
-using Horn.Core.GetOperations;
-using Horn.Core.PackageCommands;
-using Horn.Core.PackageStructure;
-using Horn.Core.SCM;
-using Horn.Core.Spec.BuildEngineSpecs;
-using Horn.Core.Spec.Doubles;
-using Horn.Core.Spec.helpers;
-using Horn.Core.Spec.Unit.GetSpecs;
-using Horn.Core.Utils;
-using Horn.Core.Utils.CmdLine;
-using Horn.Core.Utils.Framework;
-using Horn.Framework.helpers;
-using Horn.Spec.Framework.doubles;
-using Rhino.Mocks;
-using Xunit;
-
 namespace Horn.Core.Spec.Unit.PackageCommands
 {
+    using System.Collections.Generic;
+    using Core.Dsl;
+    using GetOperations;
+    using Core.PackageCommands;
+    using PackageStructure;
+    using BuildEngine;
+    using Utils;
+    using Utils.Framework;
+    using Rhino.Mocks;
+    using Xunit;
+    using System.IO;
+
     public class When_The_Builder_Receives_An_Install_Switch : Specification
     {
+        protected IDictionary<string, IList<string>> switches = new Dictionary<string, IList<string>>();
         protected IGet get;
         protected IBuildConfigReader buildConfigReader;
         protected IPackageTree wholeTree;
@@ -40,26 +32,32 @@ namespace Horn.Core.Spec.Unit.PackageCommands
 
             wholeTree.Stub(x => x.Name).Return("horn");
 
-            wholeTree.Stub(x => x.BuildNodes()).Return(new List<IPackageTree> {wholeTree});
-
             wholeTree.Stub(x => x.RetrievePackage("horn")).Return(componentTree);
 
             wholeTree.Stub(x => x.GetBuildMetaData("horn")).Return(buildMetaData).IgnoreArguments().Repeat.Any();
 
-            wholeTree.Stub(x => x.Result).Return(new DirectoryInfo(@"C:\somewhere\build_root_dir"));
+            wholeTree.Stub(x => x.OutputDirectory).Return(new DirectoryInfo(@"C:\somewhere\output"));
+        }
+
+        [Fact]
+        public void Then_The_Builder_Coordinates_The_Build()
+        {
+            switches.Add("install", new List<string> { "horn" });
+
+            IPackageCommand command = new PackageBuilder(get, new StubProcessFactory());
+
+            command.Execute(wholeTree, switches);
         }
 
         private IPackageTree GetComponentTree(out IBuildMetaData buildMetaData)
         {
             var baseConfigReader = CreateStub<BooConfigReader>();
 
-            baseConfigReader.BuildMetaData.InstallName = "horn";
+            baseConfigReader.InstallName = "horn";
 
             var componentTree = CreateStub<IPackageTree>();
 
-            var tempDirectory = new DirectoryInfo(DirectoryHelper.GetTempDirectoryName());
-
-            componentTree.Stub(x => x.WorkingDirectory).Return(tempDirectory).Repeat.Any();
+            componentTree.Stub(x => x.WorkingDirectory).Return(new DirectoryInfo(@"c:\temp\safe")).Repeat.Any();
 
             componentTree.Stub(x => x.GetRevisionData()).Return(new RevisionData("3"));
 
@@ -69,7 +67,7 @@ namespace Horn.Core.Spec.Unit.PackageCommands
 
             componentTree.Stub(x => x.Name).Return("log4net");
 
-            componentTree.Stub(x => x.Result).Return(new DirectoryInfo(@"C:\somewhere\build_root_dir"));
+            componentTree.Stub(x => x.OutputDirectory).Return(new DirectoryInfo(@"C:\somewhere\output"));
 
             componentTree.Stub(x => x.GetBuildMetaData("log4net"))
                          .Return(buildMetaData).IgnoreArguments().Repeat.Any();
@@ -81,77 +79,17 @@ namespace Horn.Core.Spec.Unit.PackageCommands
         {
             var buildTool = new BuildToolStub();
 
-            var buildEngine = new BuildEngineStub(buildTool, "Test", FrameworkVersion.FrameworkVersion35, CreateStub<IDependencyDispatcher>());
+            var buildEngine = new BuildEngines.BuildEngine(buildTool, "Test", FrameworkVersion.FrameworkVersion35);
 
-            baseConfigReader.BuildMetaData.BuildEngine = buildEngine;
+            baseConfigReader.BuildEngine = buildEngine;
 
             var buildMetaData = CreateStub<IBuildMetaData>();
 
-            buildMetaData.SourceControl = new SourceControlDoubleWithFakeFileSystem("Svn://some.url");
+            buildMetaData.SourceControl = new SourceControlDoubleWithFakeFileSystem("svn://some.url");
 
             buildMetaData.BuildEngine = buildEngine;
 
             return buildMetaData;
-        }
-
-        [Fact]
-        public void Then_The_Builder_Coordinates_The_Build()
-        {
-            IPackageCommand command = new PackageBuilder(get, new StubProcessFactory(), new CommandArgsDouble("horn"));
-
-            command.Execute(wholeTree);
-        }
-    }
-
-    public class When_the_package_builder_receives_an_install_command_for_an_unknown_package : GetSpecificationBase
-    {
-        private PackageBuilder packageBuilder;
-
-        protected override void Because()
-        {
-            packageBuilder = new PackageBuilder(get, MockRepository.GenerateStub<IProcessFactory>(), new CommandArgsDouble("unknownpackage"));
-
-            packageTree = TreeHelper.GetTempPackageTree();
-        }
-
-        [Fact]
-        public void Then_an_unknown_package_exception_is_thrown()
-        {
-            Assert.Throws<UnkownInstallPackageException>(() => packageBuilder.Execute(packageTree));
-        }
-    }
-
-    public class When_the_package_builder_receives_a_rebuild_only_switch : GetSpecificationBase
-    {
-        private PackageBuilder packageBuilder;
-        private MockRepository mockRepository;
-
-        protected override void Before_each_spec()
-        {
-            mockRepository = new MockRepository();
-
-            packageTree = new PackageTreeStub(TreeHelper.GetPackageTreeParts(new List<Dependency>()), "log4net", false);
-
-            get = MockRepository.GenerateStub<IGet>();
-
-            get.Stub(x => x.From(new SVNSourceControl("url"))).Return(get);
-
-            get.Stub(x => x.ExportTo(packageTree)).Return(packageTree);
-
-            packageBuilder = new PackageBuilder(get, MockRepository.GenerateStub<IProcessFactory>(), new CommandArgsDouble("log4net", true));
-        }
-
-        protected override void Because()
-        {
-            mockRepository.Playback();
-            
-            packageBuilder.Execute(packageTree);
-        }
-
-        [Fact]
-        public void Then_source_control_get_is_not_called()
-        {
-            get.AssertWasNotCalled(x => x.From(Arg<SVNSourceControl>.Is.TypeOf));
         }
     }
 }

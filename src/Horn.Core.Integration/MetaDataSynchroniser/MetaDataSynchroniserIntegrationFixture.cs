@@ -9,19 +9,19 @@ namespace Horn.Core.Integration.MetaDataSynchroniserFixtures
     public class When_the_package_tree_does_not_exist_on_the_users_machine : TestBase
     {
         private IMetaDataSynchroniser metaDataSynchroniser;
+
         private readonly string rootPath = DirectoryHelper.GetTempDirectoryName();
+
         private IPackageTree packageTree;
 
         protected override void Before_each_spec()
         {
-            SourceControl.ClearDownLoadedPackages();
-
             metaDataSynchroniser = new MetaDataSynchroniser(new SVNSourceControl(MetaDataSynchroniser.PACKAGE_TREE_URI));
         }
 
         protected override void After_each_spec()
         {
-            if (Directory.Exists(rootPath))
+            if(Directory.Exists(rootPath))
                 Directory.Delete(rootPath, true);
         }
 

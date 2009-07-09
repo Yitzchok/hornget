@@ -4,13 +4,14 @@ namespace Horn.Core.Spec.Unit.CmdLine
 {
     public class When_horn_receives_a_refresh_command : CmdLineSpecificationBase
     {
-        private readonly string[] args = new[]{ "-refresh" };
+        private const string arg = "-refresh";
 
         protected override void Because()
         {
-            parser = new SwitchParser(Output, args);
+            parser = new SwitchParser(Output, packageTree);
 
-            IsValid = parser.IsValid();            
+            ParsedArgs = parser.Parse(new[] { arg });
+            IsValid = parser.IsValid(ParsedArgs);            
         }
     }
 }

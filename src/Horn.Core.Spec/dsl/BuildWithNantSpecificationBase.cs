@@ -11,8 +11,10 @@ namespace Horn.Core.Spec.Unit.dsl
     public class BuildWithNantSpecificationBase : Specification
     {
         protected BooConfigReader configReader;
+
         protected DslFactory factory;
         protected IDependencyResolver dependencyResolver;
+
         protected IPackageTree packageTree;
 
         protected override void Before_each_spec()

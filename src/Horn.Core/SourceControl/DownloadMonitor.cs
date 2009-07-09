@@ -6,22 +6,14 @@ namespace Horn.Core.SCM
 {
     public class DownloadMonitor : IDownloadMonitor
     {
+
         private static readonly ILog log = LogManager.GetLogger(typeof (DownloadMonitor));
         private readonly string downloadDirectory;
-        private FileSystemWatcher watcher;
-        private bool _stopMonitoring;
-        
-        public bool StopMonitoring
-        {
-            get { return _stopMonitoring; }
-            set 
-            { 
-                _stopMonitoring = value; 
 
-                if(_stopMonitoring)
-                    watcher.Dispose();
-            }
-        }
+
+        public bool StopMonitoring { get; set; }
+
+
 
         public void StartMonitoring()
         {
@@ -32,7 +24,7 @@ namespace Horn.Core.SCM
                 Thread.Sleep(10);
             }
 
-            watcher = new FileSystemWatcher(downloadDirectory)
+            var watcher = new FileSystemWatcher(downloadDirectory)
             {
                 IncludeSubdirectories = true,
                 EnableRaisingEvents = true

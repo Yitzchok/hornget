@@ -1,7 +1,9 @@
-using System;
+    using System;
+    using System.Diagnostics;
 using Horn.Core.BuildEngines;
 using Horn.Core.PackageStructure;
 using Horn.Core.Utils.Framework;
+using log4net;
 
 namespace Horn.Core
 {
@@ -15,6 +17,11 @@ namespace Horn.Core
                     pathToBuildFile, packageTree.OutputDirectory, GetFrameworkVersionForBuildTool(version));
         }
 
+        public string PathToBuildTool(IPackageTree packageTree, FrameworkVersion version)
+        {
+            return FrameworkLocator.Instance[version].MSBuild.AssemblyPath;
+        }
+
         public string GetFrameworkVersionForBuildTool(FrameworkVersion version)
         {
             switch(version)
@@ -24,13 +31,8 @@ namespace Horn.Core
                 case FrameworkVersion.FrameworkVersion35:
                     return "v3.5";
                 default:
-                    throw new ArgumentException(string.Format("Unknown framework Version: {0}", version));
+                    throw new ArgumentException(string.Format("Unknown framework version: {0}", version));
             }
-        }
-
-        public string PathToBuildTool(IPackageTree packageTree, FrameworkVersion version)
-        {
-            return FrameworkLocator.Instance[version].MSBuild.AssemblyPath;
         }
     }
 }
