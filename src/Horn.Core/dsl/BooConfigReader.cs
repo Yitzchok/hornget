@@ -1,31 +1,14 @@
 using System;
 using Boo.Lang;
 using Boo.Lang.Compiler.Ast;
-using Horn.Core.BuildEngines;
-using Horn.Core.Dependencies;
-using Horn.Core.SCM;
-using Horn.Core.Utils.Framework;
-
+using Horn.Domain;
+using Horn.Domain.BuildEngines;
+using Horn.Domain.Framework;
+using Horn.Domain.SCM;
 namespace Horn.Core.Dsl
 {
     public abstract class BooConfigReader
     {
-        private readonly IBuildMetaData buildMetaData;
-
-        public IBuildMetaData BuildMetaData
-        {
-            get { return buildMetaData; }        
-        }
-
-        public virtual PackageMetaData PackageMetaData
-        {
-            get
-            {
-                return Global.package;
-            }
-        }
-
-        public abstract void Prepare();
 
         [Meta]
         public static Expression build_with(ReferenceExpression builder, MethodInvocationExpression build, ReferenceExpression frameWorkVersion)
@@ -37,20 +20,6 @@ namespace Horn.Core.Dsl
                     build.Arguments[0],
                     new StringLiteralExpression(frameWorkVersion.Name)
                 );
-        }
-
-        [Meta]
-        public static Expression data(params StringLiteralExpression[] expressions)
-        {
-            var arrayExpression = new ArrayLiteralExpression();
-
-            for (var i = 0; i < expressions.Length; i++)
-                arrayExpression.Items.Add(expressions[i]);
-
-            return new MethodInvocationExpression(
-                new ReferenceExpression("SetData"),
-                arrayExpression
-            );
         }
 
         [Meta]
@@ -66,14 +35,22 @@ namespace Horn.Core.Dsl
         }
 
         [Meta]
-        public static Expression install(ReferenceExpression expression, 
-                                                        BlockExpression action)
+        public static Expression install(ReferenceExpression expression, Expression action)
         {
             var installName = new StringLiteralExpression(expression.Name);
 
             return new MethodInvocationExpression(
                     new ReferenceExpression("GetInstallerMeta"),
                     installName,
+                    action
+                );
+        }
+
+        [Meta]
+        public static Expression metadata(Expression action)
+        {
+            return new MethodInvocationExpression(
+                    new ReferenceExpression("AddMetaData"),
                     action
                 );
         }
@@ -93,80 +70,17 @@ namespace Horn.Core.Dsl
         }
 
         [Meta]
-        public static Expression export(BlockExpression exportUrls)
+        public static Expression data(params StringLiteralExpression[] expressions)
         {
-            var exportList = new ArrayLiteralExpression();
+            var arrayExpression = new ArrayLiteralExpression();
 
-            foreach (var statement in exportUrls.Body.Statements)
-            {
-                var expression = (MethodInvocationExpression)((ExpressionStatement)statement).Expression;
+            for (var i = 0; i < expressions.Length; i++)
+                arrayExpression.Items.Add(expressions[i]);
 
-                var sourceType = expression.Target.ToString();
-                var remoteUrl = ((StringLiteralExpression)expression.Arguments[0]).Value;
-
-                MethodInvocationExpression export;
-
-                if(expression.Arguments.Count == 1)
-                {                     
-                    export = new MethodInvocationExpression(new ReferenceExpression("ExportData"),
-                                                                new StringLiteralExpression(remoteUrl),
-                                                                new StringLiteralExpression(sourceType));
-
-                    exportList.Items.Add(export);
-
-                    continue;
-                }
-
-                var to = ((StringLiteralExpression)((MethodInvocationExpression)expression.Arguments[1]).Arguments[0]).Value;
-
-                export = new MethodInvocationExpression(new ReferenceExpression("ExportData"),
-                                                                new StringLiteralExpression(remoteUrl),
-                                                                new StringLiteralExpression(sourceType),
-                                                                new StringLiteralExpression(to));
-
-                exportList.Items.Add(export);
-            }
-
-            return new MethodInvocationExpression(new ReferenceExpression("ParseExportList"), exportList);
-        }
-
-        [Meta]
-        public static Expression include(BlockExpression includes)
-        {
-            var includeList = new ArrayLiteralExpression();
-
-            foreach(var statement in includes.Body.Statements)
-            {
-                var expression = (MethodInvocationExpression)((ExpressionStatement)statement).Expression;
-
-                var repositoryName = ((ReferenceExpression)expression.Arguments[0]).Name;
-                var includePath = ((StringLiteralExpression)((MethodInvocationExpression)expression.Arguments[1]).Arguments[0]).Value;
-                var exportPath = ((StringLiteralExpression)((MethodInvocationExpression)expression.Arguments[2]).Arguments[0]).Value; ;
-
-                var repositoryInclude = new MethodInvocationExpression(new ReferenceExpression("RepositoryElement"),
-                                                                       new StringLiteralExpression(repositoryName),
-                                                                       new StringLiteralExpression(includePath),
-                                                                       new StringLiteralExpression(exportPath));
-
-                includeList.Items.Add(repositoryInclude);
-            }
-
-            return new MethodInvocationExpression(new ReferenceExpression("ParseIncludes"), includeList);
-        }
-
-        [Meta]
-        public static Expression prebuild(BlockExpression commands)
-        {
-            var cmdList = new ArrayLiteralExpression();
-            
-            foreach (Statement statement in commands.Body.Statements)
-            {
-                var expression = (MethodInvocationExpression)((ExpressionStatement) statement).Expression;
-
-                cmdList.Items.Add(new StringLiteralExpression(expression.Arguments[0].ToString().Trim(new char[]{'\''})));
-            }
-
-            return new MethodInvocationExpression(new ReferenceExpression("ParseCommands"), cmdList);
+            return new MethodInvocationExpression(
+                new ReferenceExpression("SetData"),
+                arrayExpression
+            );
         }
 
         [Meta]
@@ -201,14 +115,21 @@ namespace Horn.Core.Dsl
                 );
         }
 
+
+
         public void AddDependencies(string[] dependencies)
         {
             Array.ForEach(dependencies, item =>
                                      {
-                                         var dependency = Dependency.Parse(item);
+                                         var dependency = new Dependency(item.Split('|')[0], item.Split('|')[1]);
 
-                                         buildMetaData.BuildEngine.Dependencies.Add(dependency);
+                                         BuildEngine.Dependencies.Add(dependency); 
                                      });
+        }
+
+        public void AddMetaData(Action dataDelegate)
+        {
+            dataDelegate();
         }
 
         public void AddSwitches(Action parametersDelegate)
@@ -223,94 +144,87 @@ namespace Horn.Core.Dsl
 
         public void description(string text)
         {
-            buildMetaData.Description = text;
+            Description = text;
         }
 
         public void GetInstallerMeta(string installName, Action installDelegate)
         {
-            buildMetaData.InstallName = installName;
+            InstallName = installName;
 
             installDelegate();
         }
 
-        public void build_root_dir(string path)
+        public void output(string path)
         {
-            buildMetaData.BuildEngine.BuildRootDirectory = path;   
+            BuildEngine.OutputDirectory = path;   
         }
 
-        public void ParseCommands(string[] cmdList)
+
+
+        protected void SetParameters(string[] parameters)
         {
-            buildMetaData.PrebuildCommandList.AddRange(cmdList);
+            BuildEngine.AssignParameters(parameters);
         }
 
-        public void ParseExportList(ExportData[] exports)
+        protected void SetData(string[] parameters)
         {
-            foreach (var exportData in exports)
-                buildMetaData.ExportList.Add(exportData.SourceControl);                
+            BuildEngine.AssignMataData(parameters);
         }
 
-        public virtual void ParseIncludes(RepositoryElement[] elements)
+        protected void SetBuildTargets(string[] taskActions)
         {
-            buildMetaData.RepositoryElementList.AddRange(elements);
+            BuildEngine.AssignTasks(taskActions);
         }
 
-        protected void msbuild(string buildFile, string frameWorkVersion)
+        protected void svn(string url)
         {
-            var version = (FrameworkVersion)Enum.Parse(typeof(FrameworkVersion), frameWorkVersion);
-
-            SetBuildEngine(new MSBuildBuildTool(), buildFile, version);
+            SourceControl = new SVNSourceControl(url);
         }
 
         protected void nant(string buildFile, string frameWorkVersion)
         {
             var version = (FrameworkVersion)Enum.Parse(typeof(FrameworkVersion), frameWorkVersion);
 
-            SetBuildEngine(new NAntBuildTool(), buildFile, version);
+            BuildEngine = new BuildEngine(new NAntBuildTool(), buildFile, version);
+        }
+
+        protected void msbuild(string buildFile, string frameWorkVersion)
+        {
+            var version = (FrameworkVersion)Enum.Parse(typeof(FrameworkVersion), frameWorkVersion);
+
+            BuildEngine = new BuildEngine(new MSBuildBuildTool(), buildFile, version);
         }
 
         protected void rake(string buildFile, Action action, string frameWorkVersion)
         {
             var version = (FrameworkVersion)Enum.Parse(typeof(FrameworkVersion), frameWorkVersion);
 
-            SetBuildEngine(new RakeBuildTool(), buildFile, version);
+            BuildEngine = new BuildEngine(new RakeBuildTool(), buildFile, version);
 
             action();
         }
 
-        protected void SetBuildTargets(string[] taskActions)
-        {
-            buildMetaData.BuildEngine.AssignTasks(taskActions);
-        }
+        public virtual BuildEngine BuildEngine { get; set; }
 
-        protected void SetParameters(string[] parameters)
-        {
-            buildMetaData.BuildEngine.AssignParameters(parameters);
-        }
+        public virtual string Description { get; set; }
 
-        protected void svn(string url)
-        {
-            buildMetaData.SourceControl = SourceControl.Create<SVNSourceControl>(url);
-        }
+        public virtual string InstallName { get; set; }
 
-        protected BooConfigReader()
-        {
-            buildMetaData = new BuildMetaData();
+        public virtual SourceControl SourceControl { get; set; }
 
-            Global.package.PackageInfo.Clear();
-        }
 
-        private void SetBuildEngine(IBuildTool tool, string buildFile, FrameworkVersion version)
-        {
-            buildMetaData.BuildEngine = new BuildEngine(tool, buildFile, version, IoC.Resolve<IDependencyDispatcher>());
-        }
 
+        public abstract void Prepare();
+
+        public delegate void Action();
         public virtual void generate_strong_key()
         {
-            buildMetaData.BuildEngine.GenerateStrongKey = true;
+            BuildEngine.GenerateStrongKey = true;
         }
         public void shared_library(string sharedLib)
         {
-            buildMetaData.BuildEngine.SharedLibrary = sharedLib;
+            BuildEngine.SharedLibrary = sharedLib;
         }
+
     }
 }

@@ -1,11 +1,11 @@
-using Horn.Core.Dsl;
+using Horn.Core;
 using Horn.Core.GetOperations;
-using Horn.Core.PackageStructure;
+using Horn.Core.Utils;
+using Horn.Domain.Dsl;
+using Horn.Domain.PackageStructure;
 
-namespace Horn.Core.Spec.Unit.GetSpecs
+namespace Horn.Domain.Spec.Unit.Get
 {
-    using Utils;
-
     public abstract class GetSpecificationBase : DirectorySpecificationBase
     {
         protected IGet get;

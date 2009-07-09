@@ -1,12 +1,15 @@
 using System;
 using System.IO;
+using Horn.Core;
 using Horn.Core.Dsl;
-using Horn.Core.PackageStructure;
-using Horn.Core.SCM;
+using Horn.Domain.Dsl;
+using Horn.Domain.Exceptions;
+using Horn.Domain.PackageStructure;
+using Horn.Domain.SCM;
 using Horn.Framework.helpers;
 using Xunit;
 
-namespace Horn.Core.Spec.Unit.dsl
+namespace Horn.Domain.Spec.Unit.dsl
 {
     using Rhino.Mocks;
 
@@ -41,7 +44,6 @@ namespace Horn.Core.Spec.Unit.dsl
 
             AssertBuildMetaDataValues(metaData);
         }
-
     }
 
     public class When_SetDslFactory_Is_Not_Set : BaseDSLSpecification
@@ -56,16 +58,13 @@ namespace Horn.Core.Spec.Unit.dsl
         {
             Assert.Throws<ArgumentNullException>(() => reader.GetBuildMetaData("horn"));
         }
-
     }
 
     public class When_The_Build_File_Does_Not_Exist : BaseDSLSpecification
     {
-        private string directoryWithNoBooFile;
-
         protected override void Because()
         {
-            directoryWithNoBooFile = Path.Combine(DirectoryHelper.GetBaseDirectory(), "nonexistent");
+            var directoryWithNoBooFile = Path.Combine(DirectoryHelper.GetBaseDirectory(), "nonexistent");
 
             if (!Directory.Exists(directoryWithNoBooFile))
                 Directory.CreateDirectory(directoryWithNoBooFile);
@@ -82,18 +81,5 @@ namespace Horn.Core.Spec.Unit.dsl
         {
             Assert.Throws<MissingBuildFileException>(() => reader.SetDslFactory(packageTree).GetBuildMetaData("horn"));
         }
-
-        protected override void After_each_spec()
-        {
-            try
-            {
-                if(Directory.Exists(directoryWithNoBooFile))
-                    Directory.Delete(directoryWithNoBooFile, true);
-            }
-            catch
-            {               
-            }
-        }
-        
     }
 }

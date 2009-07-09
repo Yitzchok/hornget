@@ -1,21 +1,21 @@
 using System.IO;
-using Horn.Core.PackageStructure;
-using Horn.Core.SCM;
 using Horn.Core.Tree.MetaDataSynchroniser;
+using Horn.Domain.PackageStructure;
+using Horn.Domain.SCM;
 using Horn.Framework.helpers;
 using Xunit;
-namespace Horn.Core.Integration.MetaDataSynchroniserFixtures
+namespace Horn.Domain.Integration.MetaDataSynchroniserFixtures
 {
     public class When_the_package_tree_does_not_exist_on_the_users_machine : TestBase
     {
         private IMetaDataSynchroniser metaDataSynchroniser;
+
         private readonly string rootPath = DirectoryHelper.GetTempDirectoryName();
+
         private IPackageTree packageTree;
 
         protected override void Before_each_spec()
         {
-            SourceControl.ClearDownLoadedPackages();
-
             metaDataSynchroniser = new MetaDataSynchroniser(new SVNSourceControl(MetaDataSynchroniser.PACKAGE_TREE_URI));
         }
 

@@ -1,11 +1,11 @@
 ﻿install horn:
 	description "A .NET build and dependency manager"
-	get_from svn("http://scotaltdotnet.googlecode.com/svn/trunk/")
+	export_from svn("http://scotaltdotnet.googlecode.com/svn/trunk/")  
 	build_with msbuild, buildfile("src/horn.sln"), FrameworkVersion35
-	build_root_dir "Output"
-	shared_library "."
-	
-                
+		
+output "Output"
+shared_library "."	
+
 dependencies:
 	depend @log4net >> "lib"
 	depend @castle  >> "castle.core"
@@ -16,3 +16,4 @@ dependencies:
 package.homepage = "http://code.google.com/p/scotaltdotnet/"
 package.forum    = "http://groups.google.co.uk/group/horn-development?hl=en"
 package.contrib  = false
+

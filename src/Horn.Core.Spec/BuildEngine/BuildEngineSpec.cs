@@ -1,13 +1,13 @@
 using System.IO;
-using Horn.Core.BuildEngines;
-using Horn.Core.Dependencies;
-using Horn.Core.PackageStructure;
-using Horn.Core.Utils.Framework;
+using Horn.Domain.Framework;
+using Horn.Domain.PackageStructure;
 using Rhino.Mocks;
 using Xunit;
 
-namespace Horn.Core.Spec.BuildEngineSpecs
+namespace Horn.Domain.Spec.BuildEngine
 {
+    using BuildEngines;
+
     public class When_The_Build_Engine_Is_Ran : Specification
     {
         private IPackageTree packageTree;
@@ -22,7 +22,7 @@ namespace Horn.Core.Spec.BuildEngineSpecs
             
             buildToolStub = CreateStub<IBuildTool>();
 
-            buildEngine = new BuildEngine(buildToolStub, "deeper/than/this/somebuild.file", FrameworkVersion.FrameworkVersion35, CreateStub<IDependencyDispatcher>());
+            buildEngine = new BuildEngine(buildToolStub, "deeper/than/this/somebuild.file", FrameworkVersion.FrameworkVersion35);
             
             buildEngine.Build(new StubProcessFactory(), packageTree);
         }
@@ -34,34 +34,15 @@ namespace Horn.Core.Spec.BuildEngineSpecs
         }
     }
 
-    public class When_The_Build_Engine_Fails : Specification
-    {
-        private IPackageTree packageTree;
-        private IBuildTool buildToolStub;
-        private BuildEngine buildEngine;
-
-        protected override void Because()
-        {
-            packageTree = CreateStub<IPackageTree>();
-
-            packageTree.Stub(x => x.WorkingDirectory).Return(new DirectoryInfo(@"C:\"));
-
-            buildToolStub = CreateStub<IBuildTool>();
-
-            buildEngine = new BuildEngine(buildToolStub, "deeper/than/this/somebuild.file", FrameworkVersion.FrameworkVersion35, CreateStub<IDependencyDispatcher>());
-
-            buildEngine.Build(new StubProcessFactory(), packageTree);
-        }
-    }
-
     public class When_The_Build_Engine_Receives_An_Array_Of_Parameters : Specification
     {
         private readonly string[] switches = new[] { "sign=false", "testrunner=NUnit", "common.testrunner.enabled=true", "common.testrunner.failonerror=true", "build.msbuild=true" };
+
         private BuildEngine buildEngine;
 
         protected override void Because()
         {            
-            buildEngine = new BuildEngine(null, "", FrameworkVersion.FrameworkVersion35, CreateStub<IDependencyDispatcher>());
+            buildEngine = new BuildEngine(null, "", FrameworkVersion.FrameworkVersion35);
 
             buildEngine.AssignParameters(switches);
         }

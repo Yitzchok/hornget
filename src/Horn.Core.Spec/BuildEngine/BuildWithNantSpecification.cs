@@ -1,9 +1,9 @@
 using Horn.Core.Dsl;
-using Horn.Core.Spec.Unit.dsl;
-using Horn.Core.Utils.Framework;
+using Horn.Domain.Framework;
+using Horn.Domain.Spec.Unit.dsl;
 using Xunit;
 
-namespace Horn.Core.Spec.BuildEngineSpecs
+namespace Horn.Domain.Spec.BuildEngine
 {
     public class When_The_Build_MetaData_Specifies_Nant : BuildWithNantSpecificationBase
     {
@@ -19,9 +19,9 @@ namespace Horn.Core.Spec.BuildEngineSpecs
         [Fact]
         public void Then_The_Nant_Build_Tool_Generates_The_Correct_Command_Line_Parameters()
         {
-            IBuildTool nant = configReader.BuildMetaData.BuildEngine.BuildTool;
+            IBuildTool nant = configReader.BuildEngine.BuildTool;
 
-            var cmdLineArgs = nant.CommandLineArguments("Horn.build", configReader.BuildMetaData.BuildEngine, packageTree,
+            var cmdLineArgs = nant.CommandLineArguments("Horn.build", configReader.BuildEngine, packageTree,
                                                         FrameworkVersion.FrameworkVersion35).Trim();
 
             Assert.Equal(EXPECTED, cmdLineArgs);

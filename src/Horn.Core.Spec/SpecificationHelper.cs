@@ -1,15 +1,18 @@
-using Horn.Core.Dsl;
-using Horn.Core.Spec.Unit.dsl;
 
-namespace Horn.Core.Spec
+using Horn.Domain.Dsl;
+using Horn.Domain.Spec.Unit.dsl;
+
+namespace Horn.Domain.Spec
 {
     public static class SpecificationHelper
     {
-        public static IBuildMetaData GetBuildMetaData()
+        public static BuildMetaData GetBuildMetaData()
         {
-            var buildMetaData = BaseDSLSpecification.GetBuildMetaDataInstance();
+            var configReader = BaseDSLSpecification.GetConfigReaderInstance();
 
-            return buildMetaData;
+            //TODO: Fix
+            return null;
+            //return new BuildMetaData(configReader.);            
         }
     }
 }

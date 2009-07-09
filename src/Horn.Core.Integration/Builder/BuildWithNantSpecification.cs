@@ -1,14 +1,12 @@
 using System;
 using System.IO;
-using Horn.Core.BuildEngines;
-using Horn.Core.Utils.Framework;
+using Horn.Domain.BuildEngines;
+using Horn.Domain.Framework;
 using Rhino.Mocks;
 using Xunit;
 
-namespace Horn.Core.Integration.Builder
+namespace Horn.Domain.Integration.Builder
 {
-    using Dependencies;
-
     public class When_The_Build_MetaData_Specifies_Nant : BuildSpecificationBase
     {
         protected string rootPath;
@@ -27,7 +25,7 @@ namespace Horn.Core.Integration.Builder
 
             packageTree.Stub(x => x.WorkingDirectory).Return(new DirectoryInfo(workingPath)).Repeat.Once();
 
-            buildEngine = new BuildEngine(new NAntBuildTool(), path, FrameworkVersion.FrameworkVersion35, CreateStub<IDependencyDispatcher>());
+            buildEngine = new BuildEngine(new NAntBuildTool(), path, FrameworkVersion.FrameworkVersion35);
 
             var nant = new FileInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Nant.exe"));
 

@@ -1,20 +1,20 @@
 using System.IO;
-using Horn.Core.PackageStructure;
-using Horn.Core.SCM;
-using Horn.Core.Spec.helpers;
+using Horn.Domain.PackageStructure;
+using Horn.Domain.Spec.helpers;
 using Xunit;
 
-namespace Horn.Core.Spec.MetaSynchroniserfixture
+namespace Horn.Domain.Spec.MetaSynchroniserfixture
 {
+
     public class When_the_package_tree_structure_does_not_exist : MetaSynchroniserFixtureBase
     {
         private IPackageTree packageTree;
 
         protected override void Because()
         {
-            SourceControl.ClearDownLoadedPackages();
+            packageTree = TreeHelper.GetTempEmptyPackageTree();
 
-            packageTree = packageTreeBase.GetRootPackageTree(TreeHelper.GetTempEmptyPackageTree().Root.CurrentDirectory);
+            metaDataSynchroniser.SynchronisePackageTree(packageTree);
         }
 
         [Fact]

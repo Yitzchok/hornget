@@ -1,5 +1,5 @@
-using Horn.Core.PackageStructure;
-using Horn.Core.SCM;
+using Horn.Domain.PackageStructure;
+using Horn.Domain.SCM;
 
 namespace Horn.Core.GetOperations
 {
@@ -10,7 +10,5 @@ namespace Horn.Core.GetOperations
         IGet From(SourceControl sourceControlToGetFrom);
         
         IPackageTree ExportTo(IPackageTree packageTree);
-
-        IPackageTree ExportTo(IPackageTree packageTree, string path, bool initialise);
     }
 }
