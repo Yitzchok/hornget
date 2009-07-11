@@ -6,6 +6,8 @@ namespace Horn.Core.PackageStructure
 
         string Revision { get; }
 
+        bool ShouldCheckOut();
+
         bool ShouldUpdate(IRevisionData other);
     }
 }

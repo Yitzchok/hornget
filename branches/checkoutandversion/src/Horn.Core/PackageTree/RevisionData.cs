@@ -56,6 +56,11 @@ namespace Horn.Core.PackageStructure
             RecordRevision(fileInfo, revisionVlaue);
         }
 
+        public bool ShouldCheckOut()
+        {
+            return (long.Parse(Revision) == 0);
+        }
+
         public bool ShouldUpdate(IRevisionData other)
         {
             log.InfoFormat("Current Revision is = {0}", Revision);

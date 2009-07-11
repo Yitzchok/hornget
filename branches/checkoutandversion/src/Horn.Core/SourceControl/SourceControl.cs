@@ -49,6 +49,7 @@ namespace Horn.Core.SCM
             if (downloadedPackages.ContainsKey(packageTree.Name))
                 return;
 
+            //HACK:  WE DO NOT WANT TO TREAT VERSION REQUESTS THIS WAY
             if(!packageTree.IsAversionRequest)
             {
                 if ((!packageTree.GetRevisionData().ShouldUpdate(new RevisionData(Revision))))
