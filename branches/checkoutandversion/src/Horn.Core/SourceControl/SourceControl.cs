@@ -8,6 +8,13 @@ using log4net;
 
 namespace Horn.Core.SCM
 {
+    public enum GetOperation
+    {
+        CheckOut,
+        Update,
+        Export
+    }
+
     public abstract class SourceControl
     {
         protected static readonly ILog log = LogManager.GetLogger(typeof(SVNSourceControl));
@@ -20,6 +27,8 @@ namespace Horn.Core.SCM
             get { return downloadMonitor; }
         }
 
+        protected abstract string Download(FileSystemInfo destination, GetOperation operation);
+
         public virtual string ExportPath { get; protected set; }
 
         public abstract string Revision { get; }
@@ -27,8 +36,6 @@ namespace Horn.Core.SCM
         public string Url {get; private set;}
 
         protected abstract void Initialise(IPackageTree packageTree);
-
-        protected abstract string Download(FileSystemInfo destination);
 
         public static void ClearDownLoadedPackages()
         {
@@ -44,15 +51,17 @@ namespace Horn.Core.SCM
             return sourceControl;
         }
 
-        public virtual void Export(IPackageTree packageTree)
+        public virtual void RetrieveSource(IPackageTree packageTree)
         {
             if (downloadedPackages.ContainsKey(packageTree.Name))
                 return;
 
+            var revisionData = packageTree.GetRevisionData();
+
             //HACK:  WE DO NOT WANT TO TREAT VERSION REQUESTS THIS WAY
             if(!packageTree.IsAversionRequest)
             {
-                if ((!packageTree.GetRevisionData().ShouldUpdate(new RevisionData(Revision))))
+                if ((!revisionData.ShouldUpdate(new RevisionData(Revision))))
                 {
                     downloadedPackages.Add(packageTree.Name, packageTree.Name);
 
@@ -66,14 +75,14 @@ namespace Horn.Core.SCM
             
             Thread monitoringThread = StartMonitoring();
 
-            var revision = Download(packageTree.WorkingDirectory);
+            var revision = Download(packageTree.WorkingDirectory, revisionData.Operation());
 
             StopMonitoring(monitoringThread);
 
             RecordCurrentRevision(packageTree, revision);
         }
 
-        public virtual void Export(IPackageTree packageTree, string path, bool initialise)
+        public virtual void RetrieveSource(IPackageTree packageTree, string path, bool initialise)
         {
             lock (locker)
             {
@@ -88,7 +97,7 @@ namespace Horn.Core.SCM
 
                 Thread monitoringThread = StartMonitoring();
 
-                Download(exportPath);
+                Download(exportPath, GetOperation.Export);
 
                 StopMonitoring(monitoringThread);
             }
@@ -146,5 +155,8 @@ namespace Horn.Core.SCM
         protected SourceControl()
         {
         }
+
+
+
     }
 }
