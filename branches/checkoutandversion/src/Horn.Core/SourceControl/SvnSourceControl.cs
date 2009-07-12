@@ -49,8 +49,6 @@ namespace Horn.Core.SCM
         {
             SvnUpdateResult result = null;
 
-            //Debugger.Break();
-
             using (var client = new SvnClient())
             {
                 try
