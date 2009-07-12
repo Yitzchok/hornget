@@ -18,7 +18,7 @@ namespace Horn.Core.SCM
     public abstract class SourceControl
     {
         protected static readonly ILog log = LogManager.GetLogger(typeof(SVNSourceControl));
-        private static Dictionary<string, string> downloadedPackages = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> downloadedPackages = new Dictionary<string, string>();
         private static readonly object locker = new object();
         protected  IDownloadMonitor downloadMonitor;
 
@@ -56,18 +56,14 @@ namespace Horn.Core.SCM
             if (downloadedPackages.ContainsKey(packageTree.Name))
                 return;
 
-            var revisionData = packageTree.GetRevisionData();
-
-            //HACK:  WE DO NOT WANT TO TREAT VERSION REQUESTS THIS WAY
-            if(!packageTree.IsAversionRequest)
+            if (!packageTree.GetRevisionData().ShouldUpdate(new RevisionData(Revision)))
             {
-                if ((!revisionData.ShouldUpdate(new RevisionData(Revision))))
-                {
-                    downloadedPackages.Add(packageTree.Name, packageTree.Name);
+                downloadedPackages.Add(packageTree.Name, packageTree.Name);
 
-                    return;
-                }                
+                return;
             }
+
+            var revisionData = packageTree.GetRevisionData();
                 
             Initialise(packageTree);
 
