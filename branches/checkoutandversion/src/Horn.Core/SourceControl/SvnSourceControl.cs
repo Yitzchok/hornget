@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using Horn.Core.PackageStructure;
 using SharpSvn;
@@ -42,21 +43,13 @@ namespace Horn.Core.SCM
 
             if (!packageTree.WorkingDirectory.Exists)
                 return;
-
-            //try
-            //{
-            //    if (packageTree.Name != PackageTree.RootPackageTreeName)
-            //        packageTree.WorkingDirectory.Delete(true);
-            //}
-            //catch (IOException)
-            //{
-            //    throw new IOException(string.Format("The horn process is trying to delete a working directory.  Please ensure you have no applications open in the {0} directory.", packageTree.Root.CurrentDirectory.FullName));
-            //}
         }        
 
         protected override string Download(FileSystemInfo destination, GetOperation operation)
         {
             SvnUpdateResult result = null;
+
+            //Debugger.Break();
 
             using (var client = new SvnClient())
             {
