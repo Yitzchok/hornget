@@ -1,0 +1,15 @@
+#summary The Horn User FAQ
+#labels Phase-Deploy,Featured
+
+= Introduction =
+
+Add questions and answers here
+
+
+= Details =
+
+Where does Horn put the generated files?
+  * ~/.horn/result
+  * C:\Documents and Settings\user.name\.horn\result on WinXP
+  * C:\Users\user.name\.horn\result on Vista
+  * http://code.google.com/p/hornget/issues/detail?id=2
