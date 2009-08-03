@@ -6,14 +6,19 @@
 Add questions and answers here
 
 
-= Details =
+= Using horn =
 
 How stable is horn?
   * Horn is not yet at the beta release stage. As such, there are a number of rough edges and the interface is not as easy to use as we would like. If you notice any problems, please have a look at the Issues list or ask on the mailing list.
-  * Horn should be considered at *develop-only* stage. It has not been tested on a wide range of systems, and it is not yet ready for every day use, however, if you are prepared to put up with a development release, you may find it useful.
+  * Horn should be considered at *developers-only* stage. It has not been tested on a wide range of systems, and it is not yet ready for every day use, however, if you are prepared to put up with a development release, you may find it useful.
 
 Where does Horn put the generated files?
   * ~/.horn/result
   * C:\Documents and Settings\user.name\.horn\result on WinXP
   * C:\Users\user.name\.horn\result on Vista
   * http://code.google.com/p/hornget/issues/detail?id=2
+
+= Creating package descriptions =
+
+How do I create a .boo file for my own library?
+  * Have a look at the examples in your ~/.horn folder
