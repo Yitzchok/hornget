@@ -1,0 +1,45 @@
+==Currently Supported Horn Packages==
+
+The table below lists all of the Open Source Tools & Frameworks that you can currently build using Horn.
+
+The Package name column lists the arguments you would use to execute Horn. Multiple options in the Package Name column mean generally mean Horn supports building specific versions.
+
+To build a particular package execute Horn using the following syntax:
+
+`horn -install:<Package Name>`
+
+||	*Category*	||	*Project*	||	*Package Name*	||	*Description*	||	*Links*	||	*Notes*	||
+||	Builders	||	Horn	||	horn	||	A .NET build and dependency manager 	||	[http://code.google.com/p/hornget/ Homepage ] | [http://groups.google.co.uk/group/horn-development?hl=en Forum]	||		||
+||	CMS	||	N2CMS	||	n2cms | n2cms-2.1	||	N2 is a lightweight CMS framework to help you build great web sites that anyone can update	||	[http://n2cms.com/ Homepage ] | [http://www.codeplex.com/n2/Thread/List.aspx Forum]	||		||
+||	ESB	||	Masstransit	||	masstransit	||	Lite weight ESB	||	[http://code.google.com/p/masstransit/  Homepage ] | [http://groups.google.com/group/masstransit-discuss" Forum]	||		||
+||	Frameworks	||	NCommon	||	ncommon	||	NCommon is a library that contains implementations of commonly used design patterns when developing applications	||	[http://ncommon.codeplex.com/ Homepage ] | [http://ncommon.codeplex.com/Thread/List.aspx Forum]	||		||
+||	Frameworks	||	Rhino Tools	||	rhino	||	Rhino tools including Rhino Mocks, Rhino ETL, Binsor 	||	[http://ayende.com/projects/rhino-mocks.aspx Homepage ] | [http://groups.google.co.uk/group/rhino-tools-dev Forum]	||		||
+||	Frameworks	||	Sharp Architecture	||	sharp.architecture	||	This is a solid architectural foundation for rapidly building maintainable web applications leveraging the ASP.NET MVC framework with NHibernate	||	[http://code.google.com/p/sharp-architecture/ Homepage ] | [http://groups.google.com/group/sharp-architecture Forum]	||		||
+||	IoC	||	Castle	||	castle	||	Castle is an open source project for .net that aspires to simplify the development of enterprise and web applications.	||	[http://www.castleproject.org/ Homepage ] | [http://groups.google.co.uk/group/castle-project-users?hl=en Forum]	||		||
+||	IoC	||	Castle	||	castle.activerecord	||	The Castle ActiveRecord project is an implementation of the ActiveRecord pattern for .NET	||	[http://www.castleproject.org/ Homepage ] | [http://groups.google.co.uk/group/castle-project-users?hl=en Forum]	||		||
+||	IoC	||	Castle	||	castle.components	||	Castle validator, templating engine etc	||	[http://www.castleproject.org/ Homepage ] | [http://groups.google.co.uk/group/castle-project-users?hl=en Forum]	||		||
+||	IoC	||	Castle	||	castle.facilities	||	A castle facility augments the container with new functionality.	||	[http://www.castleproject.org/ Homepage ] | [http://groups.google.co.uk/group/castle-project-users?hl=en Forum]	||		||
+||	IoC	||	Castle	||	castle.services	||	Castle provides a number of services	||	[http://www.castleproject.org/ Homepage ] | [http://groups.google.co.uk/group/castle-project-users?hl=en Forum]	||		||
+||	IoC	||	Castle	||	castle.tools	||	Dynamic Proxy Generator for the CLR	||	[http://www.castleproject.org/ Homepage ] | [http://groups.google.co.uk/group/castle-project-users?hl=en Forum]	||		||
+||	IoC	||	Castle	||	castle.windsor	||	Windsor is an inversion of control container that aggregates the MicroKernel offering a friendly fool-proof interface and options to external configurations	||	[http://www.castleproject.org/ Homepage ] | [http://groups.google.co.uk/group/castle-project-users?hl=en Forum]	||		||
+||	IoC	||	LinFu	||	linfu	||	The LinFu Framework is a set of libraries that extend the CLR	||	[http://code.google.com/p/linfu/ Homepage ] | [http://groups.google.com/group/linfuframework Forum]	||		||
+||	IoC	||	Ninject	||	ninject	||	Ninject: Lightning-fast dependency injection for .NET	||	[http://ninject.org/ Homepage ] | [http://groups.google.com/group/ninject Forum]	||		||
+||	Languages	||	Boo	||	boo	||	A wrist friendly language fro the CLI	||	[http://boo.codehaus.org/ Homepage ] | [http://groups.google.com/group/boolang Forum]	||		||
+||	Loggers	||	Log4Net	||	log4net | log4net-1.2.10	||	log4net is a tool to help the programmer output log statements to a variety of output targets	||	[http://logging.apache.org/log4net/index.html Homepage ] | [http://mail-archives.apache.org/mod_mbox/logging-log4net-user/ Forum]	||	Trunk of Log4Net is broken, use log4net-1.2.10 instead	||
+||	Mappers	||	AutoMapper	||	automapper	||	A convention-based object-object mapper in .NET	||	[http://www.codeplex.com/AutoMapper/ Homepage ] | [http://groups.google.com/group/automapper-users Forum]	||		||
+||	Mocks	||	Moq	||	moq	||	The simplest mocking library for .NET 3.5 and Silverlight with deep C# 3.0 integration 	||	[http://code.google.com/p/moq/ Homepage ] | [http://groups.google.com/group/moqdisc Forum]	||		||
+||	Networks	||	DnDns	||	dndns	||	A DNS protocol library	||	[http://dndns.codeplex.com/ Homepage ] | [http://dndns.codeplex.com/Thread/List.aspx Forum]	||		||
+||	ORM	||	Fluent NHibernate	||	fluentnhibernate-0.1 | fluentnhibernate	||	Fluent, XML-less, compile safe, automated, testable mappings for NHibernate	||	[http://fluentnhibernate.org/ Homepage ] | [http://groups.google.com/group/fluent-nhibernate Forum]	||		||
+||	ORM	||	NHContrib	||	nhibernate.burrow | nhibernate.burrow-2.1	||	NHibernate.Burrow is a light weight middleware developed to support .Net applications using NHibernate...	||	[http://www.ohloh.net/p/NHibernateContrib Homepage ] | [http://groups.google.co.uk/group/nhusers?hl=en Forum]	||		||
+||	ORM	||	NHContrib	||	nhibernate.caches	||	NHibernate Caches contains several Cache Provider's for NHibernate's Cache mechanism	||	[http://www.ohloh.net/p/NHibernateContrib Homepage ] | [http://groups.google.co.uk/group/nhusers?hl=en Forum]	||		||
+||	ORM	||	NHContrib	||	nhibernate.jetdriver | nhibernate.jetdriver-2.1	||	NHibernate JetDriver	||	[http://www.ohloh.net/p/NHibernateContrib Homepage ] | [http://groups.google.co.uk/group/nhusers?hl=en Forum]	||		||
+||	ORM	||	NHContrib	||	nhibernate.linq | nhibernate.linq-2.1	||	NHibernate Linq - Linq provider for NHibernate	||	[http://www.ohloh.net/p/NHibernateContrib Homepage ] | [http://groups.google.co.uk/group/nhusers?hl=en Forum]	||		||
+||	ORM	||	NHContrib	||	nhibernate.search	||	NHibernate integration with Lucene	||	[http://www.ohloh.net/p/NHibernateContrib Homepage ] | [http://groups.google.co.uk/group/nhusers?hl=en Forum]	||		||
+||	ORM	||	NHContrib	||	nhibernate.validator	||	Business Object Validation Framework	||	[http://www.ohloh.net/p/NHibernateContrib Homepage ] | [http://groups.google.co.uk/group/nhusers?hl=en Forum]	||		||
+||	ORM	||	Nhibernate	||	nhibernate | nhibernate-2.1	||	Nhibernate handles persisting plain .NET objects to and from an underlying relational database	||	[http://www.hibernate.org/343.html Homepage ] | [http://groups.google.co.uk/group/nhusers?hl=en Forum]	||		||
+||	ORM	||	Subsonic	||	subsonic | subsonic-2.0	||	SubSonic is A Super High-fidelity Batman Utility Belt that works up your Data Access (using Linq in 3.0), throws in some much-needed utility functions, and generally speeds along your dev cycle	||	[http://subsonicproject.com/ Homepage ] | [http://stackoverflow.com/questions/tagged/subsonic Forum]	||		||
+||	Silverlight	||	Caliburn for Silverlight	||	caliburn-silverlight | caliburn-silverlight-2.0	||	Designed to aid in the development of WPF and Silverlight applications, Caliburn implements a variety of UI patterns for solving real-world problems. Patterns that are enabled by the framework include MVC, MVP, Presentation Model (MVVM), Commands and Application Controller	||	[http://caliburn.codeplex.com/ Homepage ] | [http://caliburn.codeplex.com/Thread/List.aspx Forum]	||		||
+||	Web	||	MVCContrib	||	mvccontrib	||	This project adds additional functionality on top of the ASP.NET MVC Framework	||	[http://www.codeplex.com/MVCContrib Homepage ] | [http://groups.google.co.uk/group/mvccontrib-discuss Forum]	||		||
+||	Web	||	Hasic View Engine	||	hasic	||	A view engine for ASP.NET MVC that uses VB.NET XML literals	||	[http://www.assembla.com/wiki/show/hasic Homepage ] | [http://www.assembla.com/wiki/show/hasic Forum]	||		||
+||	Web	||	JSON.NET	||	json.net	||	A .NET serialization for converting objects to JSON and vice versa	||	[http://james.newtonking.com/pages/json-net.aspx/ Homepage ] | [http://james.newtonking.com/pages/json-net.aspx/ Forum]	||		||
+||	WPF	||	Caliburn	||	caliburn	||	Designed to aid in the development of WPF and Silverlight applications, Caliburn implements a variety of UI patterns for solving real-world problems. Patterns that are enabled by the framework include MVC, MVP, Presentation Model (MVVM), Commands and Application Controller	||	[http://caliburn.codeplex.com/ Homepage ] | [http://caliburn.codeplex.com/Thread/List.aspx Forum]	||		||
