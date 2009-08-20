@@ -1,3 +1,5 @@
+#summary Lists all of the Open Source Tools & Frameworks that you can currently build using Horn
+
 ==Currently Supported Horn Packages==
 
 The table below lists all of the Open Source Tools & Frameworks that you can currently build using Horn.
