@@ -9,10 +9,10 @@ Please follow the rules here. If you submit a patch that does not follow these r
 = Standards =
 
   * All code must have associated tests in the appropriate Horn.Spec package
-  * No _underscore variables
-  * MethodsShouldUseTitleCase()
-  * PropertiesShouldUseTitleCase
-  * fieldsShouldUseCamelCase
+  * No `_underscore` variables
+  * `MethodsShouldUseTitleCase()`
+  * `PropertiesShouldUseTitleCase`
+  * `fieldsShouldUseCamelCase`
   * Use auto-implemented properties where possible
   * All patches must be submitted in `svn diff` .patch format
   * All patches must be submitted publically, either attached to an issue or via the mailing list
