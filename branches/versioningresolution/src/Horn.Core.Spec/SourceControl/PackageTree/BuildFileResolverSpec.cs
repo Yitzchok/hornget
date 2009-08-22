@@ -6,14 +6,14 @@ using Xunit;
 
 namespace Horn.Core.Spec.Unit.HornTree
 {
-    public class When_resolving_a_boo_build_file : BaseDSLSpecification
+    public class When_resolving_a_build_file_with_no_other_versions : BaseDSLSpecification
     {
-        private IBuildFileResolver _fileResolver;
+        private IBuildFileResolver fileResolver;
         private DirectoryInfo buildFolder;
 
         protected override void Before_each_spec()
         {
-            _fileResolver = new BuildFileResolver();
+            fileResolver = new BuildFileResolver();
         }
 
         protected override void Because()
@@ -22,9 +22,9 @@ namespace Horn.Core.Spec.Unit.HornTree
         }
 
         [Fact]
-        public void Then_a_boo_extension_is_returned_from_the_resolver()
+        public void Then_the_boo_file_is_returned()
         {
-            Assert.Equal("boo", _fileResolver.Resolve(buildFolder, "horn").Extension);
+            Assert.Equal("boo", fileResolver.Resolve(buildFolder, "horn").Extension);
         }
     }
 }

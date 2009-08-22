@@ -7,7 +7,6 @@ namespace Horn.Core.Dsl
 {
     public class BooBuildConfigReader : IBuildConfigReader
     {
-
         private BooConfigReader configReader;
         protected DslFactory factory;
 
@@ -43,11 +42,10 @@ namespace Horn.Core.Dsl
             return this;
         }
 
-
-
         private IBuildMetaData CreateBuildMetaData(DirectoryInfo buildFolder, string buildFile)
         {
             var buildFileResolver = new BuildFileResolver();
+
             var buildFilePath = buildFileResolver.Resolve(buildFolder, buildFile).BuildFile;
 
             try
@@ -63,8 +61,6 @@ namespace Horn.Core.Dsl
 
             return configReader.BuildMetaData;
         }
-
-
 
     }
 }
