@@ -20,14 +20,6 @@ namespace Horn.Core.Dsl
             return CreateBuildMetaData(PackageTree.CurrentDirectory, packageName);
         }
 
-        public IBuildMetaData GetBuildMetaData(IPackageTree packageTree, string buildFile)
-        {
-            if (factory == null)
-                throw new ArgumentNullException("You have not called SetDslFactory on class BooBuildConfigReader");
-
-            return CreateBuildMetaData(packageTree.CurrentDirectory, packageTree.FullName);
-        }
-
         public virtual IBuildConfigReader SetDslFactory(IPackageTree packageTree)
         {
             PackageTree = packageTree;

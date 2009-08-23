@@ -285,11 +285,9 @@ namespace Horn.Core.PackageStructure
             if (BuildMetaData != null)
                 return BuildMetaData;
 
-            var buildFileResolver = new BuildFileResolver().Resolve(packageTree.CurrentDirectory, packageTree.FullName);
-
             var reader = IoC.Resolve<IBuildConfigReader>();
 
-            BuildMetaData = reader.SetDslFactory(packageTree).GetBuildMetaData(packageTree, Path.GetFileNameWithoutExtension(buildFileResolver.BuildFile));
+            BuildMetaData = reader.SetDslFactory(packageTree).GetBuildMetaData(packageTree.Name);
 
             return BuildMetaData;
         }

@@ -159,7 +159,7 @@
     <Compile Include="MetaDataSynchroniser\metadatasynchroniserfixture.cs" />
     <Compile Include="MetaDataSynchroniser\metadatasynchroniserfixturebase.cs" />
     <Compile Include="SourceControl\PackageTree\BuildEnginePackageSpecifications.cs" />
-    <Compile Include="SourceControl\PackageTree\BuildFileResolverSpec.cs" />
+    <Compile Include="BuildFilreResolverSpecs\BuildFileResolverSpec.cs" />
     <Compile Include="RevisionDataSpec\RevisionDataSpecs.cs" />
     <Compile Include="SourceControlDouble.cs" />
     <Compile Include="SourceControl\SourceControlSpecs.cs" />
