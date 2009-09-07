@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\CategoryLoader.cs" />
+    <Compile Include="Model\File.cs" />
+    <Compile Include="Model\Package.cs" />
+    <Compile Include="Model\PackageLoader.cs" />
+    <Compile Include="Model\XmlToObjectLoaderBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
