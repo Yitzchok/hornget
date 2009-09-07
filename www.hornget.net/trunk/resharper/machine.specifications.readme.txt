@@ -1,0 +1,15 @@
+TO INSTALL THE MACHINE.SPECIFICATIONS RESHARPER 4.5 TEST RUNNER PLEASE DO THE FOLLOWING:
+
+extract machine.specifications.zip and copy the folder into:
+
+JetBrains\ReSharper\v4.5\Bin\plugins\
+
+in your program files resharper install directory.
+
+n.b if there is no plugins directory, simply create it.
+
+
+
+TAKEN FROM:
+
+http://www.lostechies.com/blogs/seanbiefeld/archive/2009/08/25/step-by-step-to-using-machine-specifications-with-resharper.aspx
