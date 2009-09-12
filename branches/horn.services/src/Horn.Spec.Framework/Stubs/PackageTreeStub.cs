@@ -6,7 +6,7 @@ using Horn.Core.Dsl;
 using Horn.Core.PackageStructure;
 using Horn.Core.Utils.CmdLine;
 
-namespace Horn.Core.Spec.Doubles
+namespace Horn.Spec.Framework.Stubs
 {
     public class PackageTreeStub : IPackageTree
     {

@@ -5,12 +5,11 @@ using Horn.Core.Dependencies;
 using Horn.Core.Dsl;
 using Horn.Core.PackageStructure;
 using Horn.Core.SCM;
-using Horn.Core.Spec.BuildEngineSpecs;
-using Horn.Core.Spec.Doubles;
 using Horn.Framework.helpers;
+using Horn.Spec.Framework.Stubs;
 using Rhino.Mocks;
 
-namespace Horn.Core.Spec.helpers
+namespace Horn.Spec.Framework.helpers
 {
     public static class TreeHelper
     {
@@ -69,7 +68,7 @@ namespace Horn.Core.Spec.helpers
         public static IPackageTree CreatePackageTreeNode(string packageName, string[] dependencyNames)
         {
             var buildMetaData = MockRepository.GenerateStub<IBuildMetaData>();
-            buildMetaData.BuildEngine = new BuildEngine(new BuildToolStub(), String.Format("{0}.boo", packageName), Utils.Framework.FrameworkVersion.FrameworkVersion35, MockRepository.GenerateStub<IDependencyDispatcher>());
+            buildMetaData.BuildEngine = new BuildEngine(new BuildToolStub(), String.Format("{0}.boo", packageName), Core.Utils.Framework.FrameworkVersion.FrameworkVersion35, MockRepository.GenerateStub<IDependencyDispatcher>());
             foreach (string dependencyName in dependencyNames)
             {
                 var dependency = new Dependency(dependencyName, dependencyName);

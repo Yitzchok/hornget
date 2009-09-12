@@ -5,7 +5,7 @@ using Horn.Core.PackageCommands;
 using Horn.Core.PackageStructure;
 using Horn.Core.Utils.CmdLine;
 
-namespace Horn.Core.Spec.Stubs
+namespace Horn.Spec.Framework.Stubs
 {
     public class PackageBuilderWithOnlyPrebuildStub : PackageBuilder
     {

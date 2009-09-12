@@ -1,8 +1,8 @@
 using System.IO;
 using Horn.Core.Dsl;
 using Horn.Core.SCM;
-using Horn.Core.Spec.helpers;
 using Horn.Framework.helpers;
+using Horn.Spec.Framework.helpers;
 using Rhino.Mocks;
 using Horn.Core.PackageStructure;
 using Horn.Core.Spec.Unit.dsl;

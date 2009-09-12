@@ -5,7 +5,7 @@ using Horn.Core.PackageStructure;
 using Horn.Core.SCM;
 using Horn.Framework.helpers;
 
-namespace Horn.Core.Spec
+namespace Horn.Spec.Framework.Stubs
 {
     public class SourceControlDouble : SVNSourceControl
     {

@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Horn.Core;
 using Horn.Core.BuildEngines;
 using Horn.Core.Dependencies;
 using Horn.Core.Utils.Framework;
 
-namespace Horn.Core.Spec.Doubles
+namespace Horn.Spec.Framework.Stubs
 {
     public class BuildEngineStub : BuildEngine
     {

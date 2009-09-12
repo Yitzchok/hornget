@@ -4,6 +4,7 @@ using Horn.Core.Dsl;
 using Horn.Core.PackageStructure;
 using Horn.Core.SCM;
 using Horn.Framework.helpers;
+using Horn.Spec.Framework.Stubs;
 using Xunit;
 
 namespace Horn.Core.Spec.Unit.dsl

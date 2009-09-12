@@ -1,7 +1,7 @@
 using System.IO;
 using Horn.Core.Dsl;
 
-namespace Horn.Core.Spec.Doubles
+namespace Horn.Spec.Framework.Stubs
 {
     public class RepositoryElementStub : RepositoryElement
     {

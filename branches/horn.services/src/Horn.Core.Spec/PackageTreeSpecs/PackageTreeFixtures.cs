@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using Horn.Core.PackageStructure;
-using Horn.Core.Spec.helpers;
+using Horn.Spec.Framework.helpers;
 using log4net;
 using Xunit;
 
