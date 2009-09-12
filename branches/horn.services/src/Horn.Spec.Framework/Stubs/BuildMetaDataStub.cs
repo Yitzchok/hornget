@@ -30,6 +30,7 @@ namespace Horn.Spec.Framework.Stubs
             PrebuildCommandList = new List<string>();
             RepositoryElementList = new List<IRepositoryElement>();
             ExportList = new List<SourceControl>();
+            ProjectInfo = new Dictionary<string, object>();
         }
     }
 }
