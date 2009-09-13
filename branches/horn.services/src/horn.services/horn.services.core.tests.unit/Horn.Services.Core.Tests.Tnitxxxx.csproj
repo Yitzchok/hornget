@@ -92,9 +92,9 @@
       <Project>{03B7A9D2-30E7-4EBB-A91F-AB06F8AC1EE9}</Project>
       <Name>Horn.Spec.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\horn.services.core\horn.services.core.csproj">
+    <ProjectReference Include="..\horn.services.core\Horn.Services.Corexxx.csproj">
       <Project>{A5ACDC97-6AF0-4B38-9DC7-151AA47B62E0}</Project>
-      <Name>horn.services.core</Name>
+      <Name>Horn.Services.Corexxx</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
