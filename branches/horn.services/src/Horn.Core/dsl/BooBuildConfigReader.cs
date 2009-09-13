@@ -7,7 +7,6 @@ namespace Horn.Core.Dsl
 {
     public class BooBuildConfigReader : IBuildConfigReader
     {
-
         private BooConfigReader configReader;
         protected DslFactory factory;
 
