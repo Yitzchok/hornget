@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horn.Core", "Horn.Core\Horn.Core.csproj", "{093CFA20-D720-4C58-9B8F-754F03A40D16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horn.Services.Corexxx", "horn.services\horn.services.core\Horn.Services.Corexxx.csproj", "{A5ACDC97-6AF0-4B38-9DC7-151AA47B62E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horn.Services.Core", "horn.services\horn.services.core\Horn.Services.Core.csproj", "{A5ACDC97-6AF0-4B38-9DC7-151AA47B62E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horn.Services.Core.Tests.Tnitxxxx", "horn.services\horn.services.core.tests.unit\Horn.Services.Core.Tests.Tnitxxxx.csproj", "{74E7D81F-00D8-4568-ADA7-8BE1ACA0290A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horn.Services.Core.Tests.Unit", "horn.services\horn.services.core.tests.unit\Horn.Services.Core.Tests.Unit.csproj", "{74E7D81F-00D8-4568-ADA7-8BE1ACA0290A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Horn.Spec.Framework", "Horn.Spec.Framework\Horn.Spec.Framework.csproj", "{03B7A9D2-30E7-4EBB-A91F-AB06F8AC1EE9}"
 EndProject
