@@ -1,14 +1,14 @@
 using System;
 using System.IO;
-using horn.services.core.Crawlers;
+using Horn.Services.Core.Spiders;
 using Horn.Spec.Framework;
 using NUnit.Framework;
 
-namespace horn.services.core.tests.unit.parser.specs
+namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 {
     public class When_horn_scans_one_package_folder : ContextSpecification
     {
-        private PackageTreeCrawler _packageTreeCrawler;
+        private PackageTreeSpider _packageTreeCrawler;
 
         private DirectoryInfo _hornDirectory;
 
@@ -21,7 +21,7 @@ namespace horn.services.core.tests.unit.parser.specs
 
         protected override void because()
         {
-            _packageTreeCrawler = new PackageTreeCrawler(_hornDirectory);
+            _packageTreeCrawler = new PackageTreeSpider(_hornDirectory);
         }
 
         [Test]

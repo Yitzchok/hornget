@@ -8,8 +8,8 @@
     <ProjectGuid>{74E7D81F-00D8-4568-ADA7-8BE1ACA0290A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>horn.services.core.tests.unit</RootNamespace>
-    <AssemblyName>horn.services.core.tests.unit</AssemblyName>
+    <RootNamespace>Horn.Services.Core.Tests.Unit</RootNamespace>
+    <AssemblyName>Horn.Services.Core.Tests.Unit</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

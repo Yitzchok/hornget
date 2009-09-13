@@ -3,17 +3,19 @@ using System.IO;
 using Horn.Core.PackageStructure;
 using horn.services.core.Value;
 
-namespace horn.services.core.Crawlers
+namespace Horn.Services.Core.Spiders
 {
-    public class PackageTreeCrawler
+    public class PackageTreeSpider
     {
         private IPackageTree _packageTree;
 
         public List<BuildMetaDataValue> MetaData { get; set; }
 
-        public PackageTreeCrawler(DirectoryInfo hornDirectory)
+        public PackageTreeSpider(DirectoryInfo hornDirectory)
         {
             MetaData = new List<BuildMetaDataValue>();
+
+            _packageTree = new PackageTree(hornDirectory, null);
         }
     }
 }

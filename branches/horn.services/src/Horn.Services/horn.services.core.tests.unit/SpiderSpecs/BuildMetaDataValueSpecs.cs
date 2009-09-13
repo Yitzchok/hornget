@@ -7,7 +7,7 @@ using Horn.Spec.Framework;
 using Horn.Spec.Framework.helpers;
 using NUnit.Framework;
 
-namespace horn.services.core.tests.unit.parser.specs
+namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 {
     public class When_mapping_a_build_package_meta_data_to_a_value_object : ContextSpecification 
     {
