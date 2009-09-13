@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace horn.services.core.tests.unit.parser.specs
 {
-    public class When_horn_scans_one_package_folder : ContextSpecification  
+    public class When_horn_scans_one_package_folder : ContextSpecification
     {
         private PackageTreeCrawler _packageTreeCrawler;
 

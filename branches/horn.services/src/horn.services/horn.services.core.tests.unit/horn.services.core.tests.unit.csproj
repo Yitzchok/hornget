@@ -79,8 +79,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="parser.specs\BuildMetaDataValueSpecs.cs" />
-    <Compile Include="parser.specs\parserspecs.cs" />
+    <Compile Include="SpiderSpecs\BuildMetaDataValueSpecs.cs" />
+    <Compile Include="SpiderSpecs\SpiderSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
