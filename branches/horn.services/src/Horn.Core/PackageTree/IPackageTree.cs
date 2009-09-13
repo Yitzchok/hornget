@@ -8,7 +8,11 @@ namespace Horn.Core.PackageStructure
 {
     public interface IPackageTree : IComposite<IPackageTree>
     {
+        event BuildNodeCreatedHandler BuildNodeCreated;
+
         string BuildFile { get; }
+
+        void BuildTree(IPackageTree parent, DirectoryInfo directory);
 
         IBuildMetaData BuildMetaData { get; }
 

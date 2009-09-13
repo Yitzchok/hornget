@@ -9,8 +9,13 @@ namespace Horn.Core.PackageStructure
 {
     public class NullPackageTree : IPackageTree
     {
+        public event BuildNodeCreatedHandler BuildNodeCreated;
+
         public void Add(IPackageTree item)
         {
+            if (BuildNodeCreated != null)
+                BuildNodeCreated(item);
+
             throw new NullTreeException();
         }
 
@@ -33,6 +38,11 @@ namespace Horn.Core.PackageStructure
         public string BuildFile
         {
             get { throw new NullTreeException(); }
+        }
+
+        public void BuildTree(IPackageTree parent, DirectoryInfo directory)
+        {
+            throw new NotImplementedException();
         }
 
         public IBuildMetaData BuildMetaData

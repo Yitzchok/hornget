@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections.Generic;
 using System.IO;
 using Horn.Core.BuildEngines;
@@ -10,6 +10,8 @@ namespace Horn.Spec.Framework.Stubs
 {
     public class PackageTreeStub : IPackageTree
     {
+        public event BuildNodeCreatedHandler BuildNodeCreated;
+
         private readonly IBuildMetaData buildMetaData;
         private readonly string name;
         private readonly bool useInternalDictionary;
@@ -23,6 +25,11 @@ namespace Horn.Spec.Framework.Stubs
         public string BuildFile
         {
             get { return "defaul.build"; }
+        }
+
+        public void BuildTree(IPackageTree parent, DirectoryInfo directory)
+        {
+            throw new NotImplementedException();
         }
 
         public IBuildMetaData BuildMetaData
@@ -135,6 +142,9 @@ namespace Horn.Spec.Framework.Stubs
 
         public void Add(IPackageTree item)
         {
+            if (BuildNodeCreated != null)
+                BuildNodeCreated(item);
+
             throw new NotImplementedException();
         }
 

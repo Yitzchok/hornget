@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Horn.Core.PackageStructure;
@@ -11,11 +12,20 @@ namespace Horn.Services.Core.Spiders
 
         public List<BuildMetaDataValue> MetaData { get; set; }
 
+        private void PackageTree_PackageTreeCreated(IPackageTree packagetree)
+        {
+            Console.WriteLine(packagetree.Name);
+        }
+
         public PackageTreeSpider(DirectoryInfo hornDirectory)
         {
             MetaData = new List<BuildMetaDataValue>();
 
-            _packageTree = new PackageTree(hornDirectory, null);
+            _packageTree = new PackageTree();
+
+            _packageTree.BuildNodeCreated += PackageTree_PackageTreeCreated;
+
+            _packageTree.BuildTree(null, hornDirectory);
         }
     }
 }

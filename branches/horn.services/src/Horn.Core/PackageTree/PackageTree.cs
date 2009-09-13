@@ -12,14 +12,16 @@ namespace Horn.Core.PackageStructure
 {
     public class PackageTree : IPackageTree
     {
+        public event BuildNodeCreatedHandler BuildNodeCreated;
+
         private readonly IMetaDataSynchroniser metaDataSynchroniser;
         private DirectoryInfo result;
         public const string RootPackageTreeName = ".horn";
-        private readonly IList<IPackageTree> children;
+        private IList<IPackageTree> children;
         private DirectoryInfo patchDirectory;
         private DirectoryInfo workingDirectory;
         private readonly static string[] reservedDirectoryNames = new[]{"working", "build_root_dir"};
-        private static readonly string[] libraryNodes = new[] {"lib", "debug", "buildengines"};
+        private static readonly string[] libraryNodes = new[] { "lib", "debug", "buildengines", "output"};
 
         public virtual string BuildFile{ get; set; }
 
@@ -28,6 +30,39 @@ namespace Horn.Core.PackageStructure
         public virtual IPackageTree[] Children
         {
             get { return children.ToArray(); }
+        }
+
+        public virtual void BuildTree(IPackageTree parent, DirectoryInfo directory)
+        {
+            Parent = parent;
+
+            children = new List<IPackageTree>();
+
+            Name = directory.Name;
+
+            CurrentDirectory = directory;
+
+            IsBuildNode = DirectoryIsBuildNode(directory);
+
+            if (IsBuildNode)
+            {
+                CreateRequiredDirectories();
+            }
+
+            foreach (var child in directory.GetDirectories())
+            {
+                if (IsReservedDirectory(child))
+                    return;
+
+                var newNode = CreatePackageTreeNode(child);
+
+                children.Add(newNode);
+            }
+
+            if (parent == null)
+            {
+                Result.Delete(true);
+            }
         }
 
         public virtual DirectoryInfo CurrentDirectory { get; private set; }
@@ -258,6 +293,12 @@ namespace Horn.Core.PackageStructure
             return RetrievePackage(packageName, null);
         }
 
+        protected virtual void OnBuildNodeCreated(IPackageTree packageTree)
+        {
+            if (BuildNodeCreated != null)
+                BuildNodeCreated(packageTree);
+        }
+
         private IPackageTree RetrievePackage(string packageName, string version)
         {
             var nodes = Root.GetAllPackages()
@@ -294,9 +335,23 @@ namespace Horn.Core.PackageStructure
             return BuildMetaData;
         }
 
-        private PackageTree CreateNewPackageTree(DirectoryInfo child)
+        private PackageTree CreatePackageTreeNode(DirectoryInfo child)
         {
+            var newNode = new PackageTree();
+
+            newNode.BuildNodeCreated += NewNode_BuildNodeCreated;
+
+            newNode.BuildTree(this, child);
+
+            if(DirectoryIsBuildNode(child))
+                OnBuildNodeCreated(newNode);
+
             return new PackageTree(child, this);
+        }
+
+        private void NewNode_BuildNodeCreated(IPackageTree packagetree)
+        {
+            OnBuildNodeCreated(packagetree);
         }
 
         private bool IsReservedDirectory(DirectoryInfo child)
@@ -313,6 +368,10 @@ namespace Horn.Core.PackageStructure
                    (!libraryNodes.Contains(directory.Name.ToLower()));
         }
 
+        public PackageTree()
+        {            
+        }
+
         public PackageTree(IMetaDataSynchroniser metaDataSynchroniser)
         {
             this.metaDataSynchroniser = metaDataSynchroniser;
@@ -320,33 +379,7 @@ namespace Horn.Core.PackageStructure
 
         public PackageTree(DirectoryInfo directory, IPackageTree parent)
         {
-            Parent = parent;
-
-            children = new List<IPackageTree>();
-
-            Name = directory.Name;
-
-            CurrentDirectory = directory;
-
-            IsBuildNode = DirectoryIsBuildNode(directory);
-
-            if(IsBuildNode)
-            {
-                CreateRequiredDirectories();
-            }
-
-            foreach (var child in directory.GetDirectories())
-            {
-                if (IsReservedDirectory(child))
-                    return;
-
-                children.Add(CreateNewPackageTree(child));
-            }
-
-            if (parent == null)
-            {
-                Result.Delete(true);
-            }
+            BuildTree(parent, directory);
         }
     }
 }

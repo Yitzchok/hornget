@@ -98,6 +98,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TestFiles\Descriptors\.horn\loggers\log4net\log4net-1.2.10.boo" />
+    <Content Include="TestFiles\Descriptors\.horn\loggers\log4net\log4net.boo" />
     <Content Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhibernate-2.1.boo" />
     <Content Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhibernate.boo" />
     <Content Include="TestFiles\Xml\PackageData.xml" />
@@ -111,6 +113,6 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>IF EXIST "$(ProjectDir)TestFiles\Descriptors\.horn\orm\nhibernate" xcopy /s /y "$(ProjectDir)TestFiles\Descriptors\.horn\orm\nhibernate" "$(TargetDir).horn\orm\nhibernate"</PostBuildEvent>
+    <PostBuildEvent>IF EXIST "$(ProjectDir)TestFiles\Descriptors\.horn" xcopy /s /y "$(ProjectDir)TestFiles\Descriptors\.horn" "$(TargetDir).horn"</PostBuildEvent>
   </PropertyGroup>
 </Project>
