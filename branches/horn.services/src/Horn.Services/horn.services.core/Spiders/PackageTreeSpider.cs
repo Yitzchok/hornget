@@ -14,7 +14,10 @@ namespace Horn.Services.Core.Spiders
 
         private void PackageTree_PackageTreeCreated(IPackageTree packagetree)
         {
-            Console.WriteLine(packagetree.Name);
+            var buildMetaData = packagetree.GetBuildMetaData();
+
+            //HACK: REMOVE HARDCODED TRUNK FLAG
+            MetaData.Add(new BuildMetaDataValue(buildMetaData, "trunk"));
         }
 
         public PackageTreeSpider(DirectoryInfo hornDirectory)

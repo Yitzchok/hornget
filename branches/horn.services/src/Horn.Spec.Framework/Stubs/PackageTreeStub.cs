@@ -158,6 +158,11 @@ namespace Horn.Spec.Framework.Stubs
             return new List<IPackageTree>{this};
         }
 
+        public IBuildMetaData GetBuildMetaData()
+        {
+            return GetBuildMetaData(Name);
+        }
+
         public void CreateRequiredDirectories()
         {
             throw new NotImplementedException();

@@ -54,6 +54,8 @@ namespace Horn.Core.PackageStructure
 
         List<IPackageTree> BuildNodes();
 
+        IBuildMetaData GetBuildMetaData();
+
         IBuildMetaData GetBuildMetaData(string packageName);
 
         IRevisionData GetRevisionData();

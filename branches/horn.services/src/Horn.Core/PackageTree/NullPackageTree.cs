@@ -146,6 +146,11 @@ namespace Horn.Core.PackageStructure
             throw new NullTreeException();
         }
 
+        public IBuildMetaData GetBuildMetaData()
+        {
+            return GetBuildMetaData(Name);
+        }
+
         public IBuildMetaData GetBuildMetaData(string packageName)
         {
             return new NullBuildMetaData();

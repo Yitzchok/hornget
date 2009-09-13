@@ -238,6 +238,11 @@ namespace Horn.Core.PackageStructure
             WorkingDirectory.Delete(true);
         }
 
+        public IBuildMetaData GetBuildMetaData()
+        {
+            return GetBuildMetaData(this);
+        }
+
         public virtual IBuildMetaData GetBuildMetaData(string packageName)
         {
             IPackageTree packageTree = RetrievePackage(packageName);
