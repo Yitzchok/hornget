@@ -12,7 +12,7 @@ namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 {
     public class When_horn_scans_one_package_folder : ContextSpecification
     {
-        private PackageTreeSpider _packageTreeCrawler;
+        private PackageTreeSpider _packageTreeSpider;
 
         private DirectoryInfo _hornDirectory;
 
@@ -39,13 +39,15 @@ namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 
         protected override void because()
         {
-            _packageTreeCrawler = new PackageTreeSpider(_hornDirectory);
+            _packageTreeSpider = new PackageTreeSpider(_hornDirectory);
         }
 
         [Test]
         public void Then_the_package_meta_is_recorded()
         {
-            Assert.That(_packageTreeCrawler.MetaData.Count, Is.GreaterThan(0));
+            Assert.That(_packageTreeSpider.MetaData.Count, Is.GreaterThan(0));
+
+            Assert.That(_packageTreeSpider.MetaData[0].MetaData.Count, Is.GreaterThan(0));
         }
     }
 }
