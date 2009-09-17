@@ -69,8 +69,5 @@ namespace Horn.Core.Dsl
 
             return configReader.BuildMetaData;
         }
-
-
-
     }
 }
