@@ -17,7 +17,12 @@ namespace horn.services.core.Value
 
             Version = version;
 
-            MetaData = buildMetaData.ProjectInfo;
+            MetaData = new Dictionary<string, object>();
+
+            foreach (var projectInfo in buildMetaData.ProjectInfo)
+            {
+                MetaData.Add(projectInfo.Key, projectInfo.Value);   
+            }
         }
     }
 }
