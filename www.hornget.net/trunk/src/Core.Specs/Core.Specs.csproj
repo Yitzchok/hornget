@@ -58,8 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Categories\When loading a category data file that exists.cs" />
-    <Compile Include="Model\Packages\When loading a package data file that exists.cs" />
+    <Compile Include="Model\Categories\CategoryLoaderSpecs.cs" />
+    <Compile Include="Model\CategoryLocating\PackageLocatorSpecs.cs" />
+    <Compile Include="Model\PackageLocating\PackageLocatorSpecs.cs" />
+    <Compile Include="Model\Packages\PackageLoaderSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,12 +71,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\Categories\TestData\ValidCategoryData.xml">
+    <Content Include="Model\TestData\Packages\ORM\NHibernate\nhibernate-2-1.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Model\Packages\TestData\ValidPackageData.xml">
+    <Content Include="Model\TestData\Packages\ORM\NHibernate\nhibernate.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Model\TestData\ValidCategoryData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Model\TestData\ValidPackageData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Web\Routing\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

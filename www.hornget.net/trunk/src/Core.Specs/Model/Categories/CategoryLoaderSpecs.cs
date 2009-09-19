@@ -6,26 +6,24 @@ using Machine.Specifications;
 namespace Core.Specs.Model.Categories
 {
     [Subject(typeof(CategoryLoader), "Loading category data")]
-    public class When_loading_a_category_data_file_that_exists
+    public class when_loading_a_category_data_file_that_exists
     {
         static CategoryLoader _categoryLoader;
         static Category _category;
-        static string _dataPath;
+        static string _filePath;
 
         Establish context = () =>
         {
-            _dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "model/categories/testdata/");
-            _categoryLoader = new CategoryLoader(_dataPath);
+            _filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "model/testdata/ValidCategoryData.xml");
+            _categoryLoader = new CategoryLoader();
         };
 
         Because of = () =>
         {
-            _category = _categoryLoader.Load("ValidCategoryData.xml");
+            _category = _categoryLoader.Load(_filePath);
         };
 
-        It should_look_in_the_correct_location_for_the_category_data_files = () => _categoryLoader.DataDirectory.ShouldEqual(_dataPath);
-
-        It should_load_the_correct_package_file = () =>
+        It should_load_the_correct_category_file = () =>
         {
             _category.Name.ShouldEqual("ORM");
             _category.Url.ShouldEqual("orm");

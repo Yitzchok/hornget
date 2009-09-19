@@ -48,8 +48,12 @@
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\CategoryLoader.cs" />
     <Compile Include="Model\File.cs" />
+    <Compile Include="Model\Meta.cs" />
     <Compile Include="Model\Package.cs" />
     <Compile Include="Model\PackageLoader.cs" />
+    <Compile Include="Model\PackageLocator.cs" />
+    <Compile Include="Model\PackageLocatorResult.cs" />
+    <Compile Include="Model\PackagesExtensionMethods.cs" />
     <Compile Include="Model\XmlToObjectLoaderBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

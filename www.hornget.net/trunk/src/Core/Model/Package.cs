@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -10,17 +9,15 @@ namespace Core.Model
         public Package()
         {
             Contents = new List<File>();
+            Meta = new Meta();
         }
 
         public string Category { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
         public string Description { get; set; }
-        public string Notes { get; set; }
-        public string ForumUrl { get; set; }
-        public string HomepageUrl { get; set; }
         public string Version { get; set; }
-        public DateTime Created { get; set; }
+        public Meta Meta { get; set; }
         public string FileName { get; set; }
 
         [XmlArray(ElementName = "Contents")]
