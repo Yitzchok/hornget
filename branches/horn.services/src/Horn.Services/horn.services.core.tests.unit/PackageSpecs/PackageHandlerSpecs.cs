@@ -45,7 +45,7 @@ namespace Horn.Services.Core.Tests.Unit.PackageSpecs
         [Test]
         public void Then_all_the_package_data_is_recorded()
         {
-            Assert.That(_packageCreatedHandler.MetaData.Count, Is.EqualTo(4));
+            Assert.That(_packageCreatedHandler.MetaData.Count, Is.EqualTo(7));
 
             Assert.That(_packageCreatedHandler.MetaData[0].Version, Is.EqualTo("1.2.10"));
 

@@ -100,9 +100,15 @@
   <ItemGroup>
     <Content Include="TestFiles\Descriptors\.horn\loggers\log4net\log4net-1.2.10.boo" />
     <Content Include="TestFiles\Descriptors\.horn\loggers\log4net\log4net.boo" />
+    <Content Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhcontrib\nhibernate.caches\nhibernate.caches.boo" />
+    <Content Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhcontrib\nhibernate.linq\nhibernate.linq-2.1.boo" />
+    <Content Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhcontrib\nhibernate.linq\nhibernate.linq.boo" />
     <Content Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhibernate-2.1.boo" />
     <Content Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhibernate.boo" />
     <Content Include="TestFiles\Xml\PackageData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhcontrib\nhibernate.caches\patch\default.build" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
