@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Horn.Core.Dsl;
 
@@ -11,11 +12,16 @@ namespace horn.services.core.Value
 
         public string Version { get; set; }
 
-        public BuildMetaDataValue(IBuildMetaData buildMetaData, string version)
+        public bool IsTrunk
+        {
+            get { return Version == "trunk"; }
+        }
+
+        public BuildMetaDataValue(IBuildMetaData buildMetaData)
         {
             Name = buildMetaData.InstallName;
 
-            Version = version;
+            Version = buildMetaData.Version;
 
             MetaData = new Dictionary<string, object>();
 

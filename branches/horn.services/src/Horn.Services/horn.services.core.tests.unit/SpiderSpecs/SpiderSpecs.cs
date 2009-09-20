@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using Horn.Core.Dsl;
 using Horn.Core.SCM;
 using Horn.Services.Core.Spiders;
@@ -10,7 +11,7 @@ using Rhino.Mocks;
 
 namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 {
-    public class When_horn_scans_one_package_folder : ContextSpecification
+    public class When_package_tree_is_scanned : ContextSpecification
     {
         private PackageTreeSpider _packageTreeSpider;
 
@@ -43,11 +44,16 @@ namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
         }
 
         [Test]
-        public void Then_the_package_meta_is_recorded()
+        public void Then_all_the_package_data_is_recorded()
         {
-            Assert.That(_packageTreeSpider.MetaData.Count, Is.GreaterThan(0));
+            Assert.That(_packageTreeSpider.MetaData.Count, Is.EqualTo(4));
 
-            Assert.That(_packageTreeSpider.MetaData[0].MetaData.Count, Is.GreaterThan(0));
+            Assert.That(_packageTreeSpider.MetaData[0].Version, Is.EqualTo("1.2.10"));
+
+            var log4netTrunk = _packageTreeSpider.MetaData[1];
+
+            Assert.That(log4netTrunk.Name, Is.EqualTo("log4net"));
+            Assert.That(log4netTrunk.IsTrunk, Is.True);            
         }
     }
 }

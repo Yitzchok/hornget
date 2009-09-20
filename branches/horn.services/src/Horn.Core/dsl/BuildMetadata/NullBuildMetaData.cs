@@ -54,6 +54,12 @@ namespace Horn.Core.Dsl
             set { throw new NotImplementedException(); }
         }
 
+        public string Version
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
         public SourceControl SourceControl
         {
             get { throw new System.NotImplementedException(); }

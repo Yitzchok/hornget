@@ -238,7 +238,7 @@ namespace Horn.Core.PackageStructure
             WorkingDirectory.Delete(true);
         }
 
-        public IBuildMetaData GetBuildMetaData()
+        public virtual IBuildMetaData GetBuildMetaData()
         {
             return GetBuildMetaData(this);
         }
@@ -326,6 +326,26 @@ namespace Horn.Core.PackageStructure
             return (WorkingDirectory.GetFiles("horn.*", SearchOption.AllDirectories).Length);
         }
 
+        public virtual List<IBuildMetaData> GetAllPackageMetaData()
+        {
+            var metaDataList = new List<IBuildMetaData>();
+
+            var reader = IoC.Resolve<IBuildConfigReader>();
+
+            foreach (var buildFile in CurrentDirectory.GetFiles("*.boo"))
+            {
+                var buildFileResolver = new BuildFileResolver().Resolve(CurrentDirectory, Path.GetFileNameWithoutExtension(buildFile.FullName));
+
+                var buildMetaData = reader.SetDslFactory(this).GetBuildMetaData(this, Path.GetFileNameWithoutExtension(buildFileResolver.BuildFile));
+
+                buildMetaData.Version = buildFileResolver.Version;
+
+                metaDataList.Add(buildMetaData);
+            }
+
+            return metaDataList;
+        }
+
         private IBuildMetaData GetBuildMetaData(IPackageTree packageTree)
         {
             if (BuildMetaData != null)
@@ -336,6 +356,8 @@ namespace Horn.Core.PackageStructure
             var reader = IoC.Resolve<IBuildConfigReader>();
 
             BuildMetaData = reader.SetDslFactory(packageTree).GetBuildMetaData(packageTree, Path.GetFileNameWithoutExtension(buildFileResolver.BuildFile));
+
+            BuildMetaData.Version = buildFileResolver.Version;
 
             return BuildMetaData;
         }

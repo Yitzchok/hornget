@@ -23,6 +23,8 @@ namespace Horn.Spec.Framework.Stubs
 
         public SourceControl SourceControl { get; set; }
 
+        public string Version { get; set; }
+
         public BuildMetaDataStub(Core.BuildEngines.BuildEngine buildEngine, SourceControl sourceControl)
         {
             BuildEngine = buildEngine;

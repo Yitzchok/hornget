@@ -23,6 +23,8 @@ namespace Horn.Core.Dsl
 
         public SourceControl SourceControl { get; set; }
 
+        public string Version { get; set; }
+
         public BuildMetaData()
         {
             ProjectInfo = new Dictionary<string, object>();

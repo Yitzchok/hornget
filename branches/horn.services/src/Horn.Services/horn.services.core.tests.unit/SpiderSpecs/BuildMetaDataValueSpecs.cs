@@ -21,12 +21,14 @@ namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 
             _buildMetaData.InstallName = "Nhibernate";
 
+            _buildMetaData.Version = "trunk";
+
             _buildMetaData.ProjectInfo.Add("forum", "http://groups.google.co.uk/group/nhusers?hl=en");
         }
 
         protected override void because()
         {            
-            _buildMetaDataValue = new BuildMetaDataValue(_buildMetaData, "trunk");
+            _buildMetaDataValue = new BuildMetaDataValue(_buildMetaData);
         }
 
         [Test]

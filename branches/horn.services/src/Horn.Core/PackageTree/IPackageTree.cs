@@ -8,19 +8,35 @@ namespace Horn.Core.PackageStructure
 {
     public interface IPackageTree : IComposite<IPackageTree>
     {
-        event BuildNodeCreatedHandler BuildNodeCreated;
-
         string BuildFile { get; }
 
         void BuildTree(IPackageTree parent, DirectoryInfo directory);
 
         IBuildMetaData BuildMetaData { get; }
 
+        event BuildNodeCreatedHandler BuildNodeCreated;
+
+        List<IPackageTree> BuildNodes();
+
+        void CreateRequiredDirectories();
+
         DirectoryInfo CurrentDirectory { get; }
+
+        void DeleteWorkingDirectory();
 
         bool Exists { get; }
 
         string FullName { get; }
+
+        List<IBuildMetaData> GetAllPackageMetaData();
+
+        IBuildMetaData GetBuildMetaData();
+
+        IBuildMetaData GetBuildMetaData(string packageName);
+
+        IRevisionData GetRevisionData();
+
+        IPackageTree GetRootPackageTree(DirectoryInfo rootFolder);
 
         bool IsAversionRequest { get; }
 
@@ -34,40 +50,26 @@ namespace Horn.Core.PackageStructure
 
         DirectoryInfo OutputDirectory { get; }
 
+        void PatchPackage();
+
         DirectoryInfo PatchDirectory { get; }
 
         bool PatchExists { get; }
 
         DirectoryInfo Result { get; }
 
-        IPackageTree Root { get; }
-
-        FileInfo Sn { get; }
-
-        DirectoryInfo WorkingDirectory { get; }
-
-        string Version { get; set; }
-
-        void CreateRequiredDirectories();
-
-        void DeleteWorkingDirectory();
-
-        List<IPackageTree> BuildNodes();
-
-        IBuildMetaData GetBuildMetaData();
-
-        IBuildMetaData GetBuildMetaData(string packageName);
-
-        IRevisionData GetRevisionData();
-
-        IPackageTree GetRootPackageTree(DirectoryInfo rootFolder);
-
-        void PatchPackage();
-
         IPackageTree RetrievePackage(string packageName);
 
         IPackageTree RetrievePackage(Dependency dependency);
 
         IPackageTree RetrievePackage(ICommandArgs commandArgs);
+
+        IPackageTree Root { get; }
+
+        FileInfo Sn { get; }
+
+        string Version { get; set; }
+
+        DirectoryInfo WorkingDirectory { get; }
     }
 }
