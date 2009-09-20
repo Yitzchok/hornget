@@ -79,8 +79,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SpiderSpecs\BuildMetaDataValueSpecs.cs" />
-    <Compile Include="SpiderSpecs\SpiderSpecs.cs" />
+    <Compile Include="PackageSpecs\BuildMetaDataValueSpecs.cs" />
+    <Compile Include="PackageSpecs\SpiderSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
