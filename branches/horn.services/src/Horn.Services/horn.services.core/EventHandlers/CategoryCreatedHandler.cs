@@ -29,7 +29,7 @@ namespace Horn.Services.Core.EventHandlers
                 return;
             }
 
-            var parent = Categories.Where(x => x.Name == packageTreeNode.Parent.Name).FirstOrDefault();
+            var parent = GetCategory(Categories, packageTreeNode.Name);
 
             if(parent == null)
             {
@@ -63,6 +63,9 @@ namespace Horn.Services.Core.EventHandlers
                 }
 
                 ret = GetCategory(category.Categories, name);
+
+                if(ret != null)
+                    return ret;
             }
 
             return ret;

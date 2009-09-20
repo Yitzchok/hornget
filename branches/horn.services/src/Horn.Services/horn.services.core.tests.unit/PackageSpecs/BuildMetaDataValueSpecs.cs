@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Horn.Core.BuildEngines;
 using Horn.Core.Dsl;
@@ -7,7 +6,7 @@ using Horn.Spec.Framework;
 using Horn.Spec.Framework.helpers;
 using NUnit.Framework;
 
-namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
+namespace Horn.Services.Core.Tests.Unit.PackageSpecs
 {
     public class When_mapping_a_build_package_meta_data_to_a_value_object : ContextSpecification 
     {

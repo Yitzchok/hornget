@@ -28,6 +28,19 @@ namespace Horn.Core.extensions
             CopyDirectories(source, destination, deleteDestination);
         }
 
+        public static bool ContainsIllegalFiles(this DirectoryInfo directory)
+        {
+            string[] fileTypes = new[] { "*.cs", "*.dll", "*.exe", "*.config", "*.db" };
+
+            foreach (var fileType in fileTypes)
+            {
+                if (directory.GetFiles(fileType).Length > 0)
+                    return true;
+            }
+
+            return false;
+        }
+
         public static FileSystemInfo GetExportPath(string fullPath)
         {
             FileSystemInfo exportPath;

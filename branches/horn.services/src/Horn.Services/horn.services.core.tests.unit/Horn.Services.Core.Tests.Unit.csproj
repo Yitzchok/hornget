@@ -82,6 +82,7 @@
     <Compile Include="CategorySpecs\CategorySpecs.cs" />
     <Compile Include="PackageSpecs\BuildMetaDataValueSpecs.cs" />
     <Compile Include="PackageSpecs\PackageHandlerSpecs.cs" />
+    <Compile Include="PackageTreeBuilderSpecs\PackageTreeBuilderSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

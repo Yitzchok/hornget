@@ -7,6 +7,7 @@ using Horn.Core.Dsl;
 using Horn.Core.extensions;
 using Horn.Core.Tree.MetaDataSynchroniser;
 using Horn.Core.Utils.CmdLine;
+using log4net;
 
 namespace Horn.Core.PackageStructure
 {
@@ -21,10 +22,12 @@ namespace Horn.Core.PackageStructure
         private IList<IPackageTree> children;
         private DirectoryInfo patchDirectory;
         private DirectoryInfo workingDirectory;
-        public readonly static string[] reservedDirectoryNames = new[]{"working", "build_root_dir"};
+        public static readonly string[] reservedDirectoryNames = new[] { "working", "output", ".svn", "patch", "lib", "debug", "app_data" };
         public readonly static string[] libraryNodes = new[] { "lib", "debug", "buildengines", "output" };
 
-        public readonly static string[] categoriesNotToRaise = new []{"working", "output", "patch", "lib", "debug", "result", "buildengines"};
+        private static readonly ILog Log = LogManager.GetLogger(typeof(PackageTree));
+
+        public static readonly string[] categoriesNotToRaise = new[] { "working", "output", "patch", "lib", "debug", "result", "buildengines", "Nant", ".svn", "build", "app_data" };
 
         public virtual string BuildFile{ get; set; }
 
@@ -55,7 +58,7 @@ namespace Horn.Core.PackageStructure
             foreach (var child in directory.GetDirectories())
             {
                 if (IsReservedDirectory(child))
-                    return;
+                    continue;
 
                 var newNode = CreatePackageTreeNode(child);
 
@@ -309,13 +312,55 @@ namespace Horn.Core.PackageStructure
 
         public virtual void OnCategoryCreated(IPackageTree packageTreeNode)
         {
-            var result = categoriesNotToRaise.Where(x => x.ToLower().Equals(packageTreeNode.CurrentDirectory.Name.ToLower())).Count();
-
-            if (result > 0)
+            if (packageTreeNode.CurrentDirectory.ContainsIllegalFiles())
                 return;
+
+            if (CannotAddThisDirectory(packageTreeNode, categoriesNotToRaise))
+                return;
+
+            Console.WriteLine(packageTreeNode.CurrentDirectory.Name);
 
             if (CategoryCreated != null)
                 CategoryCreated(packageTreeNode);
+        }
+
+        private bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames)
+        {
+            var directory = packageTreeNode.CurrentDirectory;
+
+            var result = reservedNames.Where(x => x.ToLower().Equals(directory.Name.ToLower())).Count();
+
+            if (result > 0)
+                return true;
+
+            if (directory.Name.Length <= 8)
+                return DirectoryIsChildOfReservedDirectory(packageTreeNode, reservedNames);
+
+            if (directory.Name.Substring(0, 8).ToLower() == "working-")
+                return true;
+
+            return DirectoryIsChildOfReservedDirectory(packageTreeNode, reservedNames);
+        }
+
+        private bool DirectoryIsChildOfReservedDirectory(IPackageTree packageTreeNode, string[] reservedDirectories)
+        {
+            var parent = packageTreeNode.Parent;
+
+            while (parent != null)
+            {
+                if (reservedDirectories.Where(x => x.ToLower() == parent.CurrentDirectory.Name.ToLower()).Count() > 0)
+                    return true;
+
+                if (parent.CurrentDirectory.Name.Length > 8)
+                {
+                    if (parent.CurrentDirectory.Name.Substring(0, 8).ToLower() == "working-")
+                        return true;
+                }
+
+                parent = parent.Parent;
+            }
+
+            return false;
         }
 
         private IPackageTree RetrievePackage(string packageName, string version)
@@ -348,13 +393,20 @@ namespace Horn.Core.PackageStructure
 
             foreach (var buildFile in CurrentDirectory.GetFiles("*.boo"))
             {
-                var buildFileResolver = new BuildFileResolver().Resolve(CurrentDirectory, Path.GetFileNameWithoutExtension(buildFile.FullName));
+                try
+                {
+                    var buildFileResolver = new BuildFileResolver().Resolve(CurrentDirectory, Path.GetFileNameWithoutExtension(buildFile.FullName));
 
-                var buildMetaData = reader.SetDslFactory(this).GetBuildMetaData(this, Path.GetFileNameWithoutExtension(buildFileResolver.BuildFile));
+                    var buildMetaData = reader.SetDslFactory(this).GetBuildMetaData(this, Path.GetFileNameWithoutExtension(buildFileResolver.BuildFile));
 
-                buildMetaData.Version = buildFileResolver.Version;
+                    buildMetaData.Version = buildFileResolver.Version;
 
-                metaDataList.Add(buildMetaData);
+                    metaDataList.Add(buildMetaData);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex);
+                }
             }
 
             return metaDataList;
@@ -405,7 +457,7 @@ namespace Horn.Core.PackageStructure
 
         private bool IsReservedDirectory(DirectoryInfo child)
         {
-            return reservedDirectoryNames.Contains(child.Name.ToLower());
+            return (reservedDirectoryNames.Where(x => x.ToLower() == child.Name.ToLower()).Count() > 0);
         }
 
         private bool DirectoryIsBuildNode(DirectoryInfo directory)
