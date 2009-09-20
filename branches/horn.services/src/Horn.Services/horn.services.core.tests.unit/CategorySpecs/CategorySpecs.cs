@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Horn.Core.Dsl;
+using Horn.Core.extensions;
 using Horn.Core.SCM;
 using Horn.Services.Core.EventHandlers;
 using horn.services.core.Value;
@@ -59,6 +61,8 @@ namespace Horn.Services.Core.Tests.Unit.CategorySpecs
             Assert.That(log4net.Packages[0].Name, Is.EqualTo("log4net"));
 
             Assert.That(log4net.Packages[0].Version, Is.EqualTo("1.2.10"));
+
+            var xml = _categoryCreatedHandler.Categories.ToDataContractXml<List<Category>>();
         }
     }
 }

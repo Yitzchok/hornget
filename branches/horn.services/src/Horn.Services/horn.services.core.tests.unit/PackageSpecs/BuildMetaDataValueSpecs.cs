@@ -11,7 +11,7 @@ namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 {
     public class When_mapping_a_build_package_meta_data_to_a_value_object : ContextSpecification 
     {
-        private BuildMetaDataValue _buildMetaDataValue;
+        private Package _package;
 
         private IBuildMetaData _buildMetaData;
 
@@ -28,17 +28,17 @@ namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 
         protected override void because()
         {            
-            _buildMetaDataValue = new BuildMetaDataValue(_buildMetaData);
+            _package = new Package(_buildMetaData);
         }
 
         [Test]
         public void Then_the_value_object_is_created()
         {
-            Assert.That(_buildMetaDataValue.Name, Is.EqualTo("Nhibernate"));
+            Assert.That(_package.Name, Is.EqualTo("Nhibernate"));
 
-            Assert.That(_buildMetaDataValue.Version, Is.EqualTo("trunk"));
+            Assert.That(_package.Version, Is.EqualTo("trunk"));
 
-            Assert.That(_buildMetaDataValue.MetaData.Count, Is.GreaterThan(0));
+            Assert.That(_package.MetaData.Count, Is.GreaterThan(0));
         }
     }
 }

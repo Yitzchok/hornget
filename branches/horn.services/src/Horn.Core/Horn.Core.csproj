@@ -104,6 +104,9 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -116,6 +119,7 @@
     <Compile Include="BuildEngines\BuildTools\PhantomBuildTool.cs" />
     <Compile Include="BuildEngines\Process\CommandLineRunner.cs" />
     <Compile Include="exceptions\BuildFailedException.cs" />
+    <Compile Include="extensions\SerialisationExtensions.cs" />
     <Compile Include="PackageTree\BuildNodeCreatedHandler.cs" />
     <Compile Include="SourceControl\GitSourceControl.cs" />
     <Compile Include="BuildEngines\Process\IShellRunner.cs" />

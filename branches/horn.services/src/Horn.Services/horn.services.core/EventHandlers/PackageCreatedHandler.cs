@@ -10,7 +10,7 @@ namespace Horn.Services.Core.EventHandlers
     {
         private readonly IPackageTree _packageTree;
 
-        public List<BuildMetaDataValue> MetaData { get; set; }
+        public List<Package> MetaData { get; set; }
 
         private void PackageTree_PackageTreeCreated(IPackageTree packagetree)
         {
@@ -18,13 +18,13 @@ namespace Horn.Services.Core.EventHandlers
 
             foreach (var metaData in buildMetaDataList)
             {
-                MetaData.Add(new BuildMetaDataValue(metaData));
+                MetaData.Add(new Package(metaData));
             }
         }
 
         public PackageCreatedHandler(DirectoryInfo hornDirectory)
         {
-            MetaData = new List<BuildMetaDataValue>();
+            MetaData = new List<Package>();
 
             _packageTree = new PackageTree();
 
