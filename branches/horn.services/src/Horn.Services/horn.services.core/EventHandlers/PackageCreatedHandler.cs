@@ -4,9 +4,9 @@ using System.IO;
 using Horn.Core.PackageStructure;
 using horn.services.core.Value;
 
-namespace Horn.Services.Core.Spiders
+namespace Horn.Services.Core.EventHandlers
 {
-    public class PackageTreeSpider
+    public class PackageCreatedHandler
     {
         private IPackageTree _packageTree;
 
@@ -22,7 +22,7 @@ namespace Horn.Services.Core.Spiders
             }
         }
 
-        public PackageTreeSpider(DirectoryInfo hornDirectory)
+        public PackageCreatedHandler(DirectoryInfo hornDirectory)
         {
             MetaData = new List<BuildMetaDataValue>();
 

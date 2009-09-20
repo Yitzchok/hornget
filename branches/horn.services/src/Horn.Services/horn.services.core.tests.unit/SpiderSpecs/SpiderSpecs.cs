@@ -3,7 +3,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Horn.Core.Dsl;
 using Horn.Core.SCM;
-using Horn.Services.Core.Spiders;
+using Horn.Services.Core.EventHandlers;
 using Horn.Spec.Framework;
 using Horn.Spec.Framework.Stubs;
 using NUnit.Framework;
@@ -13,7 +13,7 @@ namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 {
     public class When_package_tree_is_scanned : ContextSpecification
     {
-        private PackageTreeSpider _packageTreeSpider;
+        private PackageCreatedHandler _packageCreatedHandler;
 
         private DirectoryInfo _hornDirectory;
 
@@ -40,17 +40,17 @@ namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
 
         protected override void because()
         {
-            _packageTreeSpider = new PackageTreeSpider(_hornDirectory);
+            _packageCreatedHandler = new PackageCreatedHandler(_hornDirectory);
         }
 
         [Test]
         public void Then_all_the_package_data_is_recorded()
         {
-            Assert.That(_packageTreeSpider.MetaData.Count, Is.EqualTo(4));
+            Assert.That(_packageCreatedHandler.MetaData.Count, Is.EqualTo(4));
 
-            Assert.That(_packageTreeSpider.MetaData[0].Version, Is.EqualTo("1.2.10"));
+            Assert.That(_packageCreatedHandler.MetaData[0].Version, Is.EqualTo("1.2.10"));
 
-            var log4netTrunk = _packageTreeSpider.MetaData[1];
+            var log4netTrunk = _packageCreatedHandler.MetaData[1];
 
             Assert.That(log4netTrunk.Name, Is.EqualTo("log4net"));
             Assert.That(log4netTrunk.IsTrunk, Is.True);            
