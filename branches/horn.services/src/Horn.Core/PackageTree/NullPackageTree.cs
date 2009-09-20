@@ -146,6 +146,14 @@ namespace Horn.Core.PackageStructure
             throw new NullTreeException();
         }
 
+        public event CategoryNodeCreated CategoryCreated;
+
+        public virtual void OnCategoryCreated(IPackageTree packageTreeNode)
+        {
+            if (CategoryCreated != null)
+                CategoryCreated(packageTreeNode);
+        }
+
         public List<IBuildMetaData> GetAllPackageMetaData()
         {
             throw new NotImplementedException();

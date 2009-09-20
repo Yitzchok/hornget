@@ -18,6 +18,8 @@ namespace Horn.Core.PackageStructure
 
         List<IPackageTree> BuildNodes();
 
+        event CategoryNodeCreated CategoryCreated;
+
         void CreateRequiredDirectories();
 
         DirectoryInfo CurrentDirectory { get; }

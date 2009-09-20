@@ -8,7 +8,7 @@ namespace Horn.Services.Core.EventHandlers
 {
     public class PackageCreatedHandler
     {
-        private IPackageTree _packageTree;
+        private readonly IPackageTree _packageTree;
 
         public List<BuildMetaDataValue> MetaData { get; set; }
 

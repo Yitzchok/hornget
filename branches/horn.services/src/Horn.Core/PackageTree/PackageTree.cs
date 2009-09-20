@@ -13,6 +13,7 @@ namespace Horn.Core.PackageStructure
     public class PackageTree : IPackageTree
     {
         public event BuildNodeCreatedHandler BuildNodeCreated;
+        public event CategoryNodeCreated CategoryCreated;
 
         private readonly IMetaDataSynchroniser metaDataSynchroniser;
         private DirectoryInfo result;
@@ -20,8 +21,10 @@ namespace Horn.Core.PackageStructure
         private IList<IPackageTree> children;
         private DirectoryInfo patchDirectory;
         private DirectoryInfo workingDirectory;
-        private readonly static string[] reservedDirectoryNames = new[]{"working", "build_root_dir"};
-        private static readonly string[] libraryNodes = new[] { "lib", "debug", "buildengines", "output"};
+        public readonly static string[] reservedDirectoryNames = new[]{"working", "build_root_dir"};
+        public readonly static string[] libraryNodes = new[] { "lib", "debug", "buildengines", "output" };
+
+        public readonly static string[] categoriesNotToRaise = new []{"working", "output", "patch", "lib", "debug", "result", "buildengines"};
 
         public virtual string BuildFile{ get; set; }
 
@@ -304,6 +307,17 @@ namespace Horn.Core.PackageStructure
                 BuildNodeCreated(packageTree);
         }
 
+        public virtual void OnCategoryCreated(IPackageTree packageTreeNode)
+        {
+            var result = categoriesNotToRaise.Where(x => x.ToLower().Equals(packageTreeNode.CurrentDirectory.Name.ToLower())).Count();
+
+            if (result > 0)
+                return;
+
+            if (CategoryCreated != null)
+                CategoryCreated(packageTreeNode);
+        }
+
         private IPackageTree RetrievePackage(string packageName, string version)
         {
             var nodes = Root.GetAllPackages()
@@ -367,13 +381,21 @@ namespace Horn.Core.PackageStructure
             var newNode = new PackageTree();
 
             newNode.BuildNodeCreated += NewNode_BuildNodeCreated;
+            newNode.CategoryCreated += new CategoryNodeCreated(NewNode_CategoryCreated);
 
             newNode.BuildTree(this, child);
 
-            if(DirectoryIsBuildNode(child))
-                OnBuildNodeCreated(newNode);
+            OnCategoryCreated(newNode);
+
+            if (DirectoryIsBuildNode(child))
+                OnBuildNodeCreated(newNode);            
 
             return new PackageTree(child, this);
+        }
+
+        private void NewNode_CategoryCreated(IPackageTree packageTreeNode)
+        {
+            OnCategoryCreated(packageTreeNode);
         }
 
         private void NewNode_BuildNodeCreated(IPackageTree packagetree)

@@ -158,6 +158,14 @@ namespace Horn.Spec.Framework.Stubs
             return new List<IPackageTree>{this};
         }
 
+        public event CategoryNodeCreated CategoryCreated;
+
+        public virtual void OnCategoryCreated(IPackageTree packageTreeNode)
+        {
+            if (CategoryCreated != null)
+                CategoryCreated(packageTreeNode);
+        }
+
         public List<IBuildMetaData> GetAllPackageMetaData()
         {
             throw new NotImplementedException();

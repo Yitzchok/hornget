@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategorySpecs\CategorySpecs.cs" />
     <Compile Include="PackageSpecs\BuildMetaDataValueSpecs.cs" />
     <Compile Include="PackageSpecs\PackageHandlerSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

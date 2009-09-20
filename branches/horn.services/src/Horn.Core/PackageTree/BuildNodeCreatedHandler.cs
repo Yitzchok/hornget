@@ -1,4 +1,8 @@
+using System.IO;
+
 namespace Horn.Core.PackageStructure
 {
-    public delegate void BuildNodeCreatedHandler(IPackageTree packageTree);
+    public delegate void BuildNodeCreatedHandler(IPackageTree packageTreeNode);
+
+    public delegate void CategoryNodeCreated(IPackageTree packageTreeNode);
 }
