@@ -22,11 +22,9 @@ namespace Horn.Services.Core.EventHandlers
             if(CategoryHasBeenAdded(packageTreeNode))
                 return;
 
-            var category = new Category(packageTreeNode);
-
             if(IsTopLevelNode(packageTreeNode))
             {
-                Categories.Add(category);
+                Categories.Add(new Category(packageTreeNode));
 
                 return;
             }
@@ -40,7 +38,7 @@ namespace Horn.Services.Core.EventHandlers
                 return;
             }
 
-            parent.Categories.Add(category);            
+            parent.Categories.Add(new Category(packageTreeNode));
         }
 
         private bool CategoryHasBeenAdded(IPackageTree packageTree)

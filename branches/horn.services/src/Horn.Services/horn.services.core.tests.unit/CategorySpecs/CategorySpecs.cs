@@ -52,9 +52,13 @@ namespace Horn.Services.Core.Tests.Unit.CategorySpecs
 
             Assert.That(category.Categories.Count, Is.EqualTo(1));
 
-            //Assert.That(category.Packages.Count, Is.EqualTo(1));
+            var log4net = category.Categories[0];
 
-            //Assert.That(category.Packages[0].Name, Is.EqualTo("log4net"));
+            Assert.That(log4net.Packages.Count, Is.EqualTo(2));
+
+            Assert.That(log4net.Packages[0].Name, Is.EqualTo("log4net"));
+
+            Assert.That(log4net.Packages[0].Version, Is.EqualTo("1.2.10"));
         }
     }
 }

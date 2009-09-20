@@ -11,13 +11,18 @@ namespace horn.services.core.Value
 
         public List<BuildMetaDataValue> Packages { get; set; }
 
-        public Category(IPackageTree packageTree)
+        public Category(IPackageTree packageTreeNode)
         {
             Categories = new List<Category>();
 
             Packages = new List<BuildMetaDataValue>();
 
-            Name = packageTree.Name;
+            Name = packageTreeNode.Name;
+
+            foreach (var buildMetaData in packageTreeNode.GetAllPackageMetaData())
+            {
+                Packages.Add(new BuildMetaDataValue(buildMetaData));
+            }
         }
     }
 }
