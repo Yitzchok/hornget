@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PackageSpecs\BuildMetaDataValueSpecs.cs" />
-    <Compile Include="PackageSpecs\SpiderSpecs.cs" />
+    <Compile Include="PackageSpecs\PackageHandlerSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

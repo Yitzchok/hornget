@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Text.RegularExpressions;
 using Horn.Core.Dsl;
 using Horn.Core.SCM;
 using Horn.Services.Core.EventHandlers;
@@ -9,7 +8,7 @@ using Horn.Spec.Framework.Stubs;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace Horn.Services.Core.Tests.Unit.SpiderSpecs
+namespace Horn.Services.Core.Tests.Unit.PackageSpecs
 {
     public class When_package_tree_is_scanned : ContextSpecification
     {
