@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Spiders\PackageTreeSpider.cs" />
+    <Compile Include="EventHandlers\PackageTreeSpider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Value\BuildMetaDataValue.cs" />
   </ItemGroup>
