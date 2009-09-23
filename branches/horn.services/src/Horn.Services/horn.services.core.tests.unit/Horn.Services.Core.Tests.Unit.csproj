@@ -80,8 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategorySpecs\CategorySpecs.cs" />
+    <Compile Include="Helpers\FileSystemHelper.cs" />
     <Compile Include="PackageSpecs\BuildMetaDataValueSpecs.cs" />
     <Compile Include="PackageSpecs\PackageHandlerSpecs.cs" />
+    <Compile Include="PackageTreeBuilderSpecs\BuilderSpecBase.cs" />
     <Compile Include="PackageTreeBuilderSpecs\PackageTreeBuilderSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -158,6 +158,11 @@ namespace Horn.Spec.Framework.Stubs
             return new List<IPackageTree>{this};
         }
 
+        public bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames)
+        {
+            throw new NotImplementedException();
+        }
+
         public event CategoryNodeCreated CategoryCreated;
 
         public virtual void OnCategoryCreated(IPackageTree packageTreeNode)

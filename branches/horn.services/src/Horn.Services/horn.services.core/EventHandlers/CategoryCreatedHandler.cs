@@ -9,6 +9,7 @@ namespace Horn.Services.Core.EventHandlers
 {
     public class CategoryCreatedHandler
     {
+        public static readonly string[] CategoriesNotToAdd = new[] { "working", "output", "patch", "lib", "debug", "result", "buildengines", "Nant", ".svn", "build", "app_data" };
         private readonly IPackageTree _packageTree;
 
         public List<Category> Categories { get; private set; }
@@ -20,6 +21,9 @@ namespace Horn.Services.Core.EventHandlers
             Console.WriteLine(packageTreeNode.Name);
 
             if(CategoryHasBeenAdded(packageTreeNode))
+                return;
+
+            if (packageTreeNode.CannotAddThisDirectory(packageTreeNode, CategoriesNotToAdd))
                 return;
 
             if(IsTopLevelNode(packageTreeNode))
@@ -87,15 +91,10 @@ namespace Horn.Services.Core.EventHandlers
                 {
                     var orphan = orphanedCategories[i];
 
-                    Console.WriteLine(orphan.Name);
-                    Console.WriteLine(orphan.Parent.Name);
-
                     var parent = GetCategory(Categories, orphan.Parent.Name);
 
                     if(parent == null)
                         continue;
-
-                    Console.WriteLine(parent.Name);
 
                     parent.Categories.Add(new Category(orphan));
 

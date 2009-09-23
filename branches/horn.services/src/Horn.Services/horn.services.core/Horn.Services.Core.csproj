@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\IPackageTreeBuilder.cs" />
+    <Compile Include="Builder\PackageTreeBuilder.cs" />
     <Compile Include="EventHandlers\CategoryCreatedHandler.cs" />
     <Compile Include="EventHandlers\PackageCreatedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

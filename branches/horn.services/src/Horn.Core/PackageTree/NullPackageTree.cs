@@ -42,7 +42,7 @@ namespace Horn.Core.PackageStructure
 
         public void BuildTree(IPackageTree parent, DirectoryInfo directory)
         {
-            throw new NotImplementedException();
+            throw new NullTreeException();
         }
 
         public IBuildMetaData BuildMetaData
@@ -146,6 +146,11 @@ namespace Horn.Core.PackageStructure
             throw new NullTreeException();
         }
 
+        public bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames)
+        {
+            throw new NullTreeException();
+        }
+
         public event CategoryNodeCreated CategoryCreated;
 
         public virtual void OnCategoryCreated(IPackageTree packageTreeNode)
@@ -156,7 +161,7 @@ namespace Horn.Core.PackageStructure
 
         public List<IBuildMetaData> GetAllPackageMetaData()
         {
-            throw new NotImplementedException();
+            throw new NullTreeException();
         }
 
         public IBuildMetaData GetBuildMetaData()
@@ -181,7 +186,7 @@ namespace Horn.Core.PackageStructure
 
         public void PatchPackage()
         {
-            throw new NotImplementedException();
+            throw new NullTreeException();
         }
 
         public IPackageTree RetrievePackage(string packageName)

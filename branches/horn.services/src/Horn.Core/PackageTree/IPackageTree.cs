@@ -18,6 +18,8 @@ namespace Horn.Core.PackageStructure
 
         List<IPackageTree> BuildNodes();
 
+        bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames);
+
         event CategoryNodeCreated CategoryCreated;
 
         void CreateRequiredDirectories();

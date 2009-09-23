@@ -27,7 +27,7 @@ namespace Horn.Core.PackageStructure
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(PackageTree));
 
-        public static readonly string[] categoriesNotToRaise = new[] { "working", "output", "patch", "lib", "debug", "result", "buildengines", "Nant", ".svn", "build", "app_data" };
+        
 
         public virtual string BuildFile{ get; set; }
 
@@ -224,6 +224,24 @@ namespace Horn.Core.PackageStructure
             return result;
         }
 
+        public virtual bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames)
+        {
+            var directory = packageTreeNode.CurrentDirectory;
+
+            var result = reservedNames.Where(x => x.ToLower().Equals(directory.Name.ToLower())).Count();
+
+            if (result > 0)
+                return true;
+
+            if (directory.Name.Length <= 8)
+                return DirectoryIsChildOfReservedDirectory(packageTreeNode, reservedNames);
+
+            if (directory.Name.Substring(0, 8).ToLower() == "working-")
+                return true;
+
+            return DirectoryIsChildOfReservedDirectory(packageTreeNode, reservedNames);
+        }
+
         public virtual void CreateRequiredDirectories()
         {
             WorkingDirectory = new DirectoryInfo(Path.Combine(CurrentDirectory.FullName, "Working"));
@@ -315,31 +333,8 @@ namespace Horn.Core.PackageStructure
             if (packageTreeNode.CurrentDirectory.ContainsIllegalFiles())
                 return;
 
-            if (CannotAddThisDirectory(packageTreeNode, categoriesNotToRaise))
-                return;
-
-            Console.WriteLine(packageTreeNode.CurrentDirectory.Name);
-
             if (CategoryCreated != null)
                 CategoryCreated(packageTreeNode);
-        }
-
-        private bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames)
-        {
-            var directory = packageTreeNode.CurrentDirectory;
-
-            var result = reservedNames.Where(x => x.ToLower().Equals(directory.Name.ToLower())).Count();
-
-            if (result > 0)
-                return true;
-
-            if (directory.Name.Length <= 8)
-                return DirectoryIsChildOfReservedDirectory(packageTreeNode, reservedNames);
-
-            if (directory.Name.Substring(0, 8).ToLower() == "working-")
-                return true;
-
-            return DirectoryIsChildOfReservedDirectory(packageTreeNode, reservedNames);
         }
 
         private bool DirectoryIsChildOfReservedDirectory(IPackageTree packageTreeNode, string[] reservedDirectories)
