@@ -1,7 +1,7 @@
+using Horn.Core.Utils.IoC;
 
 public static class IoC
 {
-
     private static IDependencyResolver dependencyResolver;
 
 
@@ -19,14 +19,4 @@ public static class IoC
     {
         return dependencyResolver.Resolve<T>(key);
     }
-
-
-
-}
-
-public interface IDependencyResolver
-{
-    T Resolve<T>();
-
-    T Resolve<T>(string key);
 }

@@ -7,6 +7,7 @@ using Horn.Core.PackageCommands;
 using Horn.Core.PackageStructure;
 using Horn.Core.SCM;
 using Horn.Core.Utils.CmdLine;
+using Horn.Core.Utils.IoC;
 using Horn.Spec.Framework.helpers;
 using Horn.Spec.Framework.Stubs;
 using Rhino.Mocks;

@@ -25,7 +25,7 @@ namespace Horn.Services.Core.Builder
         {
             this.metaDataSynchroniser = metaDataSynchroniser;
             this.fileSystemProvider = fileSystemProvider;
-            this.rootDirectory = root;
+            rootDirectory = root;
         }
     }
 }

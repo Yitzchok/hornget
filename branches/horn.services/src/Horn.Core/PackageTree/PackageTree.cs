@@ -26,9 +26,7 @@ namespace Horn.Core.PackageStructure
         public readonly static string[] libraryNodes = new[] { "lib", "debug", "buildengines", "output" };
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(PackageTree));
-
-        
-
+       
         public virtual string BuildFile{ get; set; }
 
         public virtual IBuildMetaData BuildMetaData { get; private set; }
@@ -452,7 +450,34 @@ namespace Horn.Core.PackageStructure
 
         private bool IsReservedDirectory(DirectoryInfo child)
         {
-            return (reservedDirectoryNames.Where(x => x.ToLower() == child.Name.ToLower()).Count() > 0);
+            string reservedDirectory =
+                reservedDirectoryNames.Where(x => x.ToLower() == child.Name.ToLower()).FirstOrDefault();
+
+            if (!string.IsNullOrEmpty(reservedDirectory))
+                return true;
+
+            return DirectoryIsChildOfReservedDirectory(child, reservedDirectoryNames);
+        }
+
+        private bool DirectoryIsChildOfReservedDirectory(DirectoryInfo directory, string[] reservedDirectories)
+        {
+            var parent = directory.Parent;
+
+            while (parent != null)
+            {
+                if (reservedDirectories.Where(x => x.ToLower() == parent.Name.ToLower()).Count() > 0)
+                    return true;
+
+                if (parent.Name.Length > 8)
+                {
+                    if (parent.Name.Substring(0, 8).ToLower() == "working-")
+                        return true;
+                }
+
+                parent = parent.Parent;
+            }
+
+            return false;
         }
 
         private bool DirectoryIsBuildNode(DirectoryInfo directory)

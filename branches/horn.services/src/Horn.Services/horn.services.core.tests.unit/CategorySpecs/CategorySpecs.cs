@@ -4,6 +4,7 @@ using System.IO;
 using Horn.Core.Dsl;
 using Horn.Core.extensions;
 using Horn.Core.SCM;
+using Horn.Core.Utils.IoC;
 using Horn.Services.Core.EventHandlers;
 using Horn.Services.Core.Tests.Unit.Helpers;
 using horn.services.core.Value;

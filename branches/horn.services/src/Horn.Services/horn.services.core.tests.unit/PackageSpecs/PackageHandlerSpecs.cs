@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Horn.Core.Dsl;
 using Horn.Core.SCM;
+using Horn.Core.Utils.IoC;
 using Horn.Services.Core.EventHandlers;
 using Horn.Spec.Framework;
 using Horn.Spec.Framework.Stubs;

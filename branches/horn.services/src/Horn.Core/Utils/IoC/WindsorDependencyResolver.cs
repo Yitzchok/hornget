@@ -94,7 +94,7 @@ namespace Horn.Core.Utils.IoC
 			innerContainer.Register(
 				Component.For<SourceControl>()
 							.ImplementedBy<SVNSourceControl>()
-							.Parameters(Parameter.ForKey("url").Eq(MetaDataSynchroniser.PACKAGE_TREE_URI))
+							.Parameters(Parameter.ForKey("url").Eq(MetaDataSynchroniser.PackageTreeUri))
 							.LifeStyle.Transient
 				);
 
