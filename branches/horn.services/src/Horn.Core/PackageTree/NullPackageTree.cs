@@ -131,11 +131,6 @@ namespace Horn.Core.PackageStructure
             set { throw new NullTreeException(); }
         }
 
-        public void CreateRequiredDirectories()
-        {
-            throw new NullTreeException();
-        }
-
         public void DeleteWorkingDirectory()
         {
             throw new NullTreeException();

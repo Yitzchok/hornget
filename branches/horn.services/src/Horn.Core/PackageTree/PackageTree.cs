@@ -22,12 +22,12 @@ namespace Horn.Core.PackageStructure
         private IList<IPackageTree> children;
         private DirectoryInfo patchDirectory;
         private DirectoryInfo workingDirectory;
-        public static readonly string[] reservedDirectoryNames = new[] { "working", "output", ".svn", "patch", "lib", "debug", "app_data" };
-        public readonly static string[] libraryNodes = new[] { "lib", "debug", "buildengines", "output" };
+        public readonly static string[] libraryNodes = new[] { "lib", "debug", "buildengines", "output", "working" };
+        public static readonly string[] reservedDirectoryNames = new[] { "buildengines", "result", "bin", "working", "output", ".svn", "patch", "lib", "debug", "app_data" };
 
         private static readonly ILog Log = LogManager.GetLogger(typeof(PackageTree));
-       
-        public virtual string BuildFile{ get; set; }
+
+        public virtual string BuildFile { get; set; }
 
         public virtual IBuildMetaData BuildMetaData { get; private set; }
 
@@ -46,22 +46,18 @@ namespace Horn.Core.PackageStructure
 
             CurrentDirectory = directory;
 
-            IsBuildNode = DirectoryIsBuildNode(directory);
-
-            if (IsBuildNode)
-            {
-                CreateRequiredDirectories();
-            }
-
             foreach (var child in directory.GetDirectories())
             {
                 if (IsReservedDirectory(child))
                     continue;
 
-                var newNode = CreatePackageTreeNode(child);
+                var newNode = new PackageTree(child, this);
 
                 children.Add(newNode);
             }
+
+            if (DirectoryIsBuildNode(CurrentDirectory))
+                CreateRequiredDirectories();
 
             if (parent == null)
             {
@@ -98,7 +94,13 @@ namespace Horn.Core.PackageStructure
             get { return string.IsNullOrEmpty(Version) == false; }
         }
 
-        public virtual bool IsBuildNode { get; private set; }
+        public virtual bool IsBuildNode
+        {
+            get
+            {
+                return DirectoryIsBuildNode(CurrentDirectory);
+            }
+        }
 
         public virtual bool IsRoot
         {
@@ -106,20 +108,6 @@ namespace Horn.Core.PackageStructure
         }
 
         public virtual string Name { get; private set; }
-
-        public virtual FileInfo Nant
-        {
-            get
-            {
-                //TODO: Find a less explicit way to find the nant.exe
-                var path = Path.Combine(Root.CurrentDirectory.FullName, "buildengines");
-                path = Path.Combine(path, "Nant");
-                path = Path.Combine(path, "Nant");
-                path = Path.Combine(path, "NAnt.exe");
-
-                return new FileInfo(path);
-            }
-        }
 
         public virtual DirectoryInfo OutputDirectory { get; private set; }
 
@@ -149,7 +137,7 @@ namespace Horn.Core.PackageStructure
             {
                 result = new DirectoryInfo(Path.Combine(Root.CurrentDirectory.FullName, "result"));
 
-                if(!result.Exists)
+                if (!result.Exists)
                     result.Create();
 
                 return result;
@@ -174,19 +162,6 @@ namespace Horn.Core.PackageStructure
             }
         }
 
-        public virtual FileInfo Sn
-        {
-            get
-            {
-                //TODO: Find a less explicit way to find the sn.exe
-                var path = Path.Combine(Root.CurrentDirectory.FullName, "buildengines");
-                path = Path.Combine(path, "Sn");
-                path = Path.Combine(path, "sn.exe");
-
-                return new FileInfo(path);                
-            }
-        }
-
         public virtual string Version { get; set; }
 
         public virtual DirectoryInfo WorkingDirectory
@@ -196,7 +171,7 @@ namespace Horn.Core.PackageStructure
                 if (IsRoot)
                     return CurrentDirectory;
 
-                if(string.IsNullOrEmpty(Version)) 
+                if (string.IsNullOrEmpty(Version))
                     return workingDirectory;
 
                 var versionedDirectoryPath = string.Format("{0}-{1}", workingDirectory.FullName, Version);
@@ -222,24 +197,6 @@ namespace Horn.Core.PackageStructure
             return result;
         }
 
-        public virtual bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames)
-        {
-            var directory = packageTreeNode.CurrentDirectory;
-
-            var result = reservedNames.Where(x => x.ToLower().Equals(directory.Name.ToLower())).Count();
-
-            if (result > 0)
-                return true;
-
-            if (directory.Name.Length <= 8)
-                return DirectoryIsChildOfReservedDirectory(packageTreeNode, reservedNames);
-
-            if (directory.Name.Substring(0, 8).ToLower() == "working-")
-                return true;
-
-            return DirectoryIsChildOfReservedDirectory(packageTreeNode, reservedNames);
-        }
-
         public virtual void CreateRequiredDirectories()
         {
             WorkingDirectory = new DirectoryInfo(Path.Combine(CurrentDirectory.FullName, "Working"));
@@ -254,7 +211,7 @@ namespace Horn.Core.PackageStructure
             if (!Root.Name.StartsWith(RootPackageTreeName))
                 return;
 
-            if(!WorkingDirectory.Exists)
+            if (!WorkingDirectory.Exists)
                 return;
 
             WorkingDirectory.Delete(true);
@@ -283,7 +240,7 @@ namespace Horn.Core.PackageStructure
 
             metaDataSynchroniser.SynchronisePackageTree(root);
 
-            return new PackageTree(rootFolder, null);            
+            return new PackageTree(rootFolder, null);
         }
 
         public virtual void PatchPackage()
@@ -333,27 +290,6 @@ namespace Horn.Core.PackageStructure
 
             if (CategoryCreated != null)
                 CategoryCreated(packageTreeNode);
-        }
-
-        private bool DirectoryIsChildOfReservedDirectory(IPackageTree packageTreeNode, string[] reservedDirectories)
-        {
-            var parent = packageTreeNode.Parent;
-
-            while (parent != null)
-            {
-                if (reservedDirectories.Where(x => x.ToLower() == parent.CurrentDirectory.Name.ToLower()).Count() > 0)
-                    return true;
-
-                if (parent.CurrentDirectory.Name.Length > 8)
-                {
-                    if (parent.CurrentDirectory.Name.Substring(0, 8).ToLower() == "working-")
-                        return true;
-                }
-
-                parent = parent.Parent;
-            }
-
-            return false;
         }
 
         private IPackageTree RetrievePackage(string packageName, string version)
@@ -423,40 +359,17 @@ namespace Horn.Core.PackageStructure
 
         private PackageTree CreatePackageTreeNode(DirectoryInfo child)
         {
-            var newNode = new PackageTree();
+            //var newNode = new PackageTree();
 
-            newNode.BuildNodeCreated += NewNode_BuildNodeCreated;
-            newNode.CategoryCreated += new CategoryNodeCreated(NewNode_CategoryCreated);
+            //newNode.BuildNodeCreated += NewNode_BuildNodeCreated;
+            //newNode.CategoryCreated += NewNode_CategoryCreated;
 
-            newNode.BuildTree(this, child);
+            //OnCategoryCreated(newNode);
 
-            OnCategoryCreated(newNode);
-
-            if (DirectoryIsBuildNode(child))
-                OnBuildNodeCreated(newNode);            
+            //if (DirectoryIsBuildNode(child))
+            //    OnBuildNodeCreated(newNode);
 
             return new PackageTree(child, this);
-        }
-
-        private void NewNode_CategoryCreated(IPackageTree packageTreeNode)
-        {
-            OnCategoryCreated(packageTreeNode);
-        }
-
-        private void NewNode_BuildNodeCreated(IPackageTree packagetree)
-        {
-            OnBuildNodeCreated(packagetree);
-        }
-
-        private bool IsReservedDirectory(DirectoryInfo child)
-        {
-            string reservedDirectory =
-                reservedDirectoryNames.Where(x => x.ToLower() == child.Name.ToLower()).FirstOrDefault();
-
-            if (!string.IsNullOrEmpty(reservedDirectory))
-                return true;
-
-            return DirectoryIsChildOfReservedDirectory(child, reservedDirectoryNames);
         }
 
         private bool DirectoryIsChildOfReservedDirectory(DirectoryInfo directory, string[] reservedDirectories)
@@ -480,6 +393,27 @@ namespace Horn.Core.PackageStructure
             return false;
         }
 
+        private bool IsReservedDirectory(DirectoryInfo child)
+        {
+            string reservedDirectory =
+                reservedDirectoryNames.Where(x => x.ToLower() == child.Name.ToLower()).FirstOrDefault();
+
+            if (!string.IsNullOrEmpty(reservedDirectory))
+                return true;
+
+            return DirectoryIsChildOfReservedDirectory(child, reservedDirectoryNames);
+        }
+
+        private void NewNode_CategoryCreated(IPackageTree packageTreeNode)
+        {
+            OnCategoryCreated(packageTreeNode);
+        }
+
+        private void NewNode_BuildNodeCreated(IPackageTree packagetree)
+        {
+            OnBuildNodeCreated(packagetree);
+        }
+
         private bool DirectoryIsBuildNode(DirectoryInfo directory)
         {
             if (IsRoot)
@@ -490,7 +424,7 @@ namespace Horn.Core.PackageStructure
         }
 
         public PackageTree()
-        {            
+        {
         }
 
         public PackageTree(IMetaDataSynchroniser metaDataSynchroniser)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Text;
 using Horn.Core.BuildEngines;
 using Horn.Core.PackageStructure;
@@ -29,7 +30,13 @@ namespace Horn.Core
 
         public string PathToBuildTool(IPackageTree packageTree, FrameworkVersion version)
         {
-            return packageTree.Nant.FullName;
+            var path = Path.Combine(packageTree.Root.CurrentDirectory.FullName, "buildengines");
+
+            path = Path.Combine(path, "Nant");
+            path = Path.Combine(path, "Nant");
+            path = Path.Combine(path, "NAnt.exe");
+
+            return new FileInfo(path).FullName;
         }
 
         private string GenerateParameters(Dictionary<string, string> parameters)
@@ -39,8 +46,8 @@ namespace Horn.Core
 
             var stringBuilder = new StringBuilder();
 
-            foreach(var key in parameters.Keys)
-               stringBuilder.AppendFormat("-D:{0}={1} ", key, parameters[key]);
+            foreach (var key in parameters.Keys)
+                stringBuilder.AppendFormat("-D:{0}={1} ", key, parameters[key]);
 
             return stringBuilder.ToString();
         }
@@ -58,4 +65,3 @@ namespace Horn.Core
         }
     }
 }
- 

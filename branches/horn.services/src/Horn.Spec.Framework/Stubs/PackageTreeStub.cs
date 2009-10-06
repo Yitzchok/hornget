@@ -1,4 +1,4 @@
-    using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Horn.Core.BuildEngines;
@@ -19,7 +19,8 @@ namespace Horn.Spec.Framework.Stubs
 
         public string BaseDirectory
         {
-            get; private set;
+            get;
+            private set;
         }
 
         public string BuildFile
@@ -155,7 +156,7 @@ namespace Horn.Spec.Framework.Stubs
 
         public List<IPackageTree> BuildNodes()
         {
-            return new List<IPackageTree>{this};
+            return new List<IPackageTree> { this };
         }
 
         public bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames)
@@ -179,11 +180,6 @@ namespace Horn.Spec.Framework.Stubs
         public IBuildMetaData GetBuildMetaData()
         {
             return GetBuildMetaData(Name);
-        }
-
-        public void CreateRequiredDirectories()
-        {
-            throw new NotImplementedException();
         }
 
         public void DeleteWorkingDirectory()

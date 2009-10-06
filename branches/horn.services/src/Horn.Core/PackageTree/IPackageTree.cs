@@ -18,11 +18,7 @@ namespace Horn.Core.PackageStructure
 
         List<IPackageTree> BuildNodes();
 
-        bool CannotAddThisDirectory(IPackageTree packageTreeNode, string[] reservedNames);
-
         event CategoryNodeCreated CategoryCreated;
-
-        void CreateRequiredDirectories();
 
         DirectoryInfo CurrentDirectory { get; }
 
@@ -50,8 +46,6 @@ namespace Horn.Core.PackageStructure
 
         string Name { get; }
 
-        FileInfo Nant { get; }
-
         DirectoryInfo OutputDirectory { get; }
 
         void PatchPackage();
@@ -69,8 +63,6 @@ namespace Horn.Core.PackageStructure
         IPackageTree RetrievePackage(ICommandArgs commandArgs);
 
         IPackageTree Root { get; }
-
-        FileInfo Sn { get; }
 
         string Version { get; set; }
 
