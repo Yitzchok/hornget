@@ -83,7 +83,6 @@
     <Compile Include="Helpers\FileSystemHelper.cs" />
     <Compile Include="Helpers\PackageTreeHelper.cs" />
     <Compile Include="PackageSpecs\BuildMetaDataValueSpecs.cs" />
-    <Compile Include="PackageSpecs\PackageHandlerSpecs.cs" />
     <Compile Include="PackageTreeBuilderSpecs\BuilderSpecBase.cs" />
     <Compile Include="PackageTreeBuilderSpecs\PackageTreeBuilderSpecs.cs" />
     <Compile Include="PackageTreeLogSpecs\PackageTreeLogSpecs.cs" />

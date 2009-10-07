@@ -1,11 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using Horn.Core.Dsl;
 using Horn.Core.extensions;
 using Horn.Core.SCM;
+using Horn.Core.Tree.MetaDataSynchroniser;
+using Horn.Core.Utils;
 using Horn.Core.Utils.IoC;
-using Horn.Services.Core.EventHandlers;
+using Horn.Services.Core.Builder;
 using Horn.Services.Core.Tests.Unit.Helpers;
 using horn.services.core.Value;
 using Horn.Spec.Framework;
@@ -18,12 +19,17 @@ namespace Horn.Services.Core.Tests.Unit.CategorySpecs
     public class When_the_package_tree_is_scanned : ContextSpecification
     {
         private DirectoryInfo hornDirectory;
-
-        private CategoryCreatedHandler categoryCreatedHandler;
+        private IMetaDataSynchroniser metaDataSynchroniser;
+        private PackageTreeBuilder packageTreeBuilder;
+        private IFileSystemProvider fileSystemProvider;
 
         public override void before_each_spec()
         {
             var dependencyResolver = MockRepository.GenerateStub<IDependencyResolver>();
+
+            metaDataSynchroniser = MockRepository.GenerateStub<IMetaDataSynchroniser>();
+
+            fileSystemProvider = MockRepository.GenerateStub<IFileSystemProvider>();
 
             var configReader = new BooBuildConfigReader();
 
@@ -42,13 +48,17 @@ namespace Horn.Services.Core.Tests.Unit.CategorySpecs
 
         protected override void because()
         {
-            categoryCreatedHandler = new CategoryCreatedHandler(hornDirectory);
+            packageTreeBuilder = new PackageTreeBuilder(metaDataSynchroniser, fileSystemProvider,  hornDirectory);
+
+            packageTreeBuilder.Initialise();
+
+            packageTreeBuilder.Build();
         }
 
         [Test]
         public void Then_the_category_meta_data_should_be_recorded()
         {
-            Category category = categoryCreatedHandler.Categories[0];
+            Category category = packageTreeBuilder.Categories[0].Categories[0];
 
             Assert.That(category.Name, Is.EqualTo("loggers"));
 
@@ -62,7 +72,7 @@ namespace Horn.Services.Core.Tests.Unit.CategorySpecs
 
             Assert.That(log4net.Packages[0].Version, Is.EqualTo("1.2.10"));
 
-            var xml = categoryCreatedHandler.Categories.ToDataContractXml<List<Category>>();
+            var xml = packageTreeBuilder.Categories.ToDataContractXml<List<Category>>();
         }
     }
 }
