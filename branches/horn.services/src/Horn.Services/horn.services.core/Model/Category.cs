@@ -1,12 +1,19 @@
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Horn.Core.PackageStructure;
+using Horn.Services.Core.Extensions;
 
 namespace horn.services.core.Value
 {
     [DataContract(Name = "Category", Namespace = "http://hornget.com/services")]
-    public class Category
+    public class Category : IResource
     {
+        public bool IsRoot
+        {
+            get { return (Parent == null); }
+        }
+
         [DataMember(Order = 1)]
         public string Name { get; private set; }
 
@@ -16,7 +23,35 @@ namespace horn.services.core.Value
         [DataMember(Order = 3)]
         public List<Package> Packages { get; set; }
 
-        public Category(IPackageTree packageTreeNode)
+        public IResource Parent { get; private set; }
+
+        [DataMember(Order = 4)]
+        public string Url
+        {
+            get
+            {
+                return this.GetResourceUrl();
+            }
+            set
+            {
+                Console.WriteLine(value);
+            }
+
+        }
+
+        public Category(Category parent, string name)
+        {
+            Categories = new List<Category>();
+
+            Packages = new List<Package>();
+
+            Name = name;
+
+            Parent = parent;
+        }
+
+
+        public Category(Category parent, IPackageTree packageTreeNode)
         {
             Categories = new List<Category>();
 
@@ -24,9 +59,11 @@ namespace horn.services.core.Value
 
             Name = packageTreeNode.Name;
 
+            Parent = parent;
+
             foreach (var buildMetaData in packageTreeNode.GetAllPackageMetaData())
             {
-                Packages.Add(new Package(buildMetaData));
+                Packages.Add(new Package(this, buildMetaData));
             }
         }
     }

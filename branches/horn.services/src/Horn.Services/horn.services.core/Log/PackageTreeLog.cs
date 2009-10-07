@@ -7,14 +7,14 @@ namespace Horn.Services.Core.Log
     [DataContract(Name = "PackageTreeLog", Namespace = "http://hornget.com/services")]
     public class PackageTreeLog
     {
-        private readonly IPackageTree _packageTree;
+        private readonly IPackageTree packageTree;
 
         [DataMember]
         public virtual DirectoryInfo Location { get; set; }
 
         public PackageTreeLog(IPackageTree packageTree)
         {
-            _packageTree = packageTree;
+            this.packageTree = packageTree;
 
             Location = packageTree.CurrentDirectory;
         }

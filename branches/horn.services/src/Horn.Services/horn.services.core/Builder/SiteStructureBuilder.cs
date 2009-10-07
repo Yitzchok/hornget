@@ -26,7 +26,7 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Build()
         {
-            var root = new Category(packageTree);
+            var root = new Category(null, packageTree);
 
             BuildCategories(packageTree, root);
 
@@ -37,11 +37,17 @@ namespace Horn.Services.Core.Builder
         {
             foreach (var childTree in packageTree.Children)
             {
-                var childCategory = new Category(childTree);
+                var childCategory = new Category(parent, childTree);
 
                 BuildCategories(childTree, childCategory);
 
                 parent.Categories.Add(childCategory);
+
+                //TODO: Decide the structure of the xml
+                //if(childTree.IsBuildNode)
+                //    parent.Packages.AddRange(childCategory.Packages);
+                //else
+                //    parent.Categories.Add(childCategory);
             }
         }
 

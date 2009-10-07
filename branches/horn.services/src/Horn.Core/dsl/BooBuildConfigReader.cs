@@ -61,6 +61,9 @@ namespace Horn.Core.Dsl
 
             foreach (var packageInfo in configReader.PackageMetaData.PackageInfo)
             {
+                if(packageInfo.Key == "version")
+                    continue;
+
                 configReader.BuildMetaData.ProjectInfo.Add(packageInfo.Key, packageInfo.Value);
             }
 
