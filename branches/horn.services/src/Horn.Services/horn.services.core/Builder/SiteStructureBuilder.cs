@@ -8,13 +8,12 @@ using horn.services.core.Value;
 
 namespace Horn.Services.Core.Builder
 {
-    public class PackageTreeBuilder : IPackageTreeBuilder
+    public class SiteStructureBuilder : ISiteStructureBuilder
     {
         private readonly IMetaDataSynchroniser metaDataSynchroniser;
         private readonly IFileSystemProvider fileSystemProvider;
         private readonly DirectoryInfo rootDirectory;
         private IPackageTree packageTree;
-
 
         public virtual List<Category> Categories { get; private set; }
 
@@ -46,7 +45,7 @@ namespace Horn.Services.Core.Builder
             }
         }
 
-        public PackageTreeBuilder(IMetaDataSynchroniser metaDataSynchroniser, IFileSystemProvider fileSystemProvider, DirectoryInfo rootDirectory)
+        public SiteStructureBuilder(IMetaDataSynchroniser metaDataSynchroniser, IFileSystemProvider fileSystemProvider, DirectoryInfo rootDirectory)
         {
             this.metaDataSynchroniser = metaDataSynchroniser;
             this.fileSystemProvider = fileSystemProvider;

@@ -1,6 +1,6 @@
 namespace Horn.Services.Core.Builder
 {
-    public interface IPackageTreeBuilder
+    public interface ISiteStructureBuilder
     {
         void Initialise();
 

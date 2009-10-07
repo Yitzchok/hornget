@@ -73,18 +73,21 @@
       <HintPath>..\..\..\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategorySpecs\CategorySpecs.cs" />
+    <Compile Include="Config\ConfigSpecs.cs" />
+    <Compile Include="SiteStructureSpecs\BuildSpecs.cs" />
     <Compile Include="Helpers\FileSystemHelper.cs" />
     <Compile Include="Helpers\PackageTreeHelper.cs" />
     <Compile Include="PackageSpecs\BuildMetaDataValueSpecs.cs" />
-    <Compile Include="PackageTreeBuilderSpecs\BuilderSpecBase.cs" />
-    <Compile Include="PackageTreeBuilderSpecs\PackageTreeBuilderSpecs.cs" />
+    <Compile Include="SiteStructureSpecs\BuilderSpecBase.cs" />
+    <Compile Include="SiteStructureSpecs\SiteStructureSpecs.cs" />
     <Compile Include="PackageTreeLogSpecs\PackageTreeLogSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -113,6 +116,7 @@
     <Content Include="TestFiles\Xml\PackageData.xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="TestFiles\Descriptors\.horn\orm\nhibernate\nhcontrib\nhibernate.caches\patch\default.build" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

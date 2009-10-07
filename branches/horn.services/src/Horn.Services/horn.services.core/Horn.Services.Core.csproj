@@ -42,8 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builder\IPackageTreeBuilder.cs" />
-    <Compile Include="Builder\PackageTreeBuilder.cs" />
+    <Compile Include="Builder\ISiteStructureBuilder.cs" />
+    <Compile Include="Builder\SiteStructureBuilder.cs" />
     <Compile Include="Log\PackageTreeLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\MetaData.cs" />

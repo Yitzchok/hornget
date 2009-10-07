@@ -1,9 +1,6 @@
-using System;
-using System.IO;
 using Horn.Core.PackageStructure;
 using Horn.Core.Tree.MetaDataSynchroniser;
 using Horn.Core.Utils;
-using Horn.Core.Utils.IoC;
 using Horn.Services.Core.Builder;
 using Horn.Services.Core.Tests.Unit.Helpers;
 using NUnit.Framework;
@@ -13,7 +10,7 @@ namespace Horn.Services.Core.Tests.Unit.PackageTreeBuilderSpecs
 {
     public class When_the_package_tree_builder_is_initialised : BuilderSpecBase
     {
-        private IPackageTreeBuilder packageTreeBuilder;
+        private ISiteStructureBuilder siteStructureBuilder;
         private IMetaDataSynchroniser metaDataSynchroniser;
         private IFileSystemProvider fileSystemProvider;
 
@@ -29,12 +26,12 @@ namespace Horn.Services.Core.Tests.Unit.PackageTreeBuilderSpecs
 
             dependencyResolver.Stub(x => x.Resolve<IPackageTree>());
 
-            packageTreeBuilder = new PackageTreeBuilder(metaDataSynchroniser, fileSystemProvider, hornDirectory);
+            siteStructureBuilder = new SiteStructureBuilder(metaDataSynchroniser, fileSystemProvider, hornDirectory);
         }
 
         protected override void because()
         {
-            packageTreeBuilder.Initialise();
+            siteStructureBuilder.Initialise();
         }
 
         [Test]
