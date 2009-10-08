@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace Horn.Core.Utils
 {
     /// <summary>
@@ -12,14 +14,20 @@ namespace Horn.Core.Utils
 
         void CopyFile(string source, string destination, bool overwrite);
 
+        DirectoryInfo CreateTemporaryHornDirectory();
+
         void DeleteDirectory(string path);
 
         void DeleteFile(string path);
 
         bool Exists(string path);
 
+        DirectoryInfo GetHornRootDirectory();
+
         void MkDir(string path);
 
         void MkFile(string path);
+
+        void WriteTextFile(string destination, string text);
     }
 }

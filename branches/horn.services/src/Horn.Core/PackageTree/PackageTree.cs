@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Horn.Core.BuildEngines;
 using Horn.Core.Dsl;
-using Horn.Core.extensions;
+using Horn.Core.Extensions;
 using Horn.Core.Tree.MetaDataSynchroniser;
 using Horn.Core.Utils.CmdLine;
 using log4net;

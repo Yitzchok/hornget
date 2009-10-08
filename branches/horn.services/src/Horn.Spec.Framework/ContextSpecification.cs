@@ -7,7 +7,7 @@ namespace Horn.Spec.Framework
     [TestFixture]
     public abstract class ContextSpecification
     {
-        protected static readonly ILog _log = LogManager.GetLogger(typeof(ContextSpecification));
+        protected static readonly ILog log = LogManager.GetLogger(typeof(ContextSpecification));
 
         protected abstract void because();
 

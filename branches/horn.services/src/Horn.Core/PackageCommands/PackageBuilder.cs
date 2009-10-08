@@ -2,7 +2,7 @@ using System.Linq;
 using Horn.Core.BuildEngines;
 using Horn.Core.Dependencies;
 using Horn.Core.Dsl;
-using Horn.Core.extensions;
+using Horn.Core.Extensions;
 using Horn.Core.GetOperations;
 using Horn.Core.PackageStructure;
 using Horn.Core.Utils.CmdLine;

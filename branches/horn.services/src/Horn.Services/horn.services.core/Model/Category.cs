@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization;
 using Horn.Core.PackageStructure;
 using Horn.Services.Core.Extensions;

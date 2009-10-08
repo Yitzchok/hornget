@@ -1,4 +1,4 @@
-using Horn.Core.extensions;
+using Horn.Core.Extensions;
 using Horn.Services.Core.Log;
 using Horn.Spec.Framework;
 using NUnit.Framework;

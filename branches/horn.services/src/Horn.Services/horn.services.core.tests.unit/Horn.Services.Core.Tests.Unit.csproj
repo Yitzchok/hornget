@@ -87,6 +87,7 @@
     <Compile Include="Helpers\PackageTreeHelper.cs" />
     <Compile Include="PackageSpecs\BuildMetaDataValueSpecs.cs" />
     <Compile Include="SiteStructureSpecs\BuilderSpecBase.cs" />
+    <Compile Include="SiteStructureSpecs\SiteBuilderSpecBase.cs" />
     <Compile Include="SiteStructureSpecs\SiteStructureSpecs.cs" />
     <Compile Include="PackageTreeLogSpecs\PackageTreeLogSpecs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

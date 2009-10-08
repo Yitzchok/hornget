@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Xml;
 
-namespace Horn.Core.extensions
+namespace Horn.Core.Extensions
 {
     public static class SerialisationExtensions
     {
