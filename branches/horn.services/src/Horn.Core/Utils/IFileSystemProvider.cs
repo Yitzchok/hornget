@@ -29,5 +29,7 @@ namespace Horn.Core.Utils
         void MkFile(string path);
 
         void WriteTextFile(string destination, string text);
+
+        FileInfo ZipFolder(DirectoryInfo sourceDirectory, DirectoryInfo targetDirectory, string packageName);
     }
 }

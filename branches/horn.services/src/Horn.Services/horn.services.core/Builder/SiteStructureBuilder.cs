@@ -33,7 +33,7 @@ namespace Horn.Services.Core.Builder
         {
             var root = new Category(null, rootPackageTree);
 
-            var parentDirectory = CreatePackageDirectory(root, sandBox);
+            var parentDirectory = CreatePackageDirectory(root, sandBox, rootPackageTree);
 
             BuildCategories(rootPackageTree, root, parentDirectory);
 
@@ -56,7 +56,7 @@ namespace Horn.Services.Core.Builder
             {
                 var childCategory = new Category(parent, childTree);
 
-                var newDirectory = CreatePackageDirectory(childCategory, parentDirectory);
+                var newDirectory = CreatePackageDirectory(childCategory, parentDirectory, childTree);
 
                 BuildCategories(childTree, childCategory, newDirectory);
 
@@ -70,11 +70,22 @@ namespace Horn.Services.Core.Builder
             }
         }
 
-        private DirectoryInfo CreatePackageDirectory(Category category, DirectoryInfo directory)
+        private DirectoryInfo CreatePackageDirectory(Category category, DirectoryInfo directory, IPackageTree packageTree)
         {
             var newDirectory = new DirectoryInfo(Path.Combine(directory.FullName, category.Name));
 
             fileSystemProvider.CreateDirectory(newDirectory.FullName);
+          
+            if(packageTree.IsBuildNode)
+            {
+                //TODO: Remove - FOR TESTING
+                var tempFileName = Path.Combine(newDirectory.FullName, string.Format("{0}.txt", category.Name));
+                fileSystemProvider.WriteTextFile(tempFileName, "some text");
+
+                var zip = fileSystemProvider.ZipFolder(newDirectory, newDirectory, category.Name);
+
+                fileSystemProvider.CopyFile(zip.FullName, zip.FullName, true);                
+            }
 
             return newDirectory;
         }

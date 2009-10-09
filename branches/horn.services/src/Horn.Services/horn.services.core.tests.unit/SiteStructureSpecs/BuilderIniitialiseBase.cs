@@ -41,6 +41,9 @@ namespace Horn.Services.Core.Tests.Unit.SiteStructureSpecs
 
             fileSystemProvider.Stub(x => x.CreateTemporaryHornDirectory()).Return(new DirectoryInfo(@"C:\documents and settings\paul.cowan\AppData"));
 
+            fileSystemProvider.Stub(x => x.ZipFolder(Arg<DirectoryInfo>.Is.TypeOf, Arg<DirectoryInfo>.Is.TypeOf, Arg<string>.Is.TypeOf)).Return(
+                new FileInfo(@"C:\zip"));
+
             siteStructureBuilder = new SiteStructureBuilder(metaDataSynchroniser, fileSystemProvider, new DirectoryInfo(@"C:\"));
 
             siteStructureBuilder.Initialise();
