@@ -5,7 +5,7 @@ using Rhino.Mocks;
 
 namespace Horn.Services.Core.Tests.Unit.CategorySpecs
 {
-    public class When_the_package_tree_is_scanned : SiteBuilderSpecBase
+    public class When_the_package_tree_is_scanned : BuilderIniitialiseBase
     {
         [Test]
         public void Then_the_horn_object_graph_is_created()

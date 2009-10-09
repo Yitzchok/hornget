@@ -14,7 +14,7 @@ using Rhino.Mocks;
 
 namespace Horn.Services.Core.Tests.Unit.SiteStructureSpecs
 {
-    public abstract class SiteBuilderSpecBase : ContextSpecification
+    public abstract class BuilderIniitialiseBase : ContextSpecification
     {
         protected IMetaDataSynchroniser metaDataSynchroniser;
         protected SiteStructureBuilder siteStructureBuilder;
