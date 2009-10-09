@@ -31,9 +31,9 @@ namespace Horn.PackageBuilder.Service
 
             Initialise();
 
-            siteStructureBuilder = IoC.Resolve<ISiteStructureBuilder>();
-
             builderThread = new Thread(siteStructureBuilder.Run);
+
+            siteStructureBuilder.ServiceStarted = true;
 
             builderThread.Start();
 
@@ -49,6 +49,8 @@ namespace Horn.PackageBuilder.Service
                 var resolver = new ServicesDependencyResolver(dropDirectory);
 
                 IoC.InitializeWith(resolver);
+
+                siteStructureBuilder = IoC.Resolve<ISiteStructureBuilder>();
             }
             catch (Exception ex)
             {
@@ -64,6 +66,8 @@ namespace Horn.PackageBuilder.Service
         {
             if(!builderThread.IsAlive)
                 return;
+
+            siteStructureBuilder.ServiceStarted = false;
 
             builderThread.Join();
         }

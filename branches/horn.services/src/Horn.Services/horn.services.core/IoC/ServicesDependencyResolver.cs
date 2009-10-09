@@ -11,8 +11,8 @@ namespace Horn.Services.Core.IoCServices
         public ServicesDependencyResolver(DirectoryInfo dropDirectory) : base(null)
         {
             innerContainer.Register(
-                Component.For<SiteStructureBuilder>()
-                            .ImplementedBy<ISiteStructureBuilder>()
+                Component.For<ISiteStructureBuilder>()
+                            .ImplementedBy<SiteStructureBuilder>()
                             .Parameters(Parameter.ForKey("dropDirectoryPath").Eq(dropDirectory.FullName))
                             .LifeStyle.Transient
                 );

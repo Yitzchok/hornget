@@ -28,7 +28,8 @@ namespace Horn.Core.Utils
 
         public virtual DirectoryInfo CreateTemporaryHornDirectory()
         {
-            var tempDirectory = new DirectoryInfo(Path.Combine(Environment.GetEnvironmentVariable("TEMP"), "horn"));
+            //TODO: Configure Temp directory
+            var tempDirectory = new DirectoryInfo(Path.Combine(@"C:\temp\", "horn"));
 
             if(tempDirectory.Exists)
             {
@@ -86,9 +87,14 @@ namespace Horn.Core.Utils
 
         public DirectoryInfo GetHornRootDirectory()
         {
-            var localApplicationData = new DirectoryInfo(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+            var localApplicationData = new DirectoryInfo(@"C:\horn");
 
-            return new DirectoryInfo(Path.Combine(localApplicationData.Parent.FullName, PackageTree.RootPackageTreeName));  
+            var root = new DirectoryInfo(Path.Combine(localApplicationData.FullName, PackageTree.RootPackageTreeName));  
+
+            if(!root.Exists)
+                root.Create();
+
+            return root;
         }
 
         public virtual void MkDir(string path)

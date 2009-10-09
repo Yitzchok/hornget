@@ -35,6 +35,8 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Initialise()
         {
+            Debugger.Break();
+
             var rootDirectory = fileSystemProvider.GetHornRootDirectory();
 
             metaDataSynchroniser.SynchronisePackageTree(new PackageTree(rootDirectory, null));
@@ -46,6 +48,10 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Build()
         {
+            Debugger.Break();
+
+            log.Info("in build.");
+
             var root = new Category(null, rootPackageTree);
 
             var parentDirectory = CreatePackageDirectory(root, sandBox, rootPackageTree);
@@ -60,9 +66,9 @@ namespace Horn.Services.Core.Builder
 
             fileSystemProvider.WriteTextFile(hornFile, xml);
 
-            var destinationDirectory = Path.Combine(dropDirectory.FullName, PackageTree.RootPackageTreeName);
+            //var destinationDirectory = Path.Combine(dropDirectory.FullName, PackageTree.RootPackageTreeName);
 
-            fileSystemProvider.CopyDirectory(sandBox.FullName, destinationDirectory);
+            //fileSystemProvider.CopyDirectory(sandBox.FullName, destinationDirectory);
         }
 
         public virtual void Run()
@@ -93,8 +99,7 @@ namespace Horn.Services.Core.Builder
                 {
                     log.Error(ex);
 
-                    if (!ShouldContinueAfterException)
-                        break;
+                    throw;
                 }
 
                 hasRanOnce = true;
@@ -135,15 +140,30 @@ namespace Horn.Services.Core.Builder
             if(packageTree.IsBuildNode)
             {
                 //TODO: Remove - FOR TESTING
-                var tempFileName = Path.Combine(newDirectory.FullName, string.Format("{0}.txt", category.Name));
-                fileSystemProvider.WriteTextFile(tempFileName, "some text");
-
-                var zip = fileSystemProvider.ZipFolder(newDirectory, newDirectory, category.Name);
-
-                fileSystemProvider.CopyFile(zip.FullName, zip.FullName, true);                
+                CreateTemporaryZip(category, newDirectory);
             }
 
             return newDirectory;
+        }
+
+        //TODO: Remove - FOR TESTING
+        private void CreateTemporaryZip(Category category, DirectoryInfo newDirectory)
+        {
+            var tempFileName = Path.Combine(newDirectory.FullName, string.Format("{0}.txt", category.Name));
+            fileSystemProvider.WriteTextFile(tempFileName, "some text");
+
+            var zip = fileSystemProvider.ZipFolder(newDirectory, newDirectory, category.Name);
+
+            //TODO: Uncomment
+            //fileSystemProvider.CopyFile(zip.FullName, zip.FullName, true);                
+
+            try
+            {
+                fileSystemProvider.DeleteFile(tempFileName);
+            }
+            catch
+            {
+            }
         }
 
         private void SetNextPollTime()
@@ -153,10 +173,14 @@ namespace Horn.Services.Core.Builder
 
         public SiteStructureBuilder(IMetaDataSynchroniser metaDataSynchroniser, IFileSystemProvider fileSystemProvider, string dropDirectoryPath)
         {
+            Debugger.Break();
+
             this.metaDataSynchroniser = metaDataSynchroniser;
             this.fileSystemProvider = fileSystemProvider;
             dropDirectory = new DirectoryInfo(dropDirectoryPath);
             Categories = new List<Category>();
+
+            SetNextPollTime();
         }
     }
 }
