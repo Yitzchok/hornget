@@ -6,11 +6,11 @@ namespace Horn.Core.Config
     {
         private static readonly HornConfig settings;
 
-        [ConfigurationProperty("basedirectory", IsRequired = false)]
-        public string BaseDirectory
+        [ConfigurationProperty("dropdirectory", IsRequired = false)]
+        public string DropDirectory
         {
-            get { return (string) this["basedirectory"]; }
-            set { this["basedirectory"] = value; }
+            get { return (string) this["dropdirectory"]; }
+            set { this["dropdirectory"] = value; }
         }
 
         public static HornConfig Settings

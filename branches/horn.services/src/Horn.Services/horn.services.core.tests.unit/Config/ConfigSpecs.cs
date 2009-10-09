@@ -18,7 +18,7 @@ namespace Horn.Services.Core.Tests.Unit.Config
         [Test]
         public void Then_the_base_path_is_returned()
         {
-            Assert.That(HornConfig.Settings.BaseDirectory.Length, Is.GreaterThan(0));
+            Assert.That(HornConfig.Settings.DropDirectory.Length, Is.GreaterThan(0));
         }
     }
 }

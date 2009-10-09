@@ -1,10 +1,14 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using Horn.Core.Extensions;
 using Horn.Core.PackageStructure;
 using Horn.Core.Tree.MetaDataSynchroniser;
 using Horn.Core.Utils;
 using horn.services.core.Value;
+using log4net;
 
 namespace Horn.Services.Core.Builder
 {
@@ -16,7 +20,18 @@ namespace Horn.Services.Core.Builder
         private IPackageTree rootPackageTree;
         private DirectoryInfo sandBox;
 
+        protected DateTime nextPollTime;
+        protected TimeSpan frequency = new TimeSpan(0, 0, 20, 0);
+        protected static readonly ILog log = LogManager.GetLogger(typeof(SiteStructureBuilder));
+
         public virtual List<Category> Categories { get; private set; }
+
+        public virtual bool ServiceStarted { get; set; }
+
+        public virtual bool ShouldContinueAfterException
+        {
+            get { return true; }
+        }
 
         public virtual void Initialise()
         {
@@ -48,6 +63,47 @@ namespace Horn.Services.Core.Builder
             var destinationDirectory = Path.Combine(dropDirectory.FullName, PackageTree.RootPackageTreeName);
 
             fileSystemProvider.CopyDirectory(sandBox.FullName, destinationDirectory);
+        }
+
+        public virtual void Run()
+        {
+            Debugger.Break();
+
+            var hasRanOnce = false;
+
+            while (ServiceStarted)
+            {
+                if ((DateTime.UtcNow < nextPollTime) && hasRanOnce)
+                {
+                    SuspendTask();
+
+                    if (!ServiceStarted)
+                        break;
+
+                    SetNextPollTime();
+                }
+
+                try
+                {
+                    Initialise();
+
+                    Build();
+                }
+                catch (Exception ex)
+                {
+                    log.Error(ex);
+
+                    if (!ShouldContinueAfterException)
+                        break;
+                }
+
+                hasRanOnce = true;
+            }
+        }
+
+        protected virtual void SuspendTask()
+        {
+            Thread.Sleep(frequency);
         }
 
         private void BuildCategories(IPackageTree packageTree, Category parent, DirectoryInfo parentDirectory)
@@ -90,11 +146,16 @@ namespace Horn.Services.Core.Builder
             return newDirectory;
         }
 
-        public SiteStructureBuilder(IMetaDataSynchroniser metaDataSynchroniser, IFileSystemProvider fileSystemProvider, DirectoryInfo dropDirectory)
+        private void SetNextPollTime()
+        {
+            nextPollTime = DateTime.Now.Add(frequency);
+        }
+
+        public SiteStructureBuilder(IMetaDataSynchroniser metaDataSynchroniser, IFileSystemProvider fileSystemProvider, string dropDirectoryPath)
         {
             this.metaDataSynchroniser = metaDataSynchroniser;
             this.fileSystemProvider = fileSystemProvider;
-            this.dropDirectory = dropDirectory;
+            dropDirectory = new DirectoryInfo(dropDirectoryPath);
             Categories = new List<Category>();
         }
     }

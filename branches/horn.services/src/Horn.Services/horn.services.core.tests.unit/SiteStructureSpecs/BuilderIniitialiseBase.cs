@@ -44,7 +44,7 @@ namespace Horn.Services.Core.Tests.Unit.SiteStructureSpecs
             fileSystemProvider.Stub(x => x.ZipFolder(Arg<DirectoryInfo>.Is.TypeOf, Arg<DirectoryInfo>.Is.TypeOf, Arg<string>.Is.TypeOf)).Return(
                 new FileInfo(@"C:\zip"));
 
-            siteStructureBuilder = new SiteStructureBuilder(metaDataSynchroniser, fileSystemProvider, new DirectoryInfo(@"C:\"));
+            siteStructureBuilder = new SiteStructureBuilder(metaDataSynchroniser, fileSystemProvider, new DirectoryInfo(@"C:\").FullName);
 
             siteStructureBuilder.Initialise();
 

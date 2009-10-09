@@ -29,7 +29,7 @@ namespace Horn.Services.Core.Tests.Unit.PackageTreeBuilderSpecs
 
             dependencyResolver.Stub(x => x.Resolve<IPackageTree>());
 
-            siteStructureBuilder = new SiteStructureBuilder(metaDataSynchroniser, fileSystemProvider, new DirectoryInfo(@"C:\"));
+            siteStructureBuilder = new SiteStructureBuilder(metaDataSynchroniser, fileSystemProvider, new DirectoryInfo(@"C:\").FullName);
 
             siteStructureBuilder.Initialise();
         }
