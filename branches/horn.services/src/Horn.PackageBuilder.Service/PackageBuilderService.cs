@@ -25,8 +25,6 @@ namespace Horn.PackageBuilder.Service
 
         protected override void OnStart(string[] args)
         {
-            Debugger.Break();
-
             log.Info("We have began.");
 
             Initialise();

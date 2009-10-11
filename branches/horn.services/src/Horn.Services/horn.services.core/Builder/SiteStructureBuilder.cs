@@ -20,6 +20,8 @@ namespace Horn.Services.Core.Builder
         private IPackageTree rootPackageTree;
         private DirectoryInfo sandBox;
 
+        private bool hasRanOnce = false;
+
         protected DateTime nextPollTime;
         protected TimeSpan frequency = new TimeSpan(0, 0, 20, 0);
         protected static readonly ILog log = LogManager.GetLogger(typeof(SiteStructureBuilder));
@@ -35,8 +37,6 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Initialise()
         {
-            Debugger.Break();
-
             var rootDirectory = fileSystemProvider.GetHornRootDirectory();
 
             metaDataSynchroniser.SynchronisePackageTree(new PackageTree(rootDirectory, null));
@@ -48,8 +48,6 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Build()
         {
-            Debugger.Break();
-
             log.Info("in build.");
 
             var root = new Category(null, rootPackageTree);
@@ -73,8 +71,6 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Run()
         {
-            Debugger.Break();
-
             var hasRanOnce = false;
 
             while (ServiceStarted)
@@ -139,20 +135,28 @@ namespace Horn.Services.Core.Builder
           
             if(packageTree.IsBuildNode)
             {
-                //TODO: Remove - FOR TESTING
-                CreateTemporaryZip(category, newDirectory);
+                foreach (var package in category.Packages)
+                {
+                    if(!hasRanOnce)
+                        Debugger.Break();
+
+                    hasRanOnce = true;
+
+                    //TODO: Remove - FOR TESTING
+                    CreateTemporaryZip(package, newDirectory);                    
+                }
             }
 
             return newDirectory;
         }
 
         //TODO: Remove - FOR TESTING
-        private void CreateTemporaryZip(Category category, DirectoryInfo newDirectory)
+        private void CreateTemporaryZip(Package package, DirectoryInfo newDirectory)
         {
-            var tempFileName = Path.Combine(newDirectory.FullName, string.Format("{0}.txt", category.Name));
+            var tempFileName = Path.Combine(newDirectory.FullName, string.Format("{0}.txt", package.FileName));
             fileSystemProvider.WriteTextFile(tempFileName, "some text");
 
-            var zip = fileSystemProvider.ZipFolder(newDirectory, newDirectory, category.Name);
+            var zip = fileSystemProvider.ZipFolder(newDirectory, newDirectory, package.FileName);
 
             //TODO: Uncomment
             //fileSystemProvider.CopyFile(zip.FullName, zip.FullName, true);                
@@ -173,8 +177,6 @@ namespace Horn.Services.Core.Builder
 
         public SiteStructureBuilder(IMetaDataSynchroniser metaDataSynchroniser, IFileSystemProvider fileSystemProvider, string dropDirectoryPath)
         {
-            Debugger.Break();
-
             this.metaDataSynchroniser = metaDataSynchroniser;
             this.fileSystemProvider = fileSystemProvider;
             dropDirectory = new DirectoryInfo(dropDirectoryPath);

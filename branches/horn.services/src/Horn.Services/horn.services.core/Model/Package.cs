@@ -14,6 +14,14 @@ namespace horn.services.core.Value
             get { return false; }
         }
 
+        public string FileName
+        {
+            get
+            {
+                return string.Format("{0}-{1}", Name, Version);
+            }
+        }
+
         [DataMember(Order = 1)]
         public string Name { get; set; }
 
