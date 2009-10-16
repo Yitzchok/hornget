@@ -26,10 +26,9 @@ namespace Horn.Core.Utils
             File.Copy(source, destination, overwrite);
         }
 
-        public virtual DirectoryInfo CreateTemporaryHornDirectory()
+        public virtual DirectoryInfo CreateTemporaryHornDirectory(string path)
         {
-            //TODO: Configure Temp directory
-            var tempDirectory = new DirectoryInfo(Path.Combine(@"C:\temp\", "horn"));
+            var tempDirectory = new DirectoryInfo(Path.Combine(path, "horn"));
 
             if(tempDirectory.Exists)
             {
@@ -85,9 +84,9 @@ namespace Horn.Core.Utils
             return File.Exists(path) || Directory.Exists(path);
         }
 
-        public DirectoryInfo GetHornRootDirectory()
+        public DirectoryInfo GetHornRootDirectory(string path)
         {
-            var localApplicationData = new DirectoryInfo(@"C:\horn");
+            var localApplicationData = new DirectoryInfo(path);
 
             var root = new DirectoryInfo(Path.Combine(localApplicationData.FullName, PackageTree.RootPackageTreeName));  
 

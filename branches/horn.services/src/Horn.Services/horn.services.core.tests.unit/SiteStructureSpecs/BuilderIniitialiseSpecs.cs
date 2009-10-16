@@ -25,7 +25,7 @@ namespace Horn.Services.Core.Tests.Unit.PackageTreeBuilderSpecs
 
             fileSystemProvider = MockRepository.GenerateStub<IFileSystemProvider>();
 
-            fileSystemProvider.Stub(x => x.GetHornRootDirectory()).Return(FileSystemHelper.GetFakeDummyHornDirectory());
+            fileSystemProvider.Stub(x => x.GetHornRootDirectory(Arg<string>.Is.TypeOf)).Return(FileSystemHelper.GetFakeDummyHornDirectory());
 
             dependencyResolver.Stub(x => x.Resolve<IPackageTree>());
 
@@ -51,7 +51,7 @@ namespace Horn.Services.Core.Tests.Unit.PackageTreeBuilderSpecs
         [Test]
         public void Then_the_sandbox_directory_is_created()
         {
-            fileSystemProvider.AssertWasCalled(x => x.CreateTemporaryHornDirectory());
+            fileSystemProvider.AssertWasCalled(x => x.CreateTemporaryHornDirectory(Arg<string>.Is.TypeOf));
         }
     }
 }

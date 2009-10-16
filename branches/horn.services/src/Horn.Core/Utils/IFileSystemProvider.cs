@@ -14,7 +14,7 @@ namespace Horn.Core.Utils
 
         void CopyFile(string source, string destination, bool overwrite);
 
-        DirectoryInfo CreateTemporaryHornDirectory();
+        DirectoryInfo CreateTemporaryHornDirectory(string path);
 
         void DeleteDirectory(string path);
 
@@ -22,7 +22,7 @@ namespace Horn.Core.Utils
 
         bool Exists(string path);
 
-        DirectoryInfo GetHornRootDirectory();
+        DirectoryInfo GetHornRootDirectory(string path);
 
         void MkDir(string path);
 

@@ -17,12 +17,6 @@ namespace Horn.Services.Core.Tests.Unit.BuildSpecs
         }
 
         [Test]
-        public void Then_the_new_package_directory_is_copied_to_the_drop_directory()
-        {
-            fileSystemProvider.AssertWasCalled(x => x.CopyDirectory(Arg<string>.Is.TypeOf, Arg<string>.Is.TypeOf));
-        }
-
-        [Test]
         public void Then_the_result_of_each_bulid_is_zipped()
         {
             fileSystemProvider.ZipFolder(Arg<DirectoryInfo>.Is.TypeOf, Arg<DirectoryInfo>.Is.TypeOf, Arg<string>.Is.TypeOf);

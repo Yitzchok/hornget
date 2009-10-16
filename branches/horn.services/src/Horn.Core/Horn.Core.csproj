@@ -125,7 +125,6 @@
     <Compile Include="BuildEngines\IModeSettings.cs" />
     <Compile Include="BuildEngines\ModeSettings.cs" />
     <Compile Include="BuildEngines\Process\CommandLineRunner.cs" />
-    <Compile Include="Config\HornConfig.cs" />
     <Compile Include="exceptions\BuildFailedException.cs" />
     <Compile Include="exceptions\CannotDeleteTempHornDirectoryException.cs" />
     <Compile Include="extensions\SerialisationExtensions.cs" />

@@ -5,6 +5,7 @@ using Horn.Core.Tree.MetaDataSynchroniser;
 using Horn.Core.Utils;
 using Horn.Core.Utils.IoC;
 using Horn.Services.Core.Builder;
+using Horn.Services.Core.Config;
 using Horn.Services.Core.Tests.Unit.Helpers;
 using horn.services.core.Value;
 using Horn.Spec.Framework;
@@ -37,9 +38,9 @@ namespace Horn.Services.Core.Tests.Unit.SiteStructureSpecs
 
             IoC.InitializeWith(dependencyResolver);
 
-            fileSystemProvider.Stub(x => x.GetHornRootDirectory()).Return(FileSystemHelper.GetFakeDummyHornDirectory());
+            fileSystemProvider.Stub(x => x.GetHornRootDirectory(Arg<string>.Is.TypeOf)).Return(FileSystemHelper.GetFakeDummyHornDirectory());
 
-            fileSystemProvider.Stub(x => x.CreateTemporaryHornDirectory()).Return(new DirectoryInfo(@"C:\documents and settings\paul.cowan\AppData"));
+            fileSystemProvider.Stub(x => x.CreateTemporaryHornDirectory(Arg<string>.Is.TypeOf)).Return(new DirectoryInfo(HornConfig.Settings.HornTempDirectory));
 
             fileSystemProvider.Stub(x => x.ZipFolder(Arg<DirectoryInfo>.Is.TypeOf, Arg<DirectoryInfo>.Is.TypeOf, Arg<string>.Is.TypeOf)).Return(
                 new FileInfo(@"C:\zip"));

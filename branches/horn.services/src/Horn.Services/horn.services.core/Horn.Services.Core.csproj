@@ -54,6 +54,7 @@
       <HintPath>..\..\..\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -66,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Builder\ISiteStructureBuilder.cs" />
     <Compile Include="Builder\SiteStructureBuilder.cs" />
+    <Compile Include="Config\HornConfig.cs" />
     <Compile Include="Extensions\ResourceExtensions.cs" />
     <Compile Include="IoC\ServicesDependencyResolver.cs" />
     <Compile Include="Log\PackageTreeLog.cs" />

@@ -7,6 +7,7 @@ using Horn.Core.Extensions;
 using Horn.Core.PackageStructure;
 using Horn.Core.Tree.MetaDataSynchroniser;
 using Horn.Core.Utils;
+using Horn.Services.Core.Config;
 using horn.services.core.Value;
 using log4net;
 
@@ -20,10 +21,10 @@ namespace Horn.Services.Core.Builder
         private IPackageTree rootPackageTree;
         private DirectoryInfo sandBox;
 
-        private bool hasRanOnce = false;
+        private bool hasRanOnce;
 
         protected DateTime nextPollTime;
-        protected TimeSpan frequency = new TimeSpan(0, 0, 20, 0);
+        protected TimeSpan frequency;
         protected static readonly ILog log = LogManager.GetLogger(typeof(SiteStructureBuilder));
 
         public virtual List<Category> Categories { get; private set; }
@@ -37,13 +38,13 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Initialise()
         {
-            var rootDirectory = fileSystemProvider.GetHornRootDirectory();
+            var rootDirectory = fileSystemProvider.GetHornRootDirectory(HornConfig.Settings.HornRootDirectory);
 
             metaDataSynchroniser.SynchronisePackageTree(new PackageTree(rootDirectory, null));
 
             rootPackageTree = new PackageTree(rootDirectory, null);
 
-            sandBox = fileSystemProvider.CreateTemporaryHornDirectory();
+            sandBox = fileSystemProvider.CreateTemporaryHornDirectory(HornConfig.Settings.HornTempDirectory);
         }
 
         public virtual void Build()
@@ -75,14 +76,12 @@ namespace Horn.Services.Core.Builder
 
             while (ServiceStarted)
             {
-                if ((DateTime.UtcNow < nextPollTime) && hasRanOnce)
+                if (hasRanOnce)
                 {
                     SuspendTask();
 
                     if (!ServiceStarted)
                         break;
-
-                    SetNextPollTime();
                 }
 
                 try
@@ -118,12 +117,6 @@ namespace Horn.Services.Core.Builder
                 BuildCategories(childTree, childCategory, newDirectory);
 
                 parent.Categories.Add(childCategory);
-
-                //TODO: Decide the structure of the xml
-                //if(childTree.IsBuildNode)
-                //    parent.Packages.AddRange(childCategory.Packages);
-                //else
-                //    parent.Categories.Add(childCategory);
             }
         }
 
@@ -138,7 +131,12 @@ namespace Horn.Services.Core.Builder
                 foreach (var package in category.Packages)
                 {
                     if(!hasRanOnce)
-                        Debugger.Break();
+                    {
+                        log.Info("Running for the first time.");
+
+                        //Debugger.Break();
+                    }
+                        
 
                     hasRanOnce = true;
 
@@ -170,11 +168,6 @@ namespace Horn.Services.Core.Builder
             }
         }
 
-        private void SetNextPollTime()
-        {
-            nextPollTime = DateTime.Now.Add(frequency);
-        }
-
         public SiteStructureBuilder(IMetaDataSynchroniser metaDataSynchroniser, IFileSystemProvider fileSystemProvider, string dropDirectoryPath)
         {
             this.metaDataSynchroniser = metaDataSynchroniser;
@@ -182,7 +175,7 @@ namespace Horn.Services.Core.Builder
             dropDirectory = new DirectoryInfo(dropDirectoryPath);
             Categories = new List<Category>();
 
-            SetNextPollTime();
+             frequency = new TimeSpan(0, 0, HornConfig.Settings.BuildFrequency, 0);
         }
     }
 }

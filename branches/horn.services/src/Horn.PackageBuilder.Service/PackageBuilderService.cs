@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.ServiceProcess;
 using System.Threading;
-using Horn.Core.Config;
+using Horn.Services.Core.Config;
 using Horn.Services.Core.Builder;
 using Horn.Services.Core.IoCServices;
 using log4net;
