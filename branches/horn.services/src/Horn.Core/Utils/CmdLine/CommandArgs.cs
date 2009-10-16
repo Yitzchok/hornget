@@ -5,6 +5,8 @@ namespace Horn.Core.Utils.CmdLine
 {
     public class CommandArgs : ICommandArgs
     {
+        public const string IoCKey = "commandargs";
+
         public virtual string FullName
         {
             get

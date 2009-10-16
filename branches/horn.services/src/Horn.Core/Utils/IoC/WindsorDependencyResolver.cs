@@ -1,3 +1,4 @@
+using System;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Horn.Core.BuildEngines;
@@ -16,9 +17,25 @@ namespace Horn.Core.Utils.IoC
 {
 	public class WindsorDependencyResolver : IDependencyResolver
 	{
-		protected readonly WindsorContainer innerContainer;        
+		protected readonly WindsorContainer innerContainer;
 
-		public T Resolve<T>()
+	    public void AddComponentInstance<Ttype>(string key, Type service, Ttype instance)
+	    {
+            innerContainer.Kernel.AddComponentInstance(key, service, instance);
+	    }
+
+	    public bool RemoveComponent(string key)
+	    {
+	        return innerContainer.Kernel.RemoveComponent(key);
+	    }
+
+        //TODO: Remove
+	    public IWindsorContainer GetContainer()
+	    {
+	        return innerContainer;
+	    }
+
+	    public T Resolve<T>()
 		{
 			return innerContainer.Resolve<T>();
 		}
@@ -27,11 +44,6 @@ namespace Horn.Core.Utils.IoC
 		{
 			return innerContainer.Resolve<T>(key);
 		}
-
-	    public void AddComponentInstance<T>(T component)
-	    {
-            innerContainer.Kernel.AddComponentInstance<T>(typeof(T), component);
-	    }
 
 	    public WindsorDependencyResolver(ICommandArgs commandArgs)
 		{

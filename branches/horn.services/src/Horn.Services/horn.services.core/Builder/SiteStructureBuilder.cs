@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using Castle.Windsor;
 using Horn.Core;
 using Horn.Core.Extensions;
 using Horn.Core.PackageCommands;
@@ -42,8 +43,6 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Initialise()
         {
-            //Debugger.Break();
-
             var rootDirectory = fileSystemProvider.GetHornRootDirectory(HornConfig.Settings.HornRootDirectory);
 
             metaDataSynchroniser.SynchronisePackageTree(new PackageTree(rootDirectory, null));
@@ -55,8 +54,6 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Build()
         {
-            //Debugger.Break();
-
             log.Info("in build.");
 
             var root = new Category(null, rootPackageTree);
@@ -103,33 +100,26 @@ namespace Horn.Services.Core.Builder
 
         protected virtual void BuildAndZipPackage(IFileSystemProvider fileSystemProvider, Package package, DirectoryInfo newDirectory, DirectoryInfo tempDirectory)
         {
-            var tempBuildFolder = fileSystemProvider.GetTemporaryBuildDirectory(sandBox);
+            BuildPackage(package, newDirectory);
 
-            BuildPackage(package, tempBuildFolder);
-
-            fileSystemProvider.ZipFolder(tempBuildFolder, newDirectory, package.FileName);
+            fileSystemProvider.ZipFolder(rootPackageTree.Result, newDirectory, package.FileName);
         }
 
         protected virtual void BuildPackage(Package package, DirectoryInfo newDirectory)
         {
             var version = (package.IsTrunk) ? null : package.Version;
 
-            var commandArgs = new CommandArgs(package.Name, false, version, false, newDirectory.FullName);
+            var commandArgs = new CommandArgs(package.Name, false, version, false, null);
 
-            IoC.AddComponentInstance<ICommandArgs>(commandArgs);
+
+            IoC.AddComponentInstance(CommandArgs.IoCKey, typeof(ICommandArgs), commandArgs);
+
 
             var packageBuilder = IoC.Resolve<IPackageCommand>("install");
 
-            try
-            {
-                packageBuilder.Execute(rootPackageTree);
-            }
-            catch (Exception ex)
-            {
-                log.Error(ex);
+            packageBuilder.Execute(rootPackageTree);
 
-                CreateErrorTextFile(ex, package, newDirectory);
-            }
+            IoC.RemoveComponent(CommandArgs.IoCKey);
         }
 
         protected virtual void BuildCategories(IPackageTree packageTree, Category parent, DirectoryInfo parentDirectory)
@@ -178,12 +168,21 @@ namespace Horn.Services.Core.Builder
                     {
                         log.Info("Running for the first time.");
 
-                        //Debugger.Break();
+                        Debugger.Break();
                     }
                         
                     hasRanOnce = true;
 
-                    BuildAndZipPackage(fileSystemProvider, package, newDirectory, sandBox);                    
+                    try
+                    {
+                        BuildAndZipPackage(fileSystemProvider, package, newDirectory, sandBox);    
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error(ex);
+
+                        CreateErrorTextFile(ex, package, newDirectory);
+                    }                
                 }
             }
 
@@ -198,7 +197,7 @@ namespace Horn.Services.Core.Builder
 
             fileSystemProvider.WriteTextFile(hornFile, xml);
 
-            //Debugger.Break();
+            Debugger.Break();
 
             var destinationDirectory = Path.Combine(dropDirectory.FullName, PackageTree.RootPackageTreeName);
 
