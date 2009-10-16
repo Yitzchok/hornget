@@ -86,14 +86,21 @@ namespace Horn.Core.Utils
 
         public DirectoryInfo GetHornRootDirectory(string path)
         {
-            var localApplicationData = new DirectoryInfo(path);
+            var hornPath = new DirectoryInfo(path);
 
-            var root = new DirectoryInfo(Path.Combine(localApplicationData.FullName, PackageTree.RootPackageTreeName));  
+            var root = new DirectoryInfo(Path.Combine(hornPath.FullName, PackageTree.RootPackageTreeName));  
 
             if(!root.Exists)
                 root.Create();
 
             return root;
+        }
+
+        public DirectoryInfo GetTemporaryBuildDirectory(DirectoryInfo tempDirectory)
+        {
+            var tempBuildDirectory = new DirectoryInfo(Path.Combine(tempDirectory.FullName, "Build"));
+
+            return tempBuildDirectory;
         }
 
         public virtual void MkDir(string path)
@@ -125,25 +132,11 @@ namespace Horn.Core.Utils
         {
             var zipFileName = Path.Combine(targetDirectory.FullName, string.Format("{0}.zip", packageName));
 
-            var tempFolder =
-                new DirectoryInfo(Path.Combine(Environment.GetEnvironmentVariable("TEMP"), Guid.NewGuid().ToString()));
-
-            tempFolder.Create();
-
-            foreach (var sourceFile in sourceDirectory.GetFiles())
-            {
-                var newFileName = Path.Combine(tempFolder.FullName, Path.GetFileName(sourceFile.FullName));
-
-                sourceFile.CopyTo(newFileName);
-            }
-
-            tempFolder.Create();
-
-            ZipFolder(tempFolder, zipFileName);
+            ZipFolder(sourceDirectory, zipFileName);
 
             try
             {
-                tempFolder.Delete(true);
+                sourceDirectory.Delete(true);
             }
             catch(Exception ex)
             {
@@ -158,6 +151,7 @@ namespace Horn.Core.Utils
             using (var zipOutputStream = new ZipOutputStream(File.Create(zipFileName)))
             {
                 zipOutputStream.SetLevel(9);
+
                 var buffer = new byte[4096];
 
                 foreach (var file in  tempFolder.GetFiles())

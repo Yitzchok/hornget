@@ -1,5 +1,6 @@
 using System.IO;
 using Horn.Core.Dsl;
+using Horn.Core.PackageCommands;
 using Horn.Core.SCM;
 using Horn.Core.Tree.MetaDataSynchroniser;
 using Horn.Core.Utils;
@@ -15,19 +16,19 @@ using Rhino.Mocks;
 
 namespace Horn.Services.Core.Tests.Unit.SiteStructureSpecs
 {
-    public abstract class BuilderIniitialiseBase : ContextSpecification
+    public abstract class BuilderSpecBase : ContextSpecification
     {
         protected IMetaDataSynchroniser metaDataSynchroniser;
         protected SiteStructureBuilder siteStructureBuilder;
         protected IFileSystemProvider fileSystemProvider;
+        protected IPackageCommand packageBuilder;
 
         public override void before_each_spec()
         {
             var dependencyResolver = MockRepository.GenerateStub<IDependencyResolver>();
-
             metaDataSynchroniser = MockRepository.GenerateStub<IMetaDataSynchroniser>();
-
             fileSystemProvider = MockRepository.GenerateStub<IFileSystemProvider>();
+            packageBuilder = MockRepository.GenerateStub<IPackageCommand>();
 
             var configReader = new BooBuildConfigReader();
 
@@ -35,6 +36,11 @@ namespace Horn.Services.Core.Tests.Unit.SiteStructureSpecs
 
             dependencyResolver.Stub(x => x.Resolve<SVNSourceControl>()).Return(
                 new SourceControlDouble("http://someurl.com/"));
+
+            dependencyResolver.Stub(x => x.Resolve<IPackageCommand>("install")).Return(packageBuilder);
+
+            fileSystemProvider.Stub(x => x.GetTemporaryBuildDirectory(Arg<DirectoryInfo>.Is.TypeOf)).Return(
+                new DirectoryInfo(@"C:\temp\build"));
 
             IoC.InitializeWith(dependencyResolver);
 
@@ -45,12 +51,14 @@ namespace Horn.Services.Core.Tests.Unit.SiteStructureSpecs
             fileSystemProvider.Stub(x => x.ZipFolder(Arg<DirectoryInfo>.Is.TypeOf, Arg<DirectoryInfo>.Is.TypeOf, Arg<string>.Is.TypeOf)).Return(
                 new FileInfo(@"C:\zip"));
 
-            siteStructureBuilder = new SiteStructureBuilder(metaDataSynchroniser, fileSystemProvider, new DirectoryInfo(@"C:\").FullName);
+            siteStructureBuilder = GetSiteBuilder();
 
             siteStructureBuilder.Initialise();
 
             siteStructureBuilder.Build();
         }
+
+        protected abstract SiteStructureBuilder GetSiteBuilder();
 
         protected void AssertCategoryIntegrity(Category category)
         {

@@ -40,5 +40,14 @@ namespace Horn.Core.Utils.CmdLine
             if (switches.Keys.Contains("output"))
                 OutputPath = switches["output"][0];
         }
+
+        public CommandArgs(string packageName, bool rebuildOnly, string version, bool refresh, string outputPath)
+        {
+            PackageName = packageName;
+            RebuildOnly = rebuildOnly;
+            Version = version;
+            Refresh = refresh;
+            OutputPath = outputPath;
+        }
     }
 }

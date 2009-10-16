@@ -1,3 +1,6 @@
+using System.IO;
+using horn.services.core.Value;
+
 namespace Horn.Services.Core.Builder
 {
     public interface ISiteStructureBuilder

@@ -4,6 +4,10 @@ public static class IoC
 {
     private static IDependencyResolver dependencyResolver;
 
+    public static void AddComponentInstance<T>(T component)
+    {
+        dependencyResolver.AddComponentInstance<T>(component);
+    }
 
     public static void InitializeWith(IDependencyResolver resolver)
     {

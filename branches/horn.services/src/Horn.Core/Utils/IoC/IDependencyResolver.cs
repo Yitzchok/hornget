@@ -5,5 +5,7 @@ namespace Horn.Core.Utils.IoC
         T Resolve<T>();
 
         T Resolve<T>(string key);
+
+        void AddComponentInstance<T>(T component);
     }
 }

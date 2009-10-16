@@ -1,4 +1,3 @@
-using System;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Horn.Core.BuildEngines;
@@ -29,7 +28,12 @@ namespace Horn.Core.Utils.IoC
 			return innerContainer.Resolve<T>(key);
 		}
 
-		public WindsorDependencyResolver(ICommandArgs commandArgs)
+	    public void AddComponentInstance<T>(T component)
+	    {
+            innerContainer.Kernel.AddComponentInstance<T>(typeof(T), component);
+	    }
+
+	    public WindsorDependencyResolver(ICommandArgs commandArgs)
 		{
 			innerContainer = new WindsorContainer();
 

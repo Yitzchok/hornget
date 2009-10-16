@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using Horn.Core;
 using Horn.Core.Extensions;
+using Horn.Core.PackageCommands;
 using Horn.Core.PackageStructure;
 using Horn.Core.Tree.MetaDataSynchroniser;
 using Horn.Core.Utils;
+using Horn.Core.Utils.CmdLine;
 using Horn.Services.Core.Config;
 using horn.services.core.Value;
 using log4net;
+using Package=horn.services.core.Value.Package;
 
 namespace Horn.Services.Core.Builder
 {
@@ -38,9 +42,11 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Initialise()
         {
-            var rootDirectory = fileSystemProvider.GetHornRootDirectory(HornConfig.Settings.HornRootDirectory);
+            //Debugger.Break();
 
-            metaDataSynchroniser.SynchronisePackageTree(new PackageTree(rootDirectory, null));
+            var rootDirectory = new DirectoryInfo(@"C:\horn\.horn");//fileSystemProvider.GetHornRootDirectory(HornConfig.Settings.HornRootDirectory);
+
+            //metaDataSynchroniser.SynchronisePackageTree(new PackageTree(rootDirectory, null));
 
             rootPackageTree = new PackageTree(rootDirectory, null);
 
@@ -49,6 +55,8 @@ namespace Horn.Services.Core.Builder
 
         public virtual void Build()
         {
+            //Debugger.Break();
+
             log.Info("in build.");
 
             var root = new Category(null, rootPackageTree);
@@ -59,15 +67,7 @@ namespace Horn.Services.Core.Builder
 
             Categories.Add(root);
 
-            var xml = root.ToDataContractXml<Category>();
-
-            var hornFile = Path.Combine(sandBox.FullName, "horn.xml");
-
-            fileSystemProvider.WriteTextFile(hornFile, xml);
-
-            //var destinationDirectory = Path.Combine(dropDirectory.FullName, PackageTree.RootPackageTreeName);
-
-            //fileSystemProvider.CopyDirectory(sandBox.FullName, destinationDirectory);
+            CreateWebStructure(root);
         }
 
         public virtual void Run()
@@ -101,12 +101,38 @@ namespace Horn.Services.Core.Builder
             }
         }
 
-        protected virtual void SuspendTask()
+        protected virtual void BuildAndZipPackage(IFileSystemProvider fileSystemProvider, Package package, DirectoryInfo newDirectory, DirectoryInfo tempDirectory)
         {
-            Thread.Sleep(frequency);
+            var tempBuildFolder = fileSystemProvider.GetTemporaryBuildDirectory(sandBox);
+
+            BuildPackage(package, tempBuildFolder);
+
+            fileSystemProvider.ZipFolder(tempBuildFolder, newDirectory, package.FileName);
         }
 
-        private void BuildCategories(IPackageTree packageTree, Category parent, DirectoryInfo parentDirectory)
+        protected virtual void BuildPackage(Package package, DirectoryInfo newDirectory)
+        {
+            var version = (package.IsTrunk) ? null : package.Version;
+
+            var commandArgs = new CommandArgs(package.Name, false, version, false, newDirectory.FullName);
+
+            IoC.AddComponentInstance<ICommandArgs>(commandArgs);
+
+            var packageBuilder = IoC.Resolve<IPackageCommand>("install");
+
+            try
+            {
+                packageBuilder.Execute(rootPackageTree);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+
+                CreateErrorTextFile(ex, package, newDirectory);
+            }
+        }
+
+        protected virtual void BuildCategories(IPackageTree packageTree, Category parent, DirectoryInfo parentDirectory)
         {           
             foreach (var childTree in packageTree.Children)
             {
@@ -120,7 +146,25 @@ namespace Horn.Services.Core.Builder
             }
         }
 
-        private DirectoryInfo CreatePackageDirectory(Category category, DirectoryInfo directory, IPackageTree packageTree)
+        private void CreateErrorTextFile(Exception exception, Package package, DirectoryInfo directory)
+        {
+            var tempFileName = Path.Combine(directory.FullName, string.Format("{0}.error", package.FileName));
+
+            var error = string.Format("{0}\n", exception.Message);
+
+            Exception innerException = exception.InnerException;
+
+            while (innerException != null)
+            {
+                error = string.Format("{0}\n", innerException.Message);
+
+                innerException = innerException.InnerException;
+            }
+
+            fileSystemProvider.WriteTextFile(tempFileName, error);
+        }
+
+        protected virtual DirectoryInfo CreatePackageDirectory(Category category, DirectoryInfo directory, IPackageTree packageTree)
         {
             var newDirectory = new DirectoryInfo(Path.Combine(directory.FullName, category.Name));
 
@@ -137,35 +181,33 @@ namespace Horn.Services.Core.Builder
                         //Debugger.Break();
                     }
                         
-
                     hasRanOnce = true;
 
-                    //TODO: Remove - FOR TESTING
-                    CreateTemporaryZip(package, newDirectory);                    
+                    BuildAndZipPackage(fileSystemProvider, package, newDirectory, sandBox);                    
                 }
             }
 
             return newDirectory;
         }
 
-        //TODO: Remove - FOR TESTING
-        private void CreateTemporaryZip(Package package, DirectoryInfo newDirectory)
+        protected virtual void CreateWebStructure(Category root)
         {
-            var tempFileName = Path.Combine(newDirectory.FullName, string.Format("{0}.txt", package.FileName));
-            fileSystemProvider.WriteTextFile(tempFileName, "some text");
+            var xml = root.ToDataContractXml<Category>();
 
-            var zip = fileSystemProvider.ZipFolder(newDirectory, newDirectory, package.FileName);
+            var hornFile = Path.Combine(sandBox.FullName, "horn.xml");
 
-            //TODO: Uncomment
-            //fileSystemProvider.CopyFile(zip.FullName, zip.FullName, true);                
+            fileSystemProvider.WriteTextFile(hornFile, xml);
 
-            try
-            {
-                fileSystemProvider.DeleteFile(tempFileName);
-            }
-            catch
-            {
-            }
+            //Debugger.Break();
+
+            var destinationDirectory = Path.Combine(dropDirectory.FullName, PackageTree.RootPackageTreeName);
+
+            fileSystemProvider.CopyDirectory(sandBox.FullName, destinationDirectory);
+        }
+
+        protected virtual void SuspendTask()
+        {
+            Thread.Sleep(frequency);
         }
 
         public SiteStructureBuilder(IMetaDataSynchroniser metaDataSynchroniser, IFileSystemProvider fileSystemProvider, string dropDirectoryPath)
@@ -175,7 +217,7 @@ namespace Horn.Services.Core.Builder
             dropDirectory = new DirectoryInfo(dropDirectoryPath);
             Categories = new List<Category>();
 
-             frequency = new TimeSpan(0, 0, HornConfig.Settings.BuildFrequency, 0);
+            frequency = new TimeSpan(0, 0, HornConfig.Settings.BuildFrequency, 0);
         }
     }
 }

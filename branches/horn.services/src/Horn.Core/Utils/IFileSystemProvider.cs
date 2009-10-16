@@ -22,6 +22,8 @@ namespace Horn.Core.Utils
 
         bool Exists(string path);
 
+        DirectoryInfo GetTemporaryBuildDirectory(DirectoryInfo tempDirectory);
+
         DirectoryInfo GetHornRootDirectory(string path);
 
         void MkDir(string path);
