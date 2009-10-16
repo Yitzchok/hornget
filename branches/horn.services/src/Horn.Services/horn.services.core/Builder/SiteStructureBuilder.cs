@@ -44,9 +44,9 @@ namespace Horn.Services.Core.Builder
         {
             //Debugger.Break();
 
-            var rootDirectory = new DirectoryInfo(@"C:\horn\.horn");//fileSystemProvider.GetHornRootDirectory(HornConfig.Settings.HornRootDirectory);
+            var rootDirectory = fileSystemProvider.GetHornRootDirectory(HornConfig.Settings.HornRootDirectory);
 
-            //metaDataSynchroniser.SynchronisePackageTree(new PackageTree(rootDirectory, null));
+            metaDataSynchroniser.SynchronisePackageTree(new PackageTree(rootDirectory, null));
 
             rootPackageTree = new PackageTree(rootDirectory, null);
 

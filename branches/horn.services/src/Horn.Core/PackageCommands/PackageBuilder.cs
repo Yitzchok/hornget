@@ -1,4 +1,5 @@
 using System.Linq;
+using Castle.Core;
 using Horn.Core.BuildEngines;
 using Horn.Core.Dependencies;
 using Horn.Core.Dsl;
@@ -10,6 +11,7 @@ using log4net;
 
 namespace Horn.Core.PackageCommands
 {
+    [Transient]
     public class PackageBuilder : IPackageCommand
     {
         private readonly IGet get;
