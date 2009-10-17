@@ -221,9 +221,9 @@ namespace Horn.Core.BuildEngines
             {
                 process.WaitForExit();
             }
-            catch (ProcessFailedException)
+            catch (ProcessFailedException pre)
             {
-                throw new BuildFailedException(string.Format("The build tool {0} failed building the {1} package", packageTree.BuildMetaData.BuildEngine.BuildTool, packageTree.Name));
+                throw new BuildFailedException(string.Format("The build tool {0} failed building the {1} package", packageTree.BuildMetaData.BuildEngine.BuildTool, packageTree.Name), pre);
             }
         }
 

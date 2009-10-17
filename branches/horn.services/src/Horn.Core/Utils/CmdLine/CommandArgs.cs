@@ -28,6 +28,15 @@ namespace Horn.Core.Utils.CmdLine
 
         public virtual string OutputPath { get; private set; }
 
+        public virtual void SetArguments(string packageName, bool rebuildOnly, string version, bool refresh, string outputPath)
+        {
+            PackageName = packageName;
+            RebuildOnly = rebuildOnly;
+            Version = version;
+            Refresh = refresh;
+            OutputPath = outputPath;            
+        }
+
         public CommandArgs(IDictionary<string, IList<string>> switches)
         {
             PackageName = switches["install"][0];

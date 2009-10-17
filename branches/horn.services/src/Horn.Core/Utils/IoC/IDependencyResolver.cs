@@ -7,7 +7,7 @@ namespace Horn.Core.Utils.IoC
     {
         void AddComponentInstance<Ttype>(string key, Type service, Ttype instance);
 
-        bool RemoveComponent(string key);
+        bool HasComponent<TService>();
 
         //TODO: Remove
         IWindsorContainer GetContainer();

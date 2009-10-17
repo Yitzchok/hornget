@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using Castle.Windsor;
 using Horn.Core;
@@ -31,6 +32,8 @@ namespace Horn.Services.Core.Builder
         protected DateTime nextPollTime;
         protected TimeSpan frequency;
         protected static readonly ILog log = LogManager.GetLogger(typeof(SiteStructureBuilder));
+
+        private string[] excludePackages = new string[]{"castle"};
 
         public virtual List<Category> Categories { get; private set; }
 
@@ -109,23 +112,30 @@ namespace Horn.Services.Core.Builder
         {
             var version = (package.IsTrunk) ? null : package.Version;
 
-            var commandArgs = new CommandArgs(package.Name, false, version, false, null);
+            if (!IoC.HasComponent <ICommandArgs>())
+            {
+                var commandArgs = new CommandArgs(package.Name, false, version, false, null);
 
-
-            IoC.AddComponentInstance(CommandArgs.IoCKey, typeof(ICommandArgs), commandArgs);
-
+                IoC.AddComponentInstance(CommandArgs.IoCKey, typeof(ICommandArgs), commandArgs); 
+            }
+            else
+            {
+                ((CommandArgs) IoC.Resolve<ICommandArgs>()).SetArguments(package.Name, false, version,
+                                                                                           false, null);
+            }
 
             var packageBuilder = IoC.Resolve<IPackageCommand>("install");
 
             packageBuilder.Execute(rootPackageTree);
-
-            IoC.RemoveComponent(CommandArgs.IoCKey);
         }
 
         protected virtual void BuildCategories(IPackageTree packageTree, Category parent, DirectoryInfo parentDirectory)
         {           
             foreach (var childTree in packageTree.Children)
             {
+                if(!string.IsNullOrEmpty(excludePackages.Where(x => x.ToLower() == childTree.Name.ToLower()).FirstOrDefault()))
+                    continue;
+
                 var childCategory = new Category(parent, childTree);
 
                 var newDirectory = CreatePackageDirectory(childCategory, parentDirectory, childTree);

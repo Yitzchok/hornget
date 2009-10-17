@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
 using Horn.Core.PackageStructure;
@@ -64,6 +65,9 @@ namespace horn.services.core.Value
 
             foreach (var buildMetaData in packageTreeNode.GetAllPackageMetaData())
             {
+                if (buildMetaData.InstallName.IndexOf("mvccontrib") > -1)
+                    Debugger.Break();
+
                 Packages.Add(new Package(this, buildMetaData));
             }
         }

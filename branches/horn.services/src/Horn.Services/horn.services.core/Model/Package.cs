@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 using Horn.Core.Dsl;
 using Horn.Services.Core.Extensions;
@@ -55,7 +56,7 @@ namespace horn.services.core.Value
 
         public Package(Category parent, IBuildMetaData buildMetaData)
         {
-            Name = buildMetaData.InstallName;
+            Name = parent.Name;
 
             Version = buildMetaData.Version;
 

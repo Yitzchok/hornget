@@ -11,6 +11,11 @@ public static class IoC
         dependencyResolver.AddComponentInstance(key, service, instance);
     }
 
+    public static bool HasComponent<TService>()
+    {
+        return dependencyResolver.HasComponent<TService>();
+    }
+
     //TODO: Remove
     public static IWindsorContainer GetContainer()
     {
@@ -30,10 +35,5 @@ public static class IoC
     public static T Resolve<T>(string key)
     {
         return dependencyResolver.Resolve<T>(key);
-    }
-
-    public static bool RemoveComponent(string key)
-    {
-        return dependencyResolver.RemoveComponent(key);
-    }
+    }    
 }

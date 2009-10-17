@@ -24,12 +24,12 @@ namespace Horn.Core.Utils.IoC
             innerContainer.Kernel.AddComponentInstance(key, service, instance);
 	    }
 
-	    public bool RemoveComponent(string key)
+	    public bool HasComponent<TService>()
 	    {
-	        return innerContainer.Kernel.RemoveComponent(key);
+            return innerContainer.Kernel.HasComponent(typeof(TService));
 	    }
 
-        //TODO: Remove
+	    //TODO: Remove
 	    public IWindsorContainer GetContainer()
 	    {
 	        return innerContainer;
