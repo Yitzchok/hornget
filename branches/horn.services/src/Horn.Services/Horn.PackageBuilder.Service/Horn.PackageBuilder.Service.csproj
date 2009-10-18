@@ -81,7 +81,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Horn.Core\Horn.Core.csproj">
+    <ProjectReference Include="..\..\Horn.Core\Horn.Core.csproj">
       <Project>{093CFA20-D720-4C58-9B8F-754F03A40D16}</Project>
       <Name>Horn.Core</Name>
     </ProjectReference>
