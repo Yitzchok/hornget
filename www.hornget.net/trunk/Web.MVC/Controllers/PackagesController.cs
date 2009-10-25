@@ -9,6 +9,8 @@ namespace Web.MVC.Controllers
     {
         public ActionResult Index(string url)
         {
+            SetPrimaryCategoryNavigation();
+
             if (string.IsNullOrEmpty(url))
             {
                 return View(PackageStructure().Take(1).FirstOrDefault().Categories);
@@ -24,6 +26,11 @@ namespace Web.MVC.Controllers
             return package == null
                    ? NotFound()
                    : ShowPackage(package);
+        }
+
+        void SetPrimaryCategoryNavigation()
+        {
+            ViewData["Categories"] = PackageStructure().Take(1).FirstOrDefault().Categories;
         }
 
         private ActionResult NotFound()

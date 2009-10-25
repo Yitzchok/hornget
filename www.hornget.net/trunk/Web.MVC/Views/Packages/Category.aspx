@@ -5,24 +5,54 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<% if (Model.Categories.Count > 0){ %>
+    <div class="mod grab">
+        <b class="top">
+            <b class="tl"></b>
+            <b class="tr"></b>
+        </b>
+        <div class="inner">
+            <div class="hd bam">
+                <h3><%= Model.Name %> categories</h3>
+            </div>
+            <div class="bd">
+               <ul class="categories">
+                    <% foreach (var category in Model.Categories) { %>
+                    <li><span><a href="<%=Url.Action("Index", "Packages", new {category.Url}) %>" title="<%=category.Name %>"><%=category.Name %></a></span></li>
+                    <%}%>                           
+                </ul>                        
+            </div>
+        </div>
+        <b class="bottom">
+            <b class="bl"></b>
+            <b class="br"></b>
+        </b>
+    </div>  
+<%} %>
 
-    <h2>horn/<%= Model.Url %></h2>
-    <p>&nbsp;</p>
-    
-    <% foreach (var category in Model.Categories) { %>
+<% if (Model.Packages.Count > 0){ %>
 
-    <div class="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" style="padding:10px;margin-bottom:10px;text-align:center;">
-        <a href="<%=Url.Action("Index", "Packages", new {category.Url}) %>" title="<%=category.Name %>" style="font-size:120%"><%=category.Name %></a>
-    </div>
-    
-    <%}%>
- 
-    <% foreach (var package in Model.Packages){ %>
-
-    <div class="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" style="padding:10px;margin-bottom:10px;text-align:center;">
-        <a href="<%=Url.Action("Index", "Packages", new {package.Url}) %>" title="<%=package.Name %> <%=package.Version %>" style="font-size:120%"><%=package.Name%> <%=package.Version %></a>
-    </div>
-    
-    <%}%>
-
+        <div class="mod grab">
+            <b class="top">
+                <b class="tl"></b>
+                <b class="tr"></b>
+            </b>
+            <div class="inner">
+                <div class="hd bam">
+                    <h3><%= Model.Name %> categories</h3>
+                </div>
+                <div class="bd">
+                   <ul class="categories">
+                        <% foreach (var package in Model.Packages) { %>
+                        <li><span><a href="<%=Url.Action("Index", "Packages", new {package.Url}) %>" title="<%=package.Name %>"><%=package.Name %> <%=package.Version %></a></span></li>
+                        <%}%>                           
+                    </ul>                        
+                </div>
+            </div>
+            <b class="bottom">
+                <b class="bl"></b>
+                <b class="br"></b>
+            </b>
+        </div> 
+<%} %>
 </asp:Content>

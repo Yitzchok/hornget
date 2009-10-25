@@ -7,17 +7,30 @@ namespace Web.MVC.Model
     [XmlRoot(ElementName = "Package", Namespace = "http://hornget.com/services")]
     public class Package
     {
+        public Package()
+        {
+            Contents = new List<PackageFile>();
+        }
+
         public string Name { get; set; }
 
-        [XmlArray(ElementName = "MetaData")]
         [XmlArrayItem("MetaData")]
         public List<MetaData> MetaData { get; set; }
         public string Version { get; set; }
-        public Type Type
-        {
-            get { return typeof (Package); }
-        }
 
+        [XmlArrayItem("PackageFile")]
+        public List<PackageFile> Contents { get; set; }
+
+        public PackageFile ZipFileName { get; set; }
+
+        public bool IsError { get; set; }
+
+        public string ErrorMessage { get; set; }
+
+        public string DownloadUrl()
+        {
+            return string.Format("/downloads/{0}.zip", Url);
+        }
         public string Url { get; set; }
     }
 }
