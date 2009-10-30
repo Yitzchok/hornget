@@ -154,6 +154,7 @@
     <Content Include="Scripts\jquery-ui-1.7.2.custom.min.js" />
     <Content Include="test-data.xml" />
     <Content Include="Views\Packages\Category.aspx" />
+    <Content Include="Views\Packages\PackageNotFound.aspx" />
     <Content Include="Views\Packages\Index.aspx" />
     <Content Include="Views\Packages\Package.aspx" />
     <Content Include="Web.config" />
