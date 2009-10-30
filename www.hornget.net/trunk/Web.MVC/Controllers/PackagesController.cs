@@ -13,7 +13,7 @@ namespace Web.MVC.Controllers
 
             if (string.IsNullOrEmpty(url))
             {
-                return View(PackageStructure().Take(1).FirstOrDefault().Categories);
+                return View(PackageStructure().Categories);
             }
 
             var category = Categories.Where(c => c.Url.ToLower().StartsWith(url)).FirstOrDefault();
@@ -30,7 +30,7 @@ namespace Web.MVC.Controllers
 
         void SetPrimaryCategoryNavigation()
         {
-            ViewData["Categories"] = PackageStructure().Take(1).FirstOrDefault().Categories;
+            ViewData["Categories"] = PackageStructure().Categories;
         }
 
         private ActionResult NotFound()

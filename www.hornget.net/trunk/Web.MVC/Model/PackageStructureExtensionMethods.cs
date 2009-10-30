@@ -15,12 +15,12 @@ namespace Web.MVC.Model
             }
         }
 
-        public static IEnumerable<Category> GetAllCategories(this PackageStructure packageStructure)
-        {
-            return packageStructure[0].GetAllCategories();
-        }
+        //public static IEnumerable<Category> GetAllCategories(this PackageStructure packageStructure)
+        //{
+        //    return packageStructure.GetAllCategories();
+        //}
 
-        static IEnumerable<Category> GetAllCategories(this Category category)
+        public static IEnumerable<Category> GetAllCategories(this Category category)
         {
             foreach (var child in category.Categories)
             {

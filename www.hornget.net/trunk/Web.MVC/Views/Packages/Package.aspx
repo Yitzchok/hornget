@@ -15,6 +15,24 @@
                     <h3><%=Model.Name + " " + Model.Version %></h3>
                 </div>
                 <div class="bd">
+                
+                    <% if (Model.IsError){ %>
+                    
+                        <div class="ui-widget" style="margin:10px;">
+                        <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;">
+                        <p>
+                        <span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"/>
+                        <strong>Alert:</strong>
+                        <p><%=Model.ErrorMessage %></p>
+                        </p>
+                        </div>
+                        </div>                    
+                     <p><div align="center"><img src="/content/44.png" title="download unavailable" alt="download unavailable" /> download unavailable</div></p> 
+                    
+                    <% } else {%>
+                    <p><div align="center"><a href="<%=Model.DownloadUrl()%>" title=""><img src="/content/45.png" title="download" alt="download" style="vertical-align:middle" /> download package</a></div></p> 
+                    <%} %>                   
+                
                     <% foreach (var metaData in Model.MetaData) {%>
                     
                     <div class="line" style="margin-bottom:0px;">
@@ -30,33 +48,14 @@
                     
                     <%if (Model.Contents.Count > 0){ %>
                     <h3>Package Contents</h3>
-                    
+                    <ul class="simpleList">                 
                     <% foreach (var file in Model.Contents) {%>
-                    
-                    <div class="line" style="margin-bottom:0px;">
-                        <div class="unit size1of1">
-                        <p><strong><%=file.Name %>:</strong></p>
-                        </div>
-                    </div>
+   
+                        <li><%=file.Name %></li>
                         <%} %>
-                    <%}%>       
-                    
-                    <% if (Model.IsError){ %>
-                    
-                        <div class="ui-widget">
-                        <div class="ui-state-error ui-corner-all" style="padding: 0pt 0.7em;">
-                        <p>
-                        <span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"/>
-                        <strong>Alert:</strong>
-                        <%=Model.ErrorMessage %>
-                        </p>
-                        </div>
-                        </div>                    
-                    <p><img src="/content/44.png" title="download unavailable" alt="download unavailable" /></p> 
-                    
-                    <% } else {%>
-                    <p><a href="<%=Model.DownloadUrl()%>" title=""><img src="/content/45.png" title="download" alt="download" style="vertical-align:middle" /> download package</a></p> 
-                    <%} %>                              
+                    <%}%>
+                    </ul>
+                           
                 </div>
             </div>
             <b class="bottom">
