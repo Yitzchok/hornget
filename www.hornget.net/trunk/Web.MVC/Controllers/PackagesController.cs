@@ -1,12 +1,13 @@
-using System;
 using System.Linq;
 using System.Web.Mvc;
+using Web.MVC.Filters;
 using Web.MVC.Model;
 
 namespace Web.MVC.Controllers
 {
     public class PackagesController : PackagesControllerBase
     {
+        [JsonFilter]
         public ActionResult Index(string url)
         {
             SetPrimaryCategoryNavigation();
@@ -32,12 +33,12 @@ namespace Web.MVC.Controllers
         {
             ViewData["Categories"] = PackageStructure().Categories;
         }
-
+        
         private ActionResult NotFound()
         {
             return View("PackageNotFound");
         }
-
+        
         private ActionResult ShowPackage(Package package)
         {
             return View("Package", package);

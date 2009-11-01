@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\JsonFilterAttribute.cs" />
     <Compile Include="Controllers\PackagesController.cs" />
     <Compile Include="Controllers\PackagesControllerBase.cs" />
     <Compile Include="Default.aspx.cs">
