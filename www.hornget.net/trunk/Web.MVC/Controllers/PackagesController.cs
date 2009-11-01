@@ -16,12 +16,12 @@ namespace Web.MVC.Controllers
                 return View(PackageStructure().Categories);
             }
 
-            var category = Categories.Where(c => c.Url.ToLower().StartsWith(url)).FirstOrDefault();
+            var category = Categories.Where(c => c.Url.ToLower() == url).FirstOrDefault();
 
             if (category != null)
                 return ShowCategory(category);
 
-            var package = Packages.Where(p => p.Url.ToLower().StartsWith(url)).FirstOrDefault();
+            var package = Packages.Where(p => p.Url.ToLower() == url).FirstOrDefault();
 
             return package == null
                    ? NotFound()

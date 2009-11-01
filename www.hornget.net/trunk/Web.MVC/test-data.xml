@@ -917,12 +917,6 @@
                   <Name>MvcContrib.XsltViewEngine.XML</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>MvcTestingFramework.Sample.Test.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcTestingFramework.Sample.Test.pdb</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>Mvp.Xml.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -1287,12 +1281,6 @@
                 </PackageFile>
                 <PackageFile>
                   <Name>WatiN.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Website.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Website.pdb</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>WhenPathMissingAFormatPlaceHolder_WillThrow_pathValidation1.xml</Name>
@@ -4509,7 +4497,7 @@
         <Category>
           <Name>nhcontrib</Name>
           <Categories>
-            <Category>
+            <Category>  
               <Name>nhibernate.burrow</Name>
               <Categories />
               <Packages>
@@ -8474,8 +8462,10 @@
                   <Url>wpf/caliburn/caliburn-silverlight/caliburn-silverlight-trunk</Url>
                   <ZipFileName i:nil="true" />
                   <Contents />
-                  <IsError>false</IsError>
-                  <ErrorMessage i:nil="true" />
+                  <IsError>true</IsError>
+                  <ErrorMessage>
+                    no build files found at C:\horn\.horn\wpf\caliburn\caliburn-silverlight\Working-2.0\bin.
+                  </ErrorMessage>
                 </Package>
               </Packages>
               <Url>wpf/caliburn/caliburn-silverlight/</Url>
