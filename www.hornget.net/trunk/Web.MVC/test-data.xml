@@ -8,6 +8,50 @@
           <Name>rhino.tools</Name>
           <Categories>
             <Category>
+              <Name>rhino.commons</Name>
+              <Categories />
+              <Packages>
+                <Package>
+                  <Name>rhino.commons</Name>
+                  <MetaData>
+                    <MetaData>
+                      <Name>category</Name>
+                      <Value>Frameworks</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>description</Name>
+                      <Value>Support and extension for many advance usecases</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>forum</Name>
+                      <Value>http://groups.google.co.uk/group/rhino-tools-dev?hl=en</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>homepage</Name>
+                      <Value>http://github.com/lorenzomelato/rhino-commons</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>name</Name>
+                      <Value>Rhino.Dsl</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>notes</Name>
+                      <Value />
+                    </MetaData>
+                  </MetaData>
+                  <Version>trunk</Version>
+                  <Url>frameworks/rhino.tools/rhino.commons/rhino.commons-trunk</Url>
+                  <ZipFileName i:nil="true" />
+                  <Contents />
+                  <IsError>true</IsError>
+                  <ErrorMessage>
+                    The build tool Horn.Core.PSakeBuildTool failed building the rhino.commons package
+                  </ErrorMessage>
+                </Package>
+              </Packages>
+              <Url>frameworks/rhino.tools/rhino.commons/</Url>
+            </Category>
+            <Category>
               <Name>rhino.dsl</Name>
               <Categories />
               <Packages>
@@ -42,7 +86,796 @@
                   <Version>trunk</Version>
                   <Url>frameworks/rhino.tools/rhino.dsl/rhino.dsl-trunk</Url>
                   <ZipFileName>
-                    <Name>rhino.dsl-trunk.zip</Name>
+                    <Name>rhino.dsl-trunk-04-11-09-210540.zip</Name>
+                  </ZipFileName>
+                  <Contents>
+                    <PackageFile>
+                      <Name>ABC.hbm.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>adodb.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Aggregate.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Aggregate.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>AnonymousBaseClass.boo</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>anotherFile.boo</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>anotherFile2.boo</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>anrControls.Markdown.NET.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>antlr.runtime.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Antlr3.Runtime.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>AutoImport.boo</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Bamboo.Prevalence.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Bamboo.Prevalence.Util.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Lang.CodeDom.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Lang.Compiler.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Lang.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Lang.Extensions.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Lang.Interpreter.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Lang.Parser.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Lang.PatternMatching.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Lang.Useful.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.Microsoft.Build.Tasks.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Boo.NAnt.Tasks.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Cassini.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.ActiveRecord.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.ActiveRecord.Linq.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.ActiveRecord.Linq.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.ActiveRecord.Linq.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.ActiveRecord.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.ActiveRecord.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Binder.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Binder.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Binder.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.EmailSender.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.EmailSender.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.EmailSender.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.TemplateEngine.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.TemplateEngine.NVelocityTemplateEngine.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.TemplateEngine.NVelocityTemplateEngine.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.TemplateEngine.NVelocityTemplateEngine.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.TemplateEngine.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Common.TemplateEngine.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.DictionaryAdapter.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.DictionaryAdapter.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.DictionaryAdapter.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Pagination.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Pagination.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Pagination.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Scheduler.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Scheduler.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Scheduler.WindsorExtension.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Scheduler.WindsorExtension.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Scheduler.WindsorExtension.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Scheduler.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Validator.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Validator.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Validator.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Validator.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Validator.Tests.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Components.Validator.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Core.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Core.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.DynamicProxy.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.DynamicProxy2.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.DynamicProxy2.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.DynamicProxy2.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.ActiveRecordIntegration.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.ActiveRecordIntegration.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.ActiveRecordIntegration.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.AutomaticTransactionManagement.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.AutomaticTransactionManagement.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.AutomaticTransactionManagement.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.BatchRegistration.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.BatchRegistration.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.BatchRegistration.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Cache.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Cache.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Cache.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Logging.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Logging.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Logging.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.NHibernateIntegration.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.NHibernateIntegration.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.NHibernateIntegration.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Remoting.TestComponents.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Remoting.TestComponents.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Remoting.TestComponents.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Synchronize.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Synchronize.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.Synchronize.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.WcfIntegration.Demo.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.WcfIntegration.Demo.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.WcfIntegration.Demo.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.WcfIntegration.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.WcfIntegration.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Facilities.WcfIntegration.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.MicroKernel.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.MicroKernel.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.MicroKernel.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Logging.Log4netIntegration.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Logging.Log4netIntegration.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Logging.Log4netIntegration.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Logging.NLogIntegration.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Logging.NLogIntegration.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Logging.NLogIntegration.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Transaction.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Transaction.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Services.Transaction.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Windsor.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Windsor.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Windsor.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Common.Logging.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>hasReferenceToAnotherFile.boo</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>hibernate.cfg.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.Test.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.Test.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>LinFu.DynamicProxy.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>LinFu.License.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>log4net.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>log4net.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>log4net.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Lucene.Net.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.AddIn.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Cons.exe</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Cons.exe.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Demo.1.1.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Framework.1.1.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Framework.1.1.XML</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Framework.2.0.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Framework.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Framework.XML</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.GUI.exe</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.GUI.exe.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.MSBuild.Tasks.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Tasks.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MbUnit.Tests.1.1.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Memcached.ClientLibrary.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Messages.lt.Designer.cs</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Messages.lt.resx</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Messages.ru.resx</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>MethodSubstitutionBaseClass.boo</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>namespacesImports.boo</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NAnt.Core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NAnt.Core.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Newtonsoft.Json.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Newtonsoft.Json.XML</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NGraphviz.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NGraphviz.Helpers.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NGraphviz.Layout.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.MemCache.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.MemCache.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.MemCache.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.Prevalence.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.Prevalence.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.Prevalence.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SharedCache.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SharedCache.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SharedCache.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SysCache.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SysCache.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SysCache2.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.DomainModel.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.DomainModel.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.DomainModel.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Search.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Search.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Search.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Test.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Test.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Test.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Tool.HbmXsd.exe</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Tool.HbmXsd.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NLog.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NLog.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NLog.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Northwind.Entities.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Northwind.Entities.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Northwind.Entities.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>nunit.core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>nunit.framework.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>nunit.framework.extensions.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>nunit.framework.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NVelocity.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NVelocity.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NVelocity.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>QuickGraph.Algorithms.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>QuickGraph.Algorithms.Graphviz.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>QuickGraph.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Refly.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.DSL.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.DSL.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.DSL.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.DSL.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.DSL.XML</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Mocks.CPP.Interfaces.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Mocks.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Mocks.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Spring.Aop.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Spring.Aop.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Spring.Core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Spring.Core.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>sqlite3.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>System.Data.Services.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>System.Data.Services.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>System.Data.SQLite.DLL</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>System.Linq.Dynamic.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>TestDriven.Framework.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>TestEnbeddedConfig.cfg.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>TestFu.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>TestFu.XML</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>uninst.exe</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>users.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>WatiN.Core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>WatiN.Core.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>XsdTidy.exe</Name>
+                    </PackageFile>
+                  </Contents>
+                  <IsError>false</IsError>
+                  <ErrorMessage i:nil="true" />
+                </Package>
+              </Packages>
+              <Url>frameworks/rhino.tools/rhino.dsl/</Url>
+            </Category>
+            <Category>
+              <Name>rhino.etl</Name>
+              <Categories />
+              <Packages>
+                <Package>
+                  <Name>rhino.etl</Name>
+                  <MetaData>
+                    <MetaData>
+                      <Name>category</Name>
+                      <Value>Frameworks</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>description</Name>
+                      <Value>Developer friendly ETL Library for .NET</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>forum</Name>
+                      <Value>http://groups.google.co.uk/group/rhino-tools-dev?hl=en</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>homepage</Name>
+                      <Value>http://ayende.com/blog/</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>name</Name>
+                      <Value>Rhino.Etl</Value>
+                    </MetaData>
+                    <MetaData>
+                      <Name>notes</Name>
+                      <Value />
+                    </MetaData>
+                  </MetaData>
+                  <Version>trunk</Version>
+                  <Url>frameworks/rhino.tools/rhino.etl/rhino.etl-trunk</Url>
+                  <ZipFileName>
+                    <Name>rhino.etl-trunk-04-11-09-210724.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -73,10 +906,22 @@
                       <Name>Boo.Lang.Parser.dll</Name>
                     </PackageFile>
                     <PackageFile>
+                      <Name>Boo.Lang.Useful.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>FileHelpers.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>FileHelpers.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
                       <Name>hasReferenceToAnotherFile.boo</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>log4net.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>log4net.xml</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>MbUnit.AddIn.dll</Name>
@@ -166,7 +1011,40 @@
                       <Name>Rhino.DSL.Tests.pdb</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>Rhino.DSL.XML</Name>
+                      <Name>Rhino.DSL.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Cmd.exe</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Cmd.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Core.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Core.XML</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Dsl.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Dsl.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Dsl.XML</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Rhino.Etl.Tests.pdb</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>Rhino.Mocks.dll</Name>
@@ -197,55 +1075,11 @@
                   <ErrorMessage i:nil="true" />
                 </Package>
               </Packages>
-              <Url>frameworks/rhino.tools/rhino.dsl/</Url>
+              <Url>frameworks/rhino.tools/rhino.etl/</Url>
             </Category>
           </Categories>
           <Packages />
           <Url>frameworks/rhino.tools/</Url>
-        </Category>
-        <Category>
-          <Name>sharp.architecture</Name>
-          <Categories />
-          <Packages>
-            <Package>
-              <Name>sharp.architecture</Name>
-              <MetaData>
-                <MetaData>
-                  <Name>category</Name>
-                  <Value>Frameworks</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>description</Name>
-                  <Value>This is a solid architectural foundation for rapidly building maintainable web applications leveraging the ASP.NET MVC framework with NHibernate.</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>forum</Name>
-                  <Value>http://groups.google.com/group/sharp-architecture</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>homepage</Name>
-                  <Value>http://code.google.com/p/sharp-architecture/</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>name</Name>
-                  <Value>Sharp Architecture</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>notes</Name>
-                  <Value />
-                </MetaData>
-              </MetaData>
-              <Version>trunk</Version>
-              <Url>frameworks/sharp.architecture/sharp.architecture-trunk</Url>
-              <ZipFileName i:nil="true" />
-              <Contents />
-              <IsError>true</IsError>
-              <ErrorMessage>
-                The build tool Horn.Core.BatchBuildTool failed building the sharp.architecture package
-              </ErrorMessage>
-            </Package>
-          </Packages>
-          <Url>frameworks/sharp.architecture/</Url>
         </Category>
       </Categories>
       <Packages />
@@ -289,7 +1123,7 @@
               <Version>trunk</Version>
               <Url>ioc/castle.activerecord/castle.activerecord-trunk</Url>
               <ZipFileName>
-                <Name>castle.activerecord-trunk.zip</Name>
+                <Name>castle.activerecord-trunk-04-11-09-211145.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -323,19 +1157,7 @@
                   <Name>Antlr3.Runtime.dll</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>Application.spark</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>apppath.brail</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>AutoImport.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Bamboo.Prevalence.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Bamboo.Prevalence.Util.dll</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>Boo.Lang.CodeDom.dll</Name>
@@ -366,9 +1188,6 @@
                 </PackageFile>
                 <PackageFile>
                   <Name>Boo.NAnt.Tasks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>CanChangeAllTheDefaultsEvenThoughIShouldntWriteATestWithABigSurfaceAreaLikeThisNaughtyPete.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>Cassini.dll</Name>
@@ -470,9 +1289,6 @@
                   <Name>Castle.Components.Validator.pdb</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>Castle.Components.Validator.resources.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>Castle.Components.Validator.Tests.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -506,96 +1322,6 @@
                   <Name>Castle.DynamicProxy2.xml</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>Castle.Facilities.ActiveRecordIntegration.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.ActiveRecordIntegration.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.ActiveRecordIntegration.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.AutomaticTransactionManagement.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.AutomaticTransactionManagement.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.AutomaticTransactionManagement.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.BatchRegistration.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.BatchRegistration.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.BatchRegistration.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Cache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Cache.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Cache.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Logging.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Logging.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Logging.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.NHibernateIntegration.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.NHibernateIntegration.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.NHibernateIntegration.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Remoting.TestComponents.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Remoting.TestComponents.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Remoting.TestComponents.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Synchronize.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Synchronize.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.Synchronize.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.WcfIntegration.Demo.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.WcfIntegration.Demo.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.WcfIntegration.Demo.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.WcfIntegration.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.WcfIntegration.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Facilities.WcfIntegration.xml</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>Castle.MicroKernel.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -603,33 +1329,6 @@
                 </PackageFile>
                 <PackageFile>
                   <Name>Castle.MicroKernel.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Logging.Log4netIntegration.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Logging.Log4netIntegration.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Logging.Log4netIntegration.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Logging.NLogIntegration.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Logging.NLogIntegration.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Logging.NLogIntegration.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Transaction.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Transaction.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Services.Transaction.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>Castle.Windsor.dll</Name>
@@ -644,49 +1343,10 @@
                   <Name>Common.Logging.dll</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>DefaultsAreCorrect.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>EcmaScript.NET.modified.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Examples.FirstProject.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Examples.FirstProject.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>exists.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>extensions.brail</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>foreach.spark</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>hasReferenceToAnotherFile.boo</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>hibernate.cfg.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>HtmlAgilityPack.dll</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>Iesi.Collections.dll</Name>
@@ -713,9 +1373,6 @@
                   <Name>LinFu.License.txt</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>List.spark</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>log4net.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -726,9 +1383,6 @@
                 </PackageFile>
                 <PackageFile>
                   <Name>Lucene.Net.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>master.brail</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>MbUnit.AddIn.dll</Name>
@@ -773,9 +1427,6 @@
                   <Name>MbUnit.Tests.1.1.dll</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>Memcached.ClientLibrary.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>Messages.lt.Designer.cs</Name>
                 </PackageFile>
                 <PackageFile>
@@ -786,138 +1437,6 @@
                 </PackageFile>
                 <PackageFile>
                   <Name>MethodSubstitutionBaseClass.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ObjectBuilder2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ServiceLocation.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ServiceLocation.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ServiceLocation.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Web.Mvc.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Web.Mvc.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.BrailViewEngine.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.BrailViewEngine.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.BrailViewEngine.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Castle.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Castle.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Castle.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.FluentHtml.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.FluentHtml.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.FluentHtml.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.IncludeHandling.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.IncludeHandling.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.SparkViewEngine.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.SparkViewEngine.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Spring.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Spring.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Spring.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.StructureMap.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.StructureMap.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.StructureMap.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.TestHelper.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.TestHelper.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.TestHelper.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MVCContrib.UnitTests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MVCContrib.UnitTests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MVCContrib.UnitTests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Unity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Unity.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.Unity.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.ViewEngines.NVelocity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.ViewEngines.NVelocity.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.XsltViewEngine.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.XsltViewEngine.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MvcContrib.XsltViewEngine.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Mvp.Xml.dll</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>namespacesImports.boo</Name>
@@ -998,42 +1517,6 @@
                   <Name>NHibernate.ByteCode.Spring.xml</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache2.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>NHibernate.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -1073,6 +1556,12 @@
                   <Name>NHibernate.Search.dll</Name>
                 </PackageFile>
                 <PackageFile>
+                  <Name>NHibernate.Search.Tests.dll</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>NHibernate.Search.Tests.dll.config</Name>
+                </PackageFile>
+                <PackageFile>
                   <Name>NHibernate.Test.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -1088,28 +1577,7 @@
                   <Name>NHibernate.Tool.HbmXsd.pdb</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>NHibernate.Validator.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Validator.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Validator.Specific.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Validator.Specific.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Validator.Specific.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Validator.xml</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>NHibernate.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nhibernate-mapping.xsd</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>NLog.dll</Name>
@@ -1140,9 +1608,6 @@
                 </PackageFile>
                 <PackageFile>
                   <Name>nunit.framework.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.framework.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>NVelocity.dll</Name>
@@ -1190,27 +1655,6 @@
                   <Name>Rhino.Mocks.xml</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>SharpTestsEx.NUnit.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>SharpTestsEx.NUnit.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spark.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spark.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spark.Web.Mvc.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spark.Web.Mvc.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>SparkPartial.spark</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>Spring.Aop.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -1226,15 +1670,6 @@
                   <Name>sqlite3.dll</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>StructureMap.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>sub.brail</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>sub_CustomViewData.brail</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>System.Data.Services.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -1245,12 +1680,6 @@
                 </PackageFile>
                 <PackageFile>
                   <Name>System.Linq.Dynamic.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>System.Web.Mvc.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>System.Web.Mvc.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>TestDriven.Framework.dll</Name>
@@ -1271,28 +1700,13 @@
                   <Name>users.txt</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>view.brail</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>view_CustomViewData.brail</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>WatiN.Core.dll</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>WatiN.Core.xml</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>WhenPathMissingAFormatPlaceHolder_WillThrow_pathValidation1.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>WhenPathMissingAFormatPlaceHolder_WillThrow_pathValidation2.xml</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>XsdTidy.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Yahoo.Yui.Compressor.dll</Name>
                 </PackageFile>
               </Contents>
               <IsError>false</IsError>
@@ -1336,7 +1750,7 @@
               <Version>trunk</Version>
               <Url>ioc/castle.components/castle.components-trunk</Url>
               <ZipFileName>
-                <Name>castle.components-trunk.zip</Name>
+                <Name>castle.components-trunk-04-11-09-211430.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -1529,13 +1943,7 @@
                   <Name>hasReferenceToAnotherFile.boo</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>Iesi.Collections.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>Iesi.Collections.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>log4net.dll</Name>
@@ -1628,28 +2036,7 @@
                   <Name>NGraphviz.Layout.dll</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>NHibernate.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Linq.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Linq.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Search.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>NLog.dll</Name>
@@ -1783,7 +2170,7 @@
               <Version>trunk</Version>
               <Url>ioc/castle.facilities/castle.facilities-trunk</Url>
               <ZipFileName>
-                <Name>castle.facilities-trunk.zip</Name>
+                <Name>castle.facilities-trunk-04-11-09-211958.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -2123,6 +2510,9 @@
                   <Name>hasReferenceToAnotherFile.boo</Name>
                 </PackageFile>
                 <PackageFile>
+                  <Name>hibernate.cfg.xml</Name>
+                </PackageFile>
+                <PackageFile>
                   <Name>Iesi.Collections.dll</Name>
                 </PackageFile>
                 <PackageFile>
@@ -2309,6 +2699,18 @@
                   <Name>NHibernate.Linq.dll</Name>
                 </PackageFile>
                 <PackageFile>
+                  <Name>NHibernate.Linq.pdb</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>NHibernate.Linq.Tests.dll</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>NHibernate.Linq.Tests.dll.config</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>NHibernate.Linq.Tests.pdb</Name>
+                </PackageFile>
+                <PackageFile>
                   <Name>NHibernate.Linq.xml</Name>
                 </PackageFile>
                 <PackageFile>
@@ -2316,6 +2718,12 @@
                 </PackageFile>
                 <PackageFile>
                   <Name>NHibernate.Search.dll</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>NHibernate.Search.Tests.dll</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>NHibernate.Search.Tests.dll.config</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>NHibernate.Test.dll</Name>
@@ -2345,10 +2753,22 @@
                   <Name>NLog.xml</Name>
                 </PackageFile>
                 <PackageFile>
+                  <Name>Northwind.Entities.dll</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>Northwind.Entities.pdb</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>Northwind.Entities.xml</Name>
+                </PackageFile>
+                <PackageFile>
                   <Name>nunit.core.dll</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>nunit.framework.dll</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>nunit.framework.extensions.dll</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>nunit.framework.license.txt</Name>
@@ -2414,7 +2834,16 @@
                   <Name>sqlite3.dll</Name>
                 </PackageFile>
                 <PackageFile>
+                  <Name>System.Data.Services.dll</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>System.Data.Services.xml</Name>
+                </PackageFile>
+                <PackageFile>
                   <Name>System.Data.SQLite.DLL</Name>
+                </PackageFile>
+                <PackageFile>
+                  <Name>System.Linq.Dynamic.license.txt</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>TestDriven.Framework.dll</Name>
@@ -2451,51 +2880,6 @@
           <Url>ioc/castle.facilities/</Url>
         </Category>
         <Category>
-          <Name>castle.nvelocity</Name>
-          <Categories />
-          <Packages>
-            <Package>
-              <Name>castle.nvelocity</Name>
-              <MetaData>
-                <MetaData>
-                  <Name>category</Name>
-                  <Value>ViewEngines</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>description</Name>
-                  <Value>NVelocity is a port of the excellent Apache Jakarta Velocity project. It is a very simple, easy to learn and extensible template engine.</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>forum</Name>
-                  <Value>http://groups.google.com/group/castle-project-users</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>homepage</Name>
-                  <Value>http://www.castleproject.org/others/nvelocity/index.html</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>name</Name>
-                  <Value>Castle NVelocity</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>notes</Name>
-                  <Value />
-                </MetaData>
-              </MetaData>
-              <Version>trunk</Version>
-              <Url>ioc/castle.nvelocity/castle.nvelocity-trunk</Url>
-              <ZipFileName i:nil="true" />
-              <Contents />
-              <IsError>true</IsError>
-              <ErrorMessage>
-                OPTIONS of 'https://svn.castleproject.org/svn/castle/NVelocity/trunk': Server certificate verification failed: issuer is not trusted (https://svn.castleproject.org)
-
-              </ErrorMessage>
-            </Package>
-          </Packages>
-          <Url>ioc/castle.nvelocity/</Url>
-        </Category>
-        <Category>
           <Name>castle.services</Name>
           <Categories />
           <Packages>
@@ -2530,7 +2914,7 @@
               <Version>trunk</Version>
               <Url>ioc/castle.services/castle.services-trunk</Url>
               <ZipFileName>
-                <Name>castle.services-trunk.zip</Name>
+                <Name>castle.services-trunk-04-11-09-212155.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -2642,13 +3026,7 @@
                   <Name>hasReferenceToAnotherFile.boo</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>Iesi.Collections.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>Iesi.Collections.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>log4net.dll</Name>
@@ -2732,28 +3110,7 @@
                   <Name>NGraphviz.Layout.dll</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>NHibernate.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Linq.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Linq.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Search.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>NLog.dll</Name>
@@ -2853,51 +3210,6 @@
           <Url>ioc/castle.services/</Url>
         </Category>
         <Category>
-          <Name>castle.templateengine</Name>
-          <Categories />
-          <Packages>
-            <Package>
-              <Name>castle.templateengine</Name>
-              <MetaData>
-                <MetaData>
-                  <Name>category</Name>
-                  <Value>TemplateEngines</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>description</Name>
-                  <Value>The TemplateEngine component is used to abstract template processing approaches. It is useful to provide a minimal template processing to your applications. It comes with a default implementation which relies on NVelocity.</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>forum</Name>
-                  <Value>http://groups.google.com/group/castle-project-users</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>homepage</Name>
-                  <Value>http://www.castleproject.org/components/templateengine/index.html</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>name</Name>
-                  <Value>Castle TemplateEngine Component</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>notes</Name>
-                  <Value />
-                </MetaData>
-              </MetaData>
-              <Version>trunk</Version>
-              <Url>ioc/castle.templateengine/castle.templateengine-trunk</Url>
-              <ZipFileName i:nil="true" />
-              <Contents />
-              <IsError>true</IsError>
-              <ErrorMessage>
-                OPTIONS of 'https://svn.castleproject.org/svn/castle/NVelocity/trunk': Server certificate verification failed: issuer is not trusted (https://svn.castleproject.org)
-
-              </ErrorMessage>
-            </Package>
-          </Packages>
-          <Url>ioc/castle.templateengine/</Url>
-        </Category>
-        <Category>
           <Name>castle.tools</Name>
           <Categories />
           <Packages>
@@ -2932,7 +3244,7 @@
               <Version>trunk</Version>
               <Url>ioc/castle.tools/castle.tools-trunk</Url>
               <ZipFileName>
-                <Name>castle.tools-trunk.zip</Name>
+                <Name>castle.tools-trunk-04-11-09-212235.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -3004,7 +3316,7 @@
               <Version>trunk</Version>
               <Url>ioc/castle.windsor/castle.windsor-trunk</Url>
               <ZipFileName>
-                <Name>castle.windsor-trunk.zip</Name>
+                <Name>castle.windsor-trunk-04-11-09-212332.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -3107,13 +3419,7 @@
                   <Name>hasReferenceToAnotherFile.boo</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>Iesi.Collections.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>Iesi.Collections.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>log4net.dll</Name>
@@ -3197,28 +3503,7 @@
                   <Name>NGraphviz.Layout.dll</Name>
                 </PackageFile>
                 <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
                   <Name>NHibernate.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Linq.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Linq.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Search.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.xml</Name>
                 </PackageFile>
                 <PackageFile>
                   <Name>NLog.dll</Name>
@@ -3352,7 +3637,7 @@
               <Version>trunk</Version>
               <Url>ioc/linfu/linfu-trunk</Url>
               <ZipFileName>
-                <Name>linfu-trunk.zip</Name>
+                <Name>linfu-trunk-04-11-09-212441.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -3490,7 +3775,7 @@
               <Version>2.0</Version>
               <Url>ioc/ninject/ninject-2.0</Url>
               <ZipFileName>
-                <Name>ninject-2.0.zip</Name>
+                <Name>ninject-2.0-04-11-09-212514.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -3531,7 +3816,7 @@
               <Version>trunk</Version>
               <Url>ioc/ninject/ninject-trunk</Url>
               <ZipFileName>
-                <Name>ninject-trunk.zip</Name>
+                <Name>ninject-trunk-04-11-09-212523.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -3586,7 +3871,7 @@
               <Version>1.2.10</Version>
               <Url>loggers/log4net/log4net-1.2.10</Url>
               <ZipFileName>
-                <Name>log4net-1.2.10.zip</Name>
+                <Name>log4net-1.2.10-04-11-09-212624.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -3633,7 +3918,7 @@
               <Version>trunk</Version>
               <Url>loggers/log4net/log4net-trunk</Url>
               <ZipFileName>
-                <Name>log4net-trunk.zip</Name>
+                <Name>log4net-trunk-04-11-09-212655.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -3694,7 +3979,7 @@
               <Version>trunk</Version>
               <Url>mappers/automapper/automapper-trunk</Url>
               <ZipFileName>
-                <Name>automapper-trunk.zip</Name>
+                <Name>automapper-trunk-04-11-09-212753.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -3754,130 +4039,12 @@
               </MetaData>
               <Version>trunk</Version>
               <Url>mocks/rhino.mocks/rhino.mocks-trunk</Url>
-              <ZipFileName>
-                <Name>rhino.mocks-trunk.zip</Name>
-              </ZipFileName>
-              <Contents>
-                <PackageFile>
-                  <Name>Castle.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Interop.ADODB.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Interop.MSHTML.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ObjectBuilder2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ObjectBuilder2.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.CPP.Interfaces.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.Partial.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.Tests.Model.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.Tests.Model.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.Tests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Scripting.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.console.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.console.exe.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.extensions.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.extensions.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.gui.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.installer.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>XUnit.NAntTasks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.runner.msbuild.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.runner.resharper.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.runner.tdnet.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.runner.utility.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.runner.utility.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>xunit.xml</Name>
-                </PackageFile>
-              </Contents>
-              <IsError>false</IsError>
-              <ErrorMessage i:nil="true" />
+              <ZipFileName i:nil="true" />
+              <Contents />
+              <IsError>true</IsError>
+              <ErrorMessage>
+                The build tool Horn.Core.PSakeBuildTool failed building the rhino.mocks package
+              </ErrorMessage>
             </Package>
           </Packages>
           <Url>mocks/rhino.mocks/</Url>
@@ -3923,274 +4090,12 @@
               </MetaData>
               <Version>0.1</Version>
               <Url>orm/fluentnhibernate/fluentnhibernate-0.1</Url>
-              <ZipFileName>
-                <Name>fluentnhibernate-0.1.zip</Name>
-              </ZipFileName>
-              <Contents>
-                <PackageFile>
-                  <Name>ABC.hbm.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>antlr.runtime.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Antlr3.Runtime.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Bamboo.Prevalence.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Bamboo.Prevalence.Util.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Common.Logging.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Examples.FirstProject.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Examples.FirstProject.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.Test.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.Test.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>LinFu.DynamicProxy.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>LinFu.License.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Memcached.ClientLibrary.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.Tests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.Tests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.Tests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.DomainModel.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.DomainModel.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.DomainModel.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Test.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Test.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Test.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Tool.HbmXsd.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Tool.HbmXsd.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nhibernate-mapping.xsd</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.framework.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.framework.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Aop.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Aop.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>TestEnbeddedConfig.cfg.xml</Name>
-                </PackageFile>
-              </Contents>
-              <IsError>false</IsError>
-              <ErrorMessage i:nil="true" />
+              <ZipFileName i:nil="true" />
+              <Contents />
+              <IsError>true</IsError>
+              <ErrorMessage>
+                Ruby not installed or it's not registerred in the Environment Variables &gt; path
+              </ErrorMessage>
             </Package>
             <Package>
               <Name>fluentnhibernate</Name>
@@ -4222,274 +4127,12 @@
               </MetaData>
               <Version>trunk</Version>
               <Url>orm/fluentnhibernate/fluentnhibernate-trunk</Url>
-              <ZipFileName>
-                <Name>fluentnhibernate-trunk.zip</Name>
-              </ZipFileName>
-              <Contents>
-                <PackageFile>
-                  <Name>ABC.hbm.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>antlr.runtime.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Antlr3.Runtime.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Bamboo.Prevalence.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Bamboo.Prevalence.Util.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Common.Logging.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Examples.FirstProject.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Examples.FirstProject.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>FluentNHibernate.Testing.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.Test.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.Test.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>LinFu.DynamicProxy.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>LinFu.License.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Memcached.ClientLibrary.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.Tests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.Tests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.LinFu.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.Tests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Spring.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.MemCache.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.Prevalence.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SharedCache.Tests.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Caches.SysCache2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.DomainModel.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.DomainModel.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.DomainModel.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Test.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Test.dll.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Test.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Tool.HbmXsd.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Tool.HbmXsd.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nhibernate-mapping.xsd</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.framework.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.framework.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Aop.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Aop.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>TestEnbeddedConfig.cfg.xml</Name>
-                </PackageFile>
-              </Contents>
-              <IsError>false</IsError>
-              <ErrorMessage i:nil="true" />
+              <ZipFileName i:nil="true" />
+              <Contents />
+              <IsError>true</IsError>
+              <ErrorMessage>
+                Ruby not installed or it's not registerred in the Environment Variables &gt; path
+              </ErrorMessage>
             </Package>
           </Packages>
           <Url>orm/fluentnhibernate/</Url>
@@ -4497,7 +4140,7 @@
         <Category>
           <Name>nhcontrib</Name>
           <Categories>
-            <Category>  
+            <Category>
               <Name>nhibernate.burrow</Name>
               <Categories />
               <Packages>
@@ -4532,7 +4175,7 @@
                   <Version>2.1</Version>
                   <Url>orm/nhcontrib/nhibernate.burrow/nhibernate.burrow-2.1</Url>
                   <ZipFileName>
-                    <Name>nhibernate.burrow-2.1.zip</Name>
+                    <Name>nhibernate.burrow-2.1-04-11-09-213851.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -4543,6 +4186,12 @@
                     </PackageFile>
                     <PackageFile>
                       <Name>Antlr3.Runtime.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Bamboo.Prevalence.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Bamboo.Prevalence.Util.dll</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>BurrowTest.cfg.xml</Name>
@@ -4612,6 +4261,9 @@
                     </PackageFile>
                     <PackageFile>
                       <Name>log4net.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Memcached.ClientLibrary.dll</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>NHibernate.Burrow.AppBlock.dll</Name>
@@ -4720,6 +4372,42 @@
                     </PackageFile>
                     <PackageFile>
                       <Name>NHibernate.ByteCode.Spring.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.MemCache.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.MemCache.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.MemCache.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.Prevalence.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.Prevalence.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.Prevalence.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SharedCache.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SharedCache.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SharedCache.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SysCache.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SysCache.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Caches.SysCache2.dll</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>NHibernate.dll</Name>
@@ -4837,7 +4525,7 @@
                   <Version>trunk</Version>
                   <Url>orm/nhcontrib/nhibernate.burrow/nhibernate.burrow-trunk</Url>
                   <ZipFileName>
-                    <Name>nhibernate.burrow-trunk.zip</Name>
+                    <Name>nhibernate.burrow-trunk-04-11-09-214231.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -5149,7 +4837,7 @@
                   <Version>trunk</Version>
                   <Url>orm/nhcontrib/nhibernate.caches/nhibernate.caches-trunk</Url>
                   <ZipFileName>
-                    <Name>nhibernate.caches-trunk.zip</Name>
+                    <Name>nhibernate.caches-trunk-04-11-09-214537.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -5425,7 +5113,7 @@
                   <Version>2.1</Version>
                   <Url>orm/nhcontrib/nhibernate.jetdriver/nhibernate.jetdriver-2.1</Url>
                   <ZipFileName>
-                    <Name>nhibernate.jetdriver-2.1.zip</Name>
+                    <Name>nhibernate.jetdriver-2.1-04-11-09-214907.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -5661,7 +5349,7 @@
                   <Version>trunk</Version>
                   <Url>orm/nhcontrib/nhibernate.jetdriver/nhibernate.jetdriver-trunk</Url>
                   <ZipFileName>
-                    <Name>nhibernate.jetdriver-trunk.zip</Name>
+                    <Name>nhibernate.jetdriver-trunk-04-11-09-215228.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -5904,7 +5592,7 @@
                   <Version>2.1</Version>
                   <Url>orm/nhcontrib/nhibernate.linq/nhibernate.linq-2.1</Url>
                   <ZipFileName>
-                    <Name>nhibernate.linq-2.1.zip</Name>
+                    <Name>nhibernate.linq-2.1-04-11-09-215528.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -6170,7 +5858,7 @@
                   <Version>trunk</Version>
                   <Url>orm/nhcontrib/nhibernate.linq/nhibernate.linq-trunk</Url>
                   <ZipFileName>
-                    <Name>nhibernate.linq-trunk.zip</Name>
+                    <Name>nhibernate.linq-trunk-04-11-09-215826.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -6442,12 +6130,211 @@
                   </MetaData>
                   <Version>trunk</Version>
                   <Url>orm/nhcontrib/nhibernate.search/nhibernate.search-trunk</Url>
-                  <ZipFileName i:nil="true" />
-                  <Contents />
-                  <IsError>true</IsError>
-                  <ErrorMessage>
-                    The build tool Horn.Core.NAntBuildTool failed building the nhibernate.search package
-                  </ErrorMessage>
+                  <ZipFileName>
+                    <Name>nhibernate.search-trunk-04-11-09-220123.zip</Name>
+                  </ZipFileName>
+                  <Contents>
+                    <PackageFile>
+                      <Name>ABC.hbm.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>antlr.runtime.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Antlr3.Runtime.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Core.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.Core.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.DynamicProxy.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.DynamicProxy2.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.DynamicProxy2.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Castle.DynamicProxy2.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Common.Logging.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.Test.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.Test.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Iesi.Collections.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>LinFu.DynamicProxy.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>LinFu.License.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>log4net.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>log4net.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>log4net.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Lucene.Net.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Castle.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.LinFu.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.ByteCode.Spring.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.DomainModel.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.DomainModel.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.DomainModel.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Search.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Search.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Search.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Test.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Test.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Test.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Tool.HbmXsd.exe</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Tool.HbmXsd.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>nunit.core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>nunit.framework.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>nunit.framework.license.txt</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NVelocity.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NVelocity.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NVelocity.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Spring.Aop.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Spring.Aop.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Spring.Core.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Spring.Core.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>TestEnbeddedConfig.cfg.xml</Name>
+                    </PackageFile>
+                  </Contents>
+                  <IsError>false</IsError>
+                  <ErrorMessage i:nil="true" />
                 </Package>
               </Packages>
               <Url>orm/nhcontrib/nhibernate.search/</Url>
@@ -6487,7 +6374,7 @@
                   <Version>trunk</Version>
                   <Url>orm/nhcontrib/nhibernate.validator/nhibernate.validator-trunk</Url>
                   <ZipFileName>
-                    <Name>nhibernate.validator-trunk.zip</Name>
+                    <Name>nhibernate.validator-trunk-04-11-09-220539.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -6738,7 +6625,7 @@
                 </MetaData>
                 <MetaData>
                   <Name>homepage</Name>
-                  <Value>http://www.hibernate.org/343.html</Value>
+                  <Value>http://www.nhforge.org</Value>
                 </MetaData>
                 <MetaData>
                   <Name>name</Name>
@@ -6752,7 +6639,7 @@
               <Version>2.1</Version>
               <Url>orm/nhibernate/nhibernate-2.1</Url>
               <ZipFileName>
-                <Name>nhibernate-2.1.zip</Name>
+                <Name>nhibernate-2.1-04-11-09-220820.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -6962,7 +6849,7 @@
                 </MetaData>
                 <MetaData>
                   <Name>homepage</Name>
-                  <Value>http://www.hibernate.org/343.html</Value>
+                  <Value>http://www.nhforge.org</Value>
                 </MetaData>
                 <MetaData>
                   <Name>name</Name>
@@ -6976,7 +6863,7 @@
               <Version>trunk</Version>
               <Url>orm/nhibernate/nhibernate-trunk</Url>
               <ZipFileName>
-                <Name>nhibernate-trunk.zip</Name>
+                <Name>nhibernate-trunk-04-11-09-221057.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -7207,7 +7094,7 @@
               <Version>2.0</Version>
               <Url>orm/subsonic/subsonic-2.0</Url>
               <ZipFileName>
-                <Name>subsonic-2.0.zip</Name>
+                <Name>subsonic-2.0-04-11-09-221218.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -7335,7 +7222,7 @@
               <Version>trunk</Version>
               <Url>orm/subsonic/subsonic-trunk</Url>
               <ZipFileName>
-                <Name>subsonic-trunk.zip</Name>
+                <Name>subsonic-trunk-04-11-09-221243.zip</Name>
               </ZipFileName>
               <Contents>
                 <PackageFile>
@@ -7480,7 +7367,7 @@
                   <Version>trunk</Version>
                   <Url>web/asp.net.mvc/mvccontrib/mvccontrib-trunk</Url>
                   <ZipFileName>
-                    <Name>mvccontrib-trunk.zip</Name>
+                    <Name>mvccontrib-trunk-04-11-09-222006.zip</Name>
                   </ZipFileName>
                   <Contents>
                     <PackageFile>
@@ -7512,9 +7399,6 @@
                     </PackageFile>
                     <PackageFile>
                       <Name>Antlr3.Runtime.dll</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>Application.spark</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>apppath.brail</Name>
@@ -7841,10 +7725,10 @@
                       <Name>extensions.brail</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>foreach.spark</Name>
+                      <Name>hasReferenceToAnotherFile.boo</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>hasReferenceToAnotherFile.boo</Name>
+                      <Name>hibernate.cfg.xml</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>HtmlAgilityPack.dll</Name>
@@ -7872,9 +7756,6 @@
                     </PackageFile>
                     <PackageFile>
                       <Name>LinFu.License.txt</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>List.spark</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>log4net.dll</Name>
@@ -7982,7 +7863,7 @@
                       <Name>MvcContrib.Castle.pdb</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>MvcContrib.Castle.xml</Name>
+                      <Name>MvcContrib.Castle.XML</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>MvcContrib.dll</Name>
@@ -8004,12 +7885,6 @@
                     </PackageFile>
                     <PackageFile>
                       <Name>MvcContrib.pdb</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>MvcContrib.SparkViewEngine.dll</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>MvcContrib.SparkViewEngine.pdb</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>MvcContrib.Spring.dll</Name>
@@ -8036,7 +7911,7 @@
                       <Name>MvcContrib.TestHelper.pdb</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>MvcContrib.TestHelper.xml</Name>
+                      <Name>MvcContrib.TestHelper.XML</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>MVCContrib.UnitTests.dll</Name>
@@ -8054,7 +7929,7 @@
                       <Name>MvcContrib.Unity.pdb</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>MvcContrib.Unity.XML</Name>
+                      <Name>MvcContrib.Unity.xml</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>MvcContrib.ViewEngines.NVelocity.dll</Name>
@@ -8063,7 +7938,7 @@
                       <Name>MvcContrib.ViewEngines.NVelocity.pdb</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>MvcContrib.xml</Name>
+                      <Name>MvcContrib.XML</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>MvcContrib.XsltViewEngine.dll</Name>
@@ -8073,12 +7948,6 @@
                     </PackageFile>
                     <PackageFile>
                       <Name>MvcContrib.XsltViewEngine.XML</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>MvcTestingFramework.Sample.Test.dll</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>MvcTestingFramework.Sample.Test.pdb</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>Mvp.Xml.dll</Name>
@@ -8180,6 +8049,18 @@
                       <Name>NHibernate.Linq.dll</Name>
                     </PackageFile>
                     <PackageFile>
+                      <Name>NHibernate.Linq.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.Tests.dll.config</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Linq.Tests.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
                       <Name>NHibernate.Linq.xml</Name>
                     </PackageFile>
                     <PackageFile>
@@ -8187,6 +8068,12 @@
                     </PackageFile>
                     <PackageFile>
                       <Name>NHibernate.Search.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Search.Tests.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>NHibernate.Search.Tests.dll.config</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>NHibernate.Test.dll</Name>
@@ -8216,10 +8103,22 @@
                       <Name>NLog.xml</Name>
                     </PackageFile>
                     <PackageFile>
+                      <Name>Northwind.Entities.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Northwind.Entities.pdb</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>Northwind.Entities.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
                       <Name>nunit.core.dll</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>nunit.framework.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>nunit.framework.extensions.dll</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>nunit.framework.license.txt</Name>
@@ -8273,21 +8172,6 @@
                       <Name>Rhino.Mocks.xml</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>Spark.dll</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>Spark.pdb</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>Spark.Web.Mvc.dll</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>Spark.Web.Mvc.pdb</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>SparkPartial.spark</Name>
-                    </PackageFile>
-                    <PackageFile>
                       <Name>Spring.Aop.dll</Name>
                     </PackageFile>
                     <PackageFile>
@@ -8312,7 +8196,16 @@
                       <Name>sub_CustomViewData.brail</Name>
                     </PackageFile>
                     <PackageFile>
+                      <Name>System.Data.Services.dll</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>System.Data.Services.xml</Name>
+                    </PackageFile>
+                    <PackageFile>
                       <Name>System.Data.SQLite.DLL</Name>
+                    </PackageFile>
+                    <PackageFile>
+                      <Name>System.Linq.Dynamic.license.txt</Name>
                     </PackageFile>
                     <PackageFile>
                       <Name>System.Web.Mvc.dll</Name>
@@ -8351,12 +8244,6 @@
                       <Name>WatiN.Core.xml</Name>
                     </PackageFile>
                     <PackageFile>
-                      <Name>Website.dll</Name>
-                    </PackageFile>
-                    <PackageFile>
-                      <Name>Website.pdb</Name>
-                    </PackageFile>
-                    <PackageFile>
                       <Name>WhenPathMissingAFormatPlaceHolder_WillThrow_pathValidation1.xml</Name>
                     </PackageFile>
                     <PackageFile>
@@ -8382,590 +8269,6 @@
       </Categories>
       <Packages />
       <Url>web/</Url>
-    </Category>
-    <Category>
-      <Name>wpf</Name>
-      <Categories>
-        <Category>
-          <Name>caliburn</Name>
-          <Categories>
-            <Category>
-              <Name>caliburn-silverlight</Name>
-              <Categories />
-              <Packages>
-                <Package>
-                  <Name>caliburn-silverlight</Name>
-                  <MetaData>
-                    <MetaData>
-                      <Name>category</Name>
-                      <Value>Silverlight</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>description</Name>
-                      <Value>Designed to aid in the development of WPF and Silverlight applications, Caliburn implements a variety of UI patterns for solving real-world problems. Patterns that are enabled by the framework include MVC, MVP, Presentation Model (MVVM), Commands and Application Controller.</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>forum</Name>
-                      <Value>http://caliburn.codeplex.com/Thread/List.aspx</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>homepage</Name>
-                      <Value>http://caliburn.codeplex.com/</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>name</Name>
-                      <Value>Caliburn</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>notes</Name>
-                      <Value />
-                    </MetaData>
-                  </MetaData>
-                  <Version>2.0</Version>
-                  <Url>wpf/caliburn/caliburn-silverlight/caliburn-silverlight-2.0</Url>
-                  <ZipFileName i:nil="true" />
-                  <Contents />
-                  <IsError>true</IsError>
-                  <ErrorMessage>
-                    no build files found at C:\horn\.horn\wpf\caliburn\caliburn-silverlight\Working-2.0\bin.
-                  </ErrorMessage>
-                </Package>
-                <Package>
-                  <Name>caliburn-silverlight</Name>
-                  <MetaData>
-                    <MetaData>
-                      <Name>category</Name>
-                      <Value>Silverlight</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>description</Name>
-                      <Value>Designed to aid in the development of WPF and Silverlight applications, Caliburn implements a variety of UI patterns for solving real-world problems. Patterns that are enabled by the framework include MVC, MVP, Presentation Model (MVVM), Commands and Application Controller.</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>forum</Name>
-                      <Value>http://caliburn.codeplex.com/Thread/List.aspx</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>homepage</Name>
-                      <Value>http://caliburn.codeplex.com/</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>name</Name>
-                      <Value>Caliburn</Value>
-                    </MetaData>
-                    <MetaData>
-                      <Name>notes</Name>
-                      <Value />
-                    </MetaData>
-                  </MetaData>
-                  <Version>trunk</Version>
-                  <Url>wpf/caliburn/caliburn-silverlight/caliburn-silverlight-trunk</Url>
-                  <ZipFileName i:nil="true" />
-                  <Contents />
-                  <IsError>true</IsError>
-                  <ErrorMessage>
-                    no build files found at C:\horn\.horn\wpf\caliburn\caliburn-silverlight\Working-2.0\bin.
-                  </ErrorMessage>
-                </Package>
-              </Packages>
-              <Url>wpf/caliburn/caliburn-silverlight/</Url>
-            </Category>
-          </Categories>
-          <Packages>
-            <Package>
-              <Name>caliburn</Name>
-              <MetaData>
-                <MetaData>
-                  <Name>category</Name>
-                  <Value>WPF</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>description</Name>
-                  <Value>Designed to aid in the development of WPF and Silverlight applications, Caliburn implements a variety of UI patterns for solving real-world problems. Patterns that are enabled by the framework include MVC, MVP, Presentation Model (MVVM), Commands and Application Controller.</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>forum</Name>
-                  <Value>http://caliburn.codeplex.com/Thread/List.aspx</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>homepage</Name>
-                  <Value>http://caliburn.codeplex.com/</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>name</Name>
-                  <Value>Caliburn</Value>
-                </MetaData>
-                <MetaData>
-                  <Name>notes</Name>
-                  <Value />
-                </MetaData>
-              </MetaData>
-              <Version>trunk</Version>
-              <Url>wpf/caliburn/caliburn-trunk</Url>
-              <ZipFileName>
-                <Name>caliburn-trunk.zip</Name>
-              </ZipFileName>
-              <Contents>
-                <PackageFile>
-                  <Name>adodb.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Aggregate.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Aggregate.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>AnonymousBaseClass.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>anotherFile.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>anotherFile2.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>anrControls.Markdown.NET.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Antlr3.Runtime.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Autofac.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Autofac.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>AutoImport.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Lang.CodeDom.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Lang.Compiler.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Lang.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Lang.Extensions.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Lang.Interpreter.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Lang.Parser.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Lang.PatternMatching.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Lang.Useful.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.Microsoft.Build.Tasks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Boo.NAnt.Tasks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Castle.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Castle.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.MEF.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.MEF.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.ModelFramework.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.ModelFramework.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Ninject.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Ninject.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.PresentationFramework.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.PresentationFramework.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Spring.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Spring.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.StructureMap.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.StructureMap.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Testability.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Testability.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Unity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Caliburn.Unity.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Cassini.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.DynamicProxy2.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.MicroKernel.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.MicroKernel.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.MicroKernel.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Windsor.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Windsor.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Castle.Windsor.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Common.Logging.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>hasReferenceToAnotherFile.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Iesi.Collections.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>log4net.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Lucene.Net.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.AddIn.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Cons.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Cons.exe.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Demo.1.1.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Framework.1.1.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Framework.1.1.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Framework.2.0.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Framework.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Framework.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.GUI.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.GUI.exe.config</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.MSBuild.Tasks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Tasks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MbUnit.Tests.1.1.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>MethodSubstitutionBaseClass.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Composite.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Composite.Presentation.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Composite.Presentation.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Composite.UnityExtensions.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Composite.UnityExtensions.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Composite.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ObjectBuilder2.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ObjectBuilder2.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ServiceLocation.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.ServiceLocation.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.Configuration.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.Configuration.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.Interception.Configuration.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.Interception.Configuration.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.Interception.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.Interception.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.StaticFactory.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.StaticFactory.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Microsoft.Practices.Unity.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>namespacesImports.boo</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NAnt.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NAnt.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Newtonsoft.Json.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Newtonsoft.Json.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NGraphviz.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NGraphviz.Helpers.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NGraphviz.Layout.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.ByteCode.Castle.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Linq.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Linq.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.Search.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NHibernate.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Ninject.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NLog.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NLog.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NLog.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.framework.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>nunit.framework.license.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>NVelocity.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>QuickGraph.Algorithms.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>QuickGraph.Algorithms.Graphviz.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>QuickGraph.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Refly.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.DSL.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.DSL.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.DSL.Tests.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.DSL.Tests.pdb</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.DSL.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.CPP.Interfaces.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Rhino.Mocks.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>Spring.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>sqlite3.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>StructureMap.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>System.ComponentModel.Composition.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>System.ComponentModel.Composition.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>System.Data.SQLite.DLL</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>TestDriven.Framework.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>TestFu.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>TestFu.XML</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>uninst.exe</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>users.txt</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>WatiN.Core.dll</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>WatiN.Core.xml</Name>
-                </PackageFile>
-                <PackageFile>
-                  <Name>XsdTidy.exe</Name>
-                </PackageFile>
-              </Contents>
-              <IsError>false</IsError>
-              <ErrorMessage i:nil="true" />
-            </Package>
-          </Packages>
-          <Url>wpf/caliburn/</Url>
-        </Category>
-      </Categories>
-      <Packages />
-      <Url>wpf/</Url>
     </Category>
   </Categories>
   <Packages />

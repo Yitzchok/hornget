@@ -29,7 +29,7 @@ namespace Web.MVC.Model
 
         public string DownloadUrl()
         {
-            return string.Format("/downloads/{0}.zip", Url);
+            return string.Format("/downloads/{0}/{1}", Url.Substring(0, Url.LastIndexOf('/')), ZipFileName.Name);
         }
         public string Url { get; set; }
     }
